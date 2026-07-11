@@ -262,3 +262,50 @@
     -fx-font-size: 13;
 
 }
+
+.edit-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+}
+
+.delete-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+}
+
+/* ==========================================================
+   SOME CSS FIX OF THE TABLE VIEW, ESPECIALLY THE FONT OF CELLS TEXT
+   ========================================================== */
+
+.table-view {
+    -fx-font-size: 15px;
+}
+
+.table-row-cell {
+    -fx-cell-size: 55px;
+}
+
+.table-cell {
+    -fx-font-size: 15px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #dbeafe;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: #1e293b;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #dbeafe;
+}
+
+.table-row-cell:hover .table-cell {
+    -fx-text-fill: #1e293b;
+}
