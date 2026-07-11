@@ -12,6 +12,15 @@ import org.shakaal.collegemanagementapp.models.Student;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
+import javafx.scene.layout.HBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+
 public class StudentController implements Initializable{
 
 
@@ -53,7 +62,7 @@ public class StudentController implements Initializable{
     private TableColumn<Student, Integer> courseColumn;
 
     @FXML
-    private TableColumn<Student, Void> actionColumn;
+    private TableColumn<Student, Void> actionsColumn;
 
     private final StudentDAO studentDAO = new StudentDAO();
 
@@ -64,6 +73,8 @@ public class StudentController implements Initializable{
         configureColumns();
 
         loadStudents();
+
+        configureActionColumn();
 
         studentTable.setColumnResizePolicy(
                 TableView.CONSTRAINED_RESIZE_POLICY);
@@ -104,4 +115,85 @@ public class StudentController implements Initializable{
 
 
     }
+
+    private void configureActionColumn() {
+
+        actionsColumn.setCellFactory(param ->
+                new TableCell<>() {
+
+                    private final Button editButton = new Button();
+
+                    private final Button deleteButton = new Button();
+
+                    private final HBox buttons = new HBox(10, editButton, deleteButton);
+
+                    {
+                        editButton.getStyleClass().add("edit-button");
+                        deleteButton.getStyleClass().add("delete-button");
+
+                        //Image view ICONS for edit button
+
+                        Image editImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/edit.png"));
+
+                        ImageView editView = new ImageView(editImage);
+                        editView.setFitWidth(16);
+                        editView.setFitHeight(16);
+
+                        editButton.setGraphic(editView);
+
+                        //Image view ICONS for delete button
+
+                        Image deleteImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/delete.png"));
+
+                        ImageView deleteView = new ImageView(deleteImage);
+                        deleteView.setFitWidth(16);
+                        deleteView.setFitHeight(16);
+
+                        deleteButton.setGraphic(deleteView);
+
+                        buttons.setAlignment(Pos.CENTER);
+
+                        editButton.setOnAction(event -> {
+
+                            Student student =
+                                    getTableView().getItems().get(getIndex());
+
+                            System.out.println(
+                                    "Edit: " +
+                                            student.getFirstName()
+                            );
+
+                        });
+
+                        deleteButton.setOnAction(event -> {
+
+                            Student student =
+                                    getTableView().getItems().get(getIndex());
+
+                            System.out.println(
+                                    "Delete: " +
+                                            student.getFirstName()
+                            );
+
+                        });
+                    }
+
+                    @Override
+                    protected void updateItem(
+                            Void item,
+                            boolean empty
+                    ) {
+
+                        super.updateItem(item, empty);
+
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(buttons);
+                        }
+                    }
+                });
+    }
+
+
 }

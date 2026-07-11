@@ -3,6 +3,7 @@ module org.shakaal.collegemanagementapp {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires java.desktop;
 
     exports org.shakaal.collegemanagementapp;
 
