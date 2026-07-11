@@ -1,0 +1,363 @@
+/* ==========================================================
+   ROOT
+   ========================================================== */
+
+.root{
+    -fx-font-family: "Segoe UI";
+    -fx-background-color: #F4F7FA;
+}
+
+
+/* ==========================================================
+   SIDEBAR
+   ========================================================== */
+
+.sidebar{
+
+    -fx-background-color: #1E293B;
+
+    -fx-padding: 20;
+
+    -fx-spacing: 12;
+
+}
+
+
+/* ==========================================================
+   LOGO
+   ========================================================== */
+
+.logo-box{
+
+    -fx-padding: 10 5 20 5;
+
+}
+
+.logo-text{
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 22;
+
+    -fx-font-weight: bold;
+
+}
+
+
+/* ==========================================================
+   MENU BUTTONS
+   ========================================================== */
+
+.menu-button{
+
+    -fx-background-color: transparent;
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 15;
+
+    -fx-font-weight: bold;
+
+    -fx-pref-width: 200;
+
+    -fx-pref-height: 45;
+
+    -fx-background-radius: 10;
+
+    -fx-alignment: CENTER_LEFT;
+
+    -fx-padding: 0 0 0 18;
+
+    -fx-cursor: hand;
+
+}
+
+
+.menu-button:hover{
+
+    -fx-background-color: #334155;
+
+}
+
+
+.menu-button:pressed{
+
+    -fx-background-color: #2563EB;
+
+}
+
+
+/* ==========================================================
+   LOGOUT BUTTON
+   ========================================================== */
+
+.logout-button{
+
+    -fx-background-color: #EF4444;
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 15;
+
+    -fx-font-weight: bold;
+
+    -fx-pref-width: 200;
+
+    -fx-pref-height: 45;
+
+    -fx-background-radius: 10;
+
+    -fx-cursor: hand;
+
+}
+
+
+.logout-button:hover{
+
+    -fx-background-color: #DC2626;
+
+}
+
+
+/* ==========================================================
+   TOP BAR
+   ========================================================== */
+
+.top-bar{
+
+    -fx-background-color: white;
+
+    -fx-padding: 20;
+
+    -fx-effect: dropshadow(gaussian,
+                            rgba(0,0,0,0.12),
+                            10,
+                            0,
+                            0,
+                            2);
+
+}
+
+
+.page-title{
+
+    -fx-font-size: 28;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #1E293B;
+
+}
+
+
+/* ==========================================================
+   SEARCH FIELD
+   ========================================================== */
+
+.search-field{
+
+    -fx-background-radius: 20;
+
+    -fx-border-radius: 20;
+
+    -fx-border-color: #CBD5E1;
+
+    -fx-padding: 8 15;
+
+    -fx-font-size: 14;
+
+}
+
+
+.search-field:focused{
+
+    -fx-border-color: #2563EB;
+
+}
+
+
+/* ==========================================================
+   CENTER CONTENT
+   ========================================================== */
+
+.content-area{
+
+    -fx-padding: 25;
+
+}
+
+
+/* ==========================================================
+   DASHBOARD CARDS
+   ========================================================== */
+
+.card{
+
+    -fx-background-color: white;
+
+    -fx-background-radius: 18;
+
+    -fx-padding: 20;
+
+    -fx-pref-width: 250;
+
+    -fx-pref-height: 140;
+
+    -fx-spacing: 10;
+
+    -fx-alignment: CENTER;
+
+    -fx-effect: dropshadow(gaussian,
+                            rgba(0,0,0,0.15),
+                            12,
+                            0,
+                            0,
+                            3);
+
+}
+
+
+.card:hover{
+
+    -fx-background-color: #F8FAFC;
+
+    -fx-scale-x: 1.02;
+
+    -fx-scale-y: 1.02;
+
+}
+
+
+.card-number{
+
+    -fx-font-size: 34;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #2563EB;
+
+}
+
+
+.card-title{
+
+    -fx-font-size: 16;
+
+    -fx-text-fill: #64748B;
+
+    -fx-font-weight: bold;
+
+}
+
+
+/* ==========================================================
+   SECTION TITLES
+   ========================================================== */
+
+.section-title{
+
+    -fx-font-size: 22;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #1E293B;
+
+}
+
+
+/* ==========================================================
+   TABLE VIEW
+   ========================================================== */
+
+.table-view{
+
+    -fx-background-color: white;
+
+    -fx-background-radius: 15;
+
+    -fx-border-radius: 15;
+
+    -fx-border-color: #E2E8F0;
+
+    -fx-padding: 5;
+
+}
+
+
+.table-view .column-header{
+
+    -fx-background-color: #2563EB;
+
+}
+
+
+.table-view .column-header-background{
+
+    -fx-background-color: #2563EB;
+
+    -fx-background-radius: 15 15 0 0;
+
+}
+
+
+.table-view .column-header .label{
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 14;
+
+    -fx-font-weight: bold;
+
+}
+
+
+.table-row-cell{
+
+    -fx-cell-size: 38;
+
+}
+
+
+.table-row-cell:hover{
+
+    -fx-background-color: #EFF6FF;
+
+}
+
+
+.table-row-cell:selected{
+
+    -fx-background-color: #BFDBFE;
+
+}
+
+
+/* ==========================================================
+   SCROLL BAR
+   ========================================================== */
+
+.scroll-bar{
+
+    -fx-background-color: transparent;
+
+}
+
+
+.scroll-bar .thumb{
+
+    -fx-background-color: #CBD5E1;
+
+    -fx-background-radius: 10;
+
+}
+
+
+/* ==========================================================
+   SEPARATOR
+   ========================================================== */
+
+.separator .line{
+
+    -fx-border-color: #475569;
+
+}
