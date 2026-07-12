@@ -56,6 +56,8 @@ public class AddStudentController implements Initializable{
     @FXML
     private Button cancelButton;
 
+    private Student selectedStudent;
+
     //Constructors
 
 
@@ -84,6 +86,37 @@ public class AddStudentController implements Initializable{
         emailField.setOnAction(event -> addressArea.requestFocus());
 
         genderComboBox.setOnAction(event -> dateOfBirthPicker.requestFocus());
+    }
+
+    public void setStudent(Student student) {
+
+        selectedStudent = student;
+
+        firstNameField.setText(student.getFirstName());
+
+        lastNameField.setText(student.getLastName());
+
+        genderComboBox.setValue(student.getGender());
+
+        dateOfBirthPicker.setValue(student.getDateOfBirth());
+
+        phoneField.setText(student.getPhone());
+
+        emailField.setText(student.getEmail());
+
+        addressArea.setText(student.getAddress());
+
+        for (Course course : courseComboBox.getItems()) {
+
+            if (course.getCourseId() == student.getCourseId()) {
+
+                courseComboBox.setValue(course);
+
+                break;
+            }
+        }
+
+        saveButton.setText("Update Student");
     }
 
     private void saveStudent() {
@@ -128,10 +161,28 @@ public class AddStudentController implements Initializable{
         StudentDAO studentDAO =
                 new StudentDAO();
 
-        boolean saved =
-                studentDAO.addStudent(student);
+        boolean success;
 
-        if (saved) {
+        if (selectedStudent != null) {
+
+            student.setStudentId(
+                    selectedStudent.getStudentId()
+            );
+
+            success =
+                    studentDAO.updateStudent(
+                            student
+                    );
+
+        } else {
+
+            success =
+                    studentDAO.addStudent(
+                            student
+                    );
+        }
+
+        if (success) {
 
             Alert alert =
                     new Alert(
@@ -139,10 +190,21 @@ public class AddStudentController implements Initializable{
                     );
 
             alert.setTitle("Success");
+
             alert.setHeaderText(null);
-            alert.setContentText(
-                    "Student saved successfully."
-            );
+
+            if (selectedStudent != null) {
+
+                alert.setContentText(
+                        "Student updated successfully."
+                );
+
+            } else {
+
+                alert.setContentText(
+                        "Student saved successfully."
+                );
+            }
 
             alert.showAndWait();
 

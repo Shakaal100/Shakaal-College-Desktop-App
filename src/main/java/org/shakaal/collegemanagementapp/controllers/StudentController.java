@@ -11,6 +11,7 @@ import org.shakaal.collegemanagementapp.models.Student;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
@@ -163,13 +164,9 @@ public class StudentController implements Initializable{
 
                         editButton.setOnAction(event -> {
 
-                            Student student =
-                                    getTableView().getItems().get(getIndex());
+                            Student student = getTableView().getItems().get(getIndex());
 
-                            System.out.println(
-                                    "Edit: " +
-                                            student.getFirstName()
-                            );
+                            openEditStudentWindow(student);
 
                         });
 
@@ -178,10 +175,7 @@ public class StudentController implements Initializable{
                             Student student =
                                     getTableView().getItems().get(getIndex());
 
-                            System.out.println(
-                                    "Delete: " +
-                                            student.getFirstName()
-                            );
+                            deleteStudent(student);
 
                         });
                     }
@@ -234,12 +228,39 @@ public class StudentController implements Initializable{
         }
     }
 
+    private void openEditStudentWindow(
+            Student student
+    ) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/add-student.fxml"));
+
+            Parent root = loader.load();
+
+            AddStudentController controller = loader.getController();
+
+            controller.setStudent(student);
+
+            Stage stage = new Stage();
+
+            stage.setTitle("Edit Student");
+
+            stage.setScene(new Scene(root));
+
+            stage.showAndWait();
+
+            refreshStudents();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+    }
+
     private void updateTotalStudents() {
 
-        totalStudentsLabel.setText(
-                "Total Students: "
-                        + studentTable.getItems().size()
-        );
+        totalStudentsLabel.setText("Total Students: " + studentTable.getItems().size());
     }
 
     private void refreshStudents() {
@@ -247,5 +268,52 @@ public class StudentController implements Initializable{
         loadStudents();
     }
 
+    private void deleteStudent(Student student) {
+
+        Alert confirmation =
+                new Alert(
+                        Alert.AlertType.CONFIRMATION
+                );
+
+        confirmation.setTitle(
+                "Delete Student"
+        );
+
+        confirmation.setHeaderText(
+                null
+        );
+
+        confirmation.setContentText(
+                "Are you sure you want to delete "
+                        + student.getFirstName()
+                        + " "
+                        + student.getLastName()
+                        + "?"
+        );
+
+        Optional<ButtonType> result = confirmation.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+
+            StudentDAO studentDAO = new StudentDAO();
+
+            boolean deleted = studentDAO.deleteStudent(student.getStudentId());
+
+            if (deleted) {
+
+                Alert success = new Alert(Alert.AlertType.INFORMATION);
+
+                success.setTitle("Success");
+
+                success.setHeaderText(null);
+
+                success.setContentText("Student deleted successfully.");
+
+                success.showAndWait();
+
+                refreshStudents();
+            }
+        }
+    }
 
 }
