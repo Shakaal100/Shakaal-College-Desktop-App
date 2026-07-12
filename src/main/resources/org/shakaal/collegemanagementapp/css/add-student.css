@@ -1,0 +1,84 @@
+.root {
+    -fx-background-color: #f8fafc;
+}
+
+/* Title */
+.title-label {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+    -fx-padding: 30 0 15 0;
+}
+
+/* Labels */
+.label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+/* Text Fields */
+.text-field,
+.combo-box,
+.date-picker,
+.text-area {
+
+    -fx-pref-width: 300px;
+    -fx-font-size: 14px;
+
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 10;
+
+    -fx-padding: 8;
+}
+
+/* Focus */
+.text-field:focused,
+.combo-box:focused,
+.date-picker:focused,
+.text-area:focused {
+
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 2;
+}
+
+/* Save Button */
+.save-button {
+
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: white;
+
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 25;
+    -fx-padding: 10 35 10 35;
+
+    -fx-cursor: hand;
+}
+
+.save-button:hover {
+    -fx-background-color: #2563eb;
+}
+
+/* Cancel Button */
+.cancel-button {
+
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #1e293b;
+
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 25;
+    -fx-padding: 10 35 10 35;
+
+    -fx-cursor: hand;
+}
+
+.cancel-button:hover {
+    -fx-background-color: #cbd5e1;
+}

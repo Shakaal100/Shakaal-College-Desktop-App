@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.shakaal.collegemanagementapp.controllers.AddStudentController"
+            stylesheets="@../css/add-student.css"
+            prefWidth="750"
+            prefHeight="550">
+
+    <top>
+        <Label text="Add Student"
+               styleClass="title-label"
+               BorderPane.alignment="CENTER"/>
+    </top>
+
+    <center>
+
+        <GridPane hgap="20"
+                  vgap="18"
+                  alignment="CENTER">
+
+            <padding>
+                <Insets top="30"
+                        right="40"
+                        bottom="30"
+                        left="40"/>
+            </padding>
+
+            <!-- First Name -->
+            <Label text="First Name"
+                   GridPane.rowIndex="0"
+                   GridPane.columnIndex="0"/>
+
+            <TextField fx:id="firstNameField"
+                       promptText="Enter first name"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="1"/>
+
+            <!-- Last Name -->
+            <Label text="Last Name"
+                   GridPane.rowIndex="1"
+                   GridPane.columnIndex="0"/>
+
+            <TextField fx:id="lastNameField"
+                       promptText="Enter last name"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="1"/>
+
+            <!-- Gender -->
+            <Label text="Gender"
+                   GridPane.rowIndex="2"
+                   GridPane.columnIndex="0"/>
+
+            <ComboBox fx:id="genderComboBox"
+                      promptText="Select Gender"
+                      GridPane.rowIndex="2"
+                      GridPane.columnIndex="1"/>
+
+            <!-- Date of Birth -->
+            <Label text="Date of Birth"
+                   GridPane.rowIndex="3"
+                   GridPane.columnIndex="0"/>
+
+            <DatePicker fx:id="dateOfBirthPicker"
+                        GridPane.rowIndex="3"
+                        GridPane.columnIndex="1"/>
+
+            <!-- Phone -->
+            <Label text="Phone"
+                   GridPane.rowIndex="4"
+                   GridPane.columnIndex="0"/>
+
+            <TextField fx:id="phoneField"
+                       promptText="Enter phone number"
+                       GridPane.rowIndex="4"
+                       GridPane.columnIndex="1"/>
+
+            <!-- Email -->
+            <Label text="Email"
+                   GridPane.rowIndex="5"
+                   GridPane.columnIndex="0"/>
+
+            <TextField fx:id="emailField"
+                       promptText="Enter email"
+                       GridPane.rowIndex="5"
+                       GridPane.columnIndex="1"/>
+
+            <!-- Address -->
+            <Label text="Address"
+                   GridPane.rowIndex="6"
+                   GridPane.columnIndex="0"/>
+
+            <TextArea fx:id="addressArea"
+                      promptText="Enter address"
+                      prefRowCount="3"
+                      GridPane.rowIndex="6"
+                      GridPane.columnIndex="1"/>
+
+            <!-- Course -->
+            <Label text="Course"
+                   GridPane.rowIndex="7"
+                   GridPane.columnIndex="0"/>
+
+            <ComboBox fx:id="courseComboBox"
+                      promptText="Select Course"
+                      GridPane.rowIndex="7"
+                      GridPane.columnIndex="1"/>
+
+        </GridPane>
+
+    </center>
+
+    <bottom>
+
+        <HBox spacing="20"
+              alignment="CENTER"
+              BorderPane.alignment="CENTER">
+
+            <padding>
+                <Insets bottom="30"/>
+            </padding>
+
+            <Button fx:id="saveButton"
+                    text="Save"
+                    styleClass="save-button"/>
+
+            <Button fx:id="cancelButton"
+                    text="Cancel"
+                    styleClass="cancel-button"/>
+
+        </HBox>
+
+    </bottom>
+
+</BorderPane>

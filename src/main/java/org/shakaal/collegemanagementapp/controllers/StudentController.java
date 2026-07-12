@@ -20,6 +20,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
+
 
 public class StudentController implements Initializable{
 
@@ -33,7 +39,7 @@ public class StudentController implements Initializable{
     private Button addStudentButton;
 
     @FXML
-    private Label studentCountLabel;
+    private Label totalStudentsLabel;
 
     @FXML
     private TableView<Student> studentTable;
@@ -75,6 +81,8 @@ public class StudentController implements Initializable{
         loadStudents();
 
         configureActionColumn();
+
+        addStudentButton.setOnAction(event -> openAddStudentWindow());
         /*
         studentTable.setColumnResizePolicy(
                 TableView.CONSTRAINED_RESIZE_POLICY);
@@ -111,7 +119,7 @@ public class StudentController implements Initializable{
 
             studentTable.setItems(students);
 
-            studentCountLabel.setText("Total Students : " + students.size());
+         totalStudentsLabel.setText("Total Students : " + students.size());
 
 
     }
@@ -193,6 +201,50 @@ public class StudentController implements Initializable{
                         }
                     }
                 });
+    }
+
+    private void openAddStudentWindow() {
+
+        try {
+
+            FXMLLoader loader =
+                    new FXMLLoader(
+                            getClass().getResource(
+                                    "/org/shakaal/collegemanagementapp/fxml/add-student.fxml"
+                            )
+                    );
+
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+
+            stage.setTitle("Add Student");
+
+            stage.setScene(
+                    new Scene(root)
+            );
+
+            stage.showAndWait();
+
+            refreshStudents();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    private void updateTotalStudents() {
+
+        totalStudentsLabel.setText(
+                "Total Students: "
+                        + studentTable.getItems().size()
+        );
+    }
+
+    private void refreshStudents() {
+
+        loadStudents();
     }
 
 

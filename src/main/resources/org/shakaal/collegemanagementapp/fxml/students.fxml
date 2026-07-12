@@ -67,7 +67,7 @@
 
             <children>
 
-                <Label fx:id="studentCountLabel" styleClass="student-count" text="Total Students : 0" />
+                <Label fx:id="totalStudentsLabel" styleClass="student-count" text="Total Students : 0" />
 
                 <TableView fx:id="studentTable" VBox.vgrow="ALWAYS">
 

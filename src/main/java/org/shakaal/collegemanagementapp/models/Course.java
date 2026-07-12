@@ -42,4 +42,9 @@ public class Course {
     public void setDuration(String duration) {
         this.duration = duration;
     }
+
+    @Override
+    public String toString() {
+        return courseName;
+    }
 }
