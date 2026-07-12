@@ -75,10 +75,10 @@ public class StudentController implements Initializable{
         loadStudents();
 
         configureActionColumn();
-
+        /*
         studentTable.setColumnResizePolicy(
                 TableView.CONSTRAINED_RESIZE_POLICY);
-
+        */
         System.out.println("BRO THE CONTROLLER IS RUNNING!");
 
     }
@@ -121,11 +121,11 @@ public class StudentController implements Initializable{
         actionsColumn.setCellFactory(param ->
                 new TableCell<>() {
 
-                    private final Button editButton = new Button();
+                    private final Button editButton = new Button("Edit");
 
-                    private final Button deleteButton = new Button();
+                    private final Button deleteButton = new Button("Delete");
 
-                    private final HBox buttons = new HBox(10, editButton, deleteButton);
+                    private final HBox buttons = new HBox(30, editButton, deleteButton);
 
                     {
                         editButton.getStyleClass().add("edit-button");
@@ -136,8 +136,8 @@ public class StudentController implements Initializable{
                         Image editImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/edit.png"));
 
                         ImageView editView = new ImageView(editImage);
-                        editView.setFitWidth(16);
-                        editView.setFitHeight(16);
+                        editView.setFitWidth(20);
+                        editView.setFitHeight(20);
 
                         editButton.setGraphic(editView);
 
@@ -146,8 +146,8 @@ public class StudentController implements Initializable{
                         Image deleteImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/delete.png"));
 
                         ImageView deleteView = new ImageView(deleteImage);
-                        deleteView.setFitWidth(16);
-                        deleteView.setFitHeight(16);
+                        deleteView.setFitWidth(20);
+                        deleteView.setFitHeight(20);
 
                         deleteButton.setGraphic(deleteView);
 

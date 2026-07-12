@@ -73,21 +73,21 @@
 
                     <columns>
 
-                        <TableColumn fx:id="idColumn" prefWidth="80" text="ID" />
+                        <TableColumn fx:id="idColumn" prefWidth="50" text="ID" />
 
-                        <TableColumn fx:id="firstNameColumn" prefWidth="160" text="First Name" />
+                        <TableColumn fx:id="firstNameColumn" prefWidth="170" text="First Name" />
 
-                        <TableColumn fx:id="lastNameColumn" prefWidth="160" text="Last Name" />
+                        <TableColumn fx:id="lastNameColumn" prefWidth="170" text="Last Name" />
 
                         <TableColumn fx:id="genderColumn" prefWidth="110" text="Gender" />
 
-                        <TableColumn fx:id="dobColumn" prefWidth="150" text="Date of Birth" />
+                        <TableColumn fx:id="dobColumn" prefWidth="170" text="Date of Birth" />
 
                         <TableColumn fx:id="phoneColumn" prefWidth="160" text="Phone" />
 
                         <TableColumn fx:id="courseColumn" prefWidth="180" text="Course" />
 
-                        <TableColumn fx:id="actionsColumn" prefWidth="140" text="Actions" />
+                        <TableColumn fx:id="actionsColumn" prefWidth="220" text="Actions" />
 
                     </columns>
 
