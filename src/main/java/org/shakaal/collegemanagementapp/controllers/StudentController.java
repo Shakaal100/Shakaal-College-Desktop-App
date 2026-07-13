@@ -27,6 +27,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+
 
 public class StudentController implements Initializable{
 
@@ -35,6 +38,9 @@ public class StudentController implements Initializable{
 
     @FXML
     private TextField searchField;
+
+    @FXML
+    private ImageView searchIcon;
 
     @FXML
     private Button addStudentButton;
@@ -88,7 +94,9 @@ public class StudentController implements Initializable{
         studentTable.setColumnResizePolicy(
                 TableView.CONSTRAINED_RESIZE_POLICY);
         */
-        System.out.println("BRO THE CONTROLLER IS RUNNING!");
+        Image image = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/search.png"));
+
+        searchIcon.setImage(image);
 
     }
 

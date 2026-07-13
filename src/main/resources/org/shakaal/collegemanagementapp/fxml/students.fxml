@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.image.ImageView?>
 <BorderPane stylesheets="@../css/students.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.shakaal.collegemanagementapp.controllers.StudentController">
 
     <!-- ========================= -->
@@ -34,10 +35,22 @@
 
                     <children>
 
-                        <TextField fx:id="searchField" prefWidth="350" promptText="Search student..." styleClass="search-field">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font></TextField>
+                        <HBox prefWidth="350"
+                              prefHeight="45"
+                              spacing="12"
+                              alignment="CENTER_LEFT"
+                              styleClass="search-box">
+
+                            <ImageView fx:id="searchIcon"
+                                       fitWidth="24"
+                                       fitHeight="24"
+                                       preserveRatio="true"/>
+
+                            <TextField fx:id="searchField"
+                                       promptText="Search students..."
+                                       styleClass="search-field"
+                                       HBox.hgrow="ALWAYS"/>
+                        </HBox>
 
                         <Region HBox.hgrow="ALWAYS" />
 

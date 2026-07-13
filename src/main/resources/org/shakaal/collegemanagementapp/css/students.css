@@ -263,6 +263,25 @@
 
 }
 
+.search-box {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 12;
+    -fx-padding: 8 12 8 12;
+}
+
+.search-box:hover {
+    -fx-border-color: #4f8cff;
+}
+
+#searchField {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-size: 15px;
+    -fx-prompt-text-fill: #9a9a9a;
+}
+
 .edit-button {
     -fx-background-color: #3498db;
     -fx-text-fill: white;
