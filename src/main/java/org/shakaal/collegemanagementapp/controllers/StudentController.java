@@ -89,6 +89,15 @@ public class StudentController implements Initializable{
 
         configureActionColumn();
 
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            StudentDAO studentDAO = new StudentDAO();
+
+            studentTable.setItems(studentDAO.searchStudents(newValue)
+            );
+
+        });
+
         addStudentButton.setOnAction(event -> openAddStudentWindow());
         /*
         studentTable.setColumnResizePolicy(

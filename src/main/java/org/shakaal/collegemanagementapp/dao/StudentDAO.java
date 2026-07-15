@@ -265,12 +265,17 @@ public class StudentDAO {
                 FXCollections.observableArrayList();
 
         String sql = """
-            SELECT * FROM students
-            WHERE first_name LIKE ?
-               OR last_name LIKE ?
-               OR phone LIKE ?
-               OR email LIKE ?
-            """;
+        SELECT students.*,
+               courses.course_name
+        FROM students
+        LEFT JOIN courses
+            ON students.course_id = courses.course_id
+        WHERE students.first_name LIKE ?
+           OR students.last_name LIKE ?
+           OR students.phone LIKE ?
+           OR students.email LIKE ?
+           OR courses.course_name LIKE ?
+    """;
 
         try {
 
@@ -284,9 +289,9 @@ public class StudentDAO {
             statement.setString(2, searchKeyword);
             statement.setString(3, searchKeyword);
             statement.setString(4, searchKeyword);
+            statement.setString(5, searchKeyword);
 
-            ResultSet resultSet =
-                    statement.executeQuery();
+            ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
 
