@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="25"
+      styleClass="content-area"
+      stylesheets="@../css/dashboard.css"
+      xmlns="http://javafx.com/javafx/26"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.shakaal.collegemanagementapp.controllers.DashboardHomeController">
+
+    <children>
+
+        <!-- Statistics Cards -->
+
+        <HBox spacing="20">
+
+            <children>
+
+                <VBox styleClass="card">
+
+                    <children>
+
+                        <Label text="🎓"/>
+
+                        <Label fx:id="totalStudentsLabel"
+                               styleClass="card-number"
+                               text="0"/>
+
+                        <Label styleClass="card-title"
+                               text="Students"/>
+
+                    </children>
+
+                </VBox>
+
+                <VBox styleClass="card">
+
+                    <children>
+
+                        <Label text="👨‍🏫"/>
+
+                        <Label fx:id="totalTeachersLabel"
+                               styleClass="card-number"
+                               text="0"/>
+
+                        <Label styleClass="card-title"
+                               text="Teachers"/>
+
+                    </children>
+
+                </VBox>
+
+                <VBox styleClass="card">
+
+                    <children>
+
+                        <Label text="📚"/>
+
+                        <Label fx:id="totalCoursesLabel"
+                               styleClass="card-number"
+                               text="0"/>
+
+                        <Label styleClass="card-title"
+                               text="Courses"/>
+
+                    </children>
+
+                </VBox>
+
+                <VBox styleClass="card">
+
+                    <children>
+
+                        <Label text="🏫"/>
+
+                        <Label fx:id="totalClassesLabel"
+                               styleClass="card-number"
+                               text="0"/>
+
+                        <Label styleClass="card-title"
+                               text="Classes"/>
+
+                    </children>
+
+                </VBox>
+
+            </children>
+
+        </HBox>
+
+        <!-- Recent Students -->
+
+        <Label styleClass="section-title"
+               text="Recent Students"/>
+
+        <TableView fx:id="recentStudentsTable"
+                   VBox.vgrow="ALWAYS">
+
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+
+            <columns>
+
+                <TableColumn fx:id="idColumn"
+                             text="ID"/>
+
+                <TableColumn fx:id="firstNameColumn"
+                             text="First Name"/>
+
+                <TableColumn fx:id="lastNameColumn"
+                             text="Last Name"/>
+
+                <TableColumn fx:id="courseColumn"
+                             text="Course"/>
+
+                <TableColumn fx:id="phoneColumn"
+                             text="Phone"/>
+
+            </columns>
+
+        </TableView>
+
+    </children>
+
+</VBox>
