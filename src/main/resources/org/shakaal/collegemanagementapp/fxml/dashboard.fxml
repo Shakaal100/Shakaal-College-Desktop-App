@@ -3,8 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -23,7 +21,7 @@
 
     <left>
 
-        <VBox prefHeight="773.0" prefWidth="295.0" spacing="10" styleClass="sidebar">
+        <VBox prefHeight="773.0" prefWidth="250.0" spacing="10" styleClass="sidebar">
 
             <children>
 
@@ -47,9 +45,15 @@
 
                 <Separator />
 
-                <Button styleClass="menu-button" text="🏠  Dashboard" />
+                <Button
+                        fx:id="dashboardButton"
+                        styleClass="menu-button"
+                        text="🏠 Dashboard"/>
 
-                <Button styleClass="menu-button" text="🎓  Students" />
+                <Button
+                        fx:id="studentsButton"
+                        styleClass="menu-button"
+                        text="🎓 Students"/>
 
                 <Button styleClass="menu-button" text="👨‍🏫  Teachers" />
 
@@ -62,7 +66,7 @@
                 <Pane VBox.vgrow="ALWAYS">
                <children>
       
-                      <Button layoutX="28.0" layoutY="180.0" styleClass="logout-button" text="🚪  Logout" />
+                      <Button layoutX="28.0" layoutY="78.0" styleClass="logout-button" text="🚪  Logout" />
                </children></Pane>
 
             </children>
@@ -81,7 +85,7 @@
 
             <children>
 
-                <Label styleClass="page-title" text="Dashboard" />
+                <Label prefHeight="34.0" prefWidth="195.0" styleClass="page-title" text="Dashboard" />
 
                 <Region HBox.hgrow="ALWAYS" />
 

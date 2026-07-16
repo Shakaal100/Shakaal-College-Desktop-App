@@ -285,7 +285,7 @@
 .edit-button {
     -fx-background-color: #3498db;
     -fx-text-fill: white;
-     -fx-min-width: 90;
+     -fx-min-width: 50;
     -fx-background-radius: 20;
     -fx-cursor: hand;
 }
@@ -293,7 +293,7 @@
 .delete-button {
     -fx-background-color: #FF0033;
     -fx-text-fill: white;
-     -fx-min-width: 90;
+     -fx-min-width: 50;
     -fx-background-radius: 20;
     -fx-cursor: hand;
 }

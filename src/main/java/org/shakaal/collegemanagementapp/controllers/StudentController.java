@@ -99,10 +99,27 @@ public class StudentController implements Initializable{
         });
 
         addStudentButton.setOnAction(event -> openAddStudentWindow());
-        /*
-        studentTable.setColumnResizePolicy(
-                TableView.CONSTRAINED_RESIZE_POLICY);
-        */
+
+        studentTable.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
+
+        // RESPONSIVE TABLE COLUMNS   **********
+
+        idColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.06));
+
+        firstNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.14));
+
+        lastNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.14));
+
+        genderColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.10));
+
+        dobColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.14));
+
+        phoneColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
+
+        courseColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.14));
+
+        actionsColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.16));
+
         Image image = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/search.png"));
 
         searchIcon.setImage(image);
@@ -147,11 +164,11 @@ public class StudentController implements Initializable{
         actionsColumn.setCellFactory(param ->
                 new TableCell<>() {
 
-                    private final Button editButton = new Button("Edit");
+                    private final Button editButton = new Button();
 
-                    private final Button deleteButton = new Button("Delete");
+                    private final Button deleteButton = new Button();
 
-                    private final HBox buttons = new HBox(30, editButton, deleteButton);
+                    private final HBox buttons = new HBox(10, editButton, deleteButton);
 
                     {
                         editButton.getStyleClass().add("edit-button");
@@ -162,8 +179,8 @@ public class StudentController implements Initializable{
                         Image editImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/edit.png"));
 
                         ImageView editView = new ImageView(editImage);
-                        editView.setFitWidth(20);
-                        editView.setFitHeight(20);
+                        editView.setFitWidth(16);
+                        editView.setFitHeight(16);
 
                         editButton.setGraphic(editView);
 

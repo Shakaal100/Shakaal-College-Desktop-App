@@ -9,7 +9,7 @@
             fx:controller="org.shakaal.collegemanagementapp.controllers.AddStudentController"
             stylesheets="@../css/add-student.css"
             prefWidth="750"
-            prefHeight="550">
+            prefHeight="300">
 
     <top>
         <Label text="Add Student"
