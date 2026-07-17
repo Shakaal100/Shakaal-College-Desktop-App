@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefWidth="1100"
+            prefHeight="700"
+            stylesheets="@../css/login.css"
+            xmlns="http://javafx.com/javafx/26"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.shakaal.collegemanagementapp.controllers.LoginController">
+
+    <!-- LEFT SIDE -->
+
+    <left>
+
+        <VBox alignment="CENTER"
+              spacing="25"
+              prefWidth="500"
+              styleClass="left-pane">
+
+            <children>
+
+                <ImageView fitWidth="260"
+                           fitHeight="260"
+                           preserveRatio="true">
+
+                    <image>
+                        <Image url="@../images/Logo.jpg"/>
+                    </image>
+
+                </ImageView>
+
+                <Label
+                        text="College Management System"
+                        styleClass="system-title"/>
+
+                <Label
+                        text="Secure • Reliable • Modern"
+                        styleClass="system-subtitle"/>
+
+            </children>
+
+        </VBox>
+
+    </left>
+
+    <!-- RIGHT SIDE -->
+
+    <center>
+
+        <VBox alignment="CENTER"
+              spacing="20"
+              styleClass="login-pane">
+
+            <padding>
+                <Insets top="60"
+                        right="60"
+                        bottom="60"
+                        left="60"/>
+            </padding>
+
+
+            <children>
+
+                <Label
+                        text="Welcome Back"
+                        styleClass="login-title"/>
+
+                <Label
+                        text="Sign in to continue"
+                        styleClass="login-subtitle"/>
+
+                <HBox
+                        alignment="CENTER_LEFT"
+                        spacing="10"
+                        styleClass="input-box">
+
+                <ImageView
+                        fitWidth="40"
+                        fitHeight="40"
+                        preserveRatio="true">
+
+                    <image>
+                        <Image url="@../icons/user.png"/>
+                    </image>
+
+                </ImageView>
+
+                <TextField fx:id="usernameField"
+                           promptText="Username"
+                           prefWidth="320"
+                           maxWidth="320"
+                           prefHeight="45"
+                           maxHeight="45"
+                           styleClass="login-field"/>
+
+                </HBox>
+
+                <HBox
+                        alignment="CENTER_LEFT"
+                        spacing="10"
+                        styleClass="input-box">
+
+                <ImageView
+                        fitWidth="40"
+                        fitHeight="40">
+
+                    <image>
+                        <Image url="@../icons/lock.png"/>
+                    </image>
+
+                </ImageView>
+
+
+                <PasswordField fx:id="passwordField"
+                               promptText="Password"
+                               prefWidth="320"
+                               maxWidth="320"
+                               prefHeight="45"
+                               maxHeight="45"
+                               styleClass="login-field"/>
+                </HBox>
+
+
+                <Button fx:id="loginButton"
+                        text="LOGIN"
+                        prefWidth="200"
+                        prefHeight="48"
+                        styleClass="login-button"/>
+
+            </children>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

@@ -1,0 +1,176 @@
+/* =====================================================
+   ROOT
+===================================================== */
+
+.root {
+
+    -fx-font-family: "Segoe UI";
+
+    -fx-background-color: #F5F7FA;
+
+}
+
+
+/* =====================================================
+   LEFT PANEL
+===================================================== */
+
+.left-pane {
+
+    -fx-background-color: linear-gradient(to bottom right,
+            #1E3A8A,
+            #2563EB);
+
+    -fx-padding: 40;
+
+    -fx-alignment: center;
+
+}
+
+
+/* =====================================================
+   LOGO TITLE
+===================================================== */
+
+.system-title {
+
+    -fx-font-size: 32px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: white;
+
+}
+
+
+.system-subtitle {
+
+    -fx-font-size: 17px;
+
+    -fx-text-fill: #D6E4FF;
+
+}
+
+
+/* =====================================================
+   LOGIN PANEL
+===================================================== */
+
+.login-pane {
+
+    -fx-background-color: white;
+
+    -fx-alignment: center;
+
+    -fx-spacing: 20;
+
+}
+
+
+/* =====================================================
+   HEADINGS
+===================================================== */
+
+.login-title {
+
+    -fx-font-size: 34px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #1E293B;
+
+}
+
+
+.login-subtitle {
+
+    -fx-font-size: 16px;
+
+    -fx-text-fill: #64748B;
+
+}
+
+
+/* =====================================================
+   TEXT FIELDS
+===================================================== */
+
+.login-field {
+
+    -fx-font-size: 16px;
+
+    -fx-background-radius: 10;
+
+    -fx-border-radius: 10;
+
+    -fx-border-color: #CBD5E1;
+
+    -fx-border-width: 1.5;
+
+    -fx-padding: 12;
+
+    -fx-background-color: white;
+
+}
+
+
+.login-field:focused {
+
+    -fx-border-color: #2563EB;
+
+    -fx-border-width: 2;
+
+}
+
+
+/* =====================================================
+   LOGIN BUTTON
+===================================================== */
+
+.login-button {
+
+    -fx-font-size: 17px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: white;
+
+    -fx-background-color: #2563EB;
+
+    -fx-background-radius: 10;
+
+    -fx-cursor: hand;
+
+}
+
+
+.login-button:hover {
+
+    -fx-background-color: #1D4ED8;
+
+}
+
+
+.login-button:pressed {
+
+    -fx-background-color: #1E40AF;
+
+}
+
+
+/* =====================================================
+   OPTIONAL EFFECTS
+===================================================== */
+
+.login-pane {
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.12),
+            25,
+            0.25,
+            0,
+            0
+    );
+
+}
