@@ -45,17 +45,25 @@
 
                 <Separator />
 
-                <Button fx:id="dashboardButton" styleClass="menu-button" text="🏠  Home" />
+                <Button fx:id="homeButton" styleClass="menu-button"  text="🏠   Home" />
 
-                <Button fx:id="studentsButton" styleClass="menu-button" text="🎓  Students" />
+                <Button fx:id="studentsButton" styleClass="menu-button" text="🎓   Students" />
 
                 <Button styleClass="menu-button" text="👨‍🏫  Teachers" />
 
-                <Button styleClass="menu-button" text="📚  Courses" />
+                <Button styleClass="menu-button" text="📚   Courses" />
 
-                <Button styleClass="menu-button" text="🏫  Classes" />
+                <Button styleClass="menu-button" text="🏫   Classes" />
 
-                <Button minWidth="-Infinity" prefWidth="100.0" styleClass="menu-button" text="⚙  Settings" />
+                <Button
+                        fx:id="usersButton"
+                        styleClass="menu-button"
+                        text="👥   Users" />
+
+                <Button
+                        fx:id="settingsButton"
+                        styleClass="menu-button"
+                        text="⚙   Settings" />
 
                 <Pane VBox.vgrow="ALWAYS">
                <children>

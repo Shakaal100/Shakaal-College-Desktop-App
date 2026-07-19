@@ -23,10 +23,17 @@ public class DashboardController {
     private StackPane contentArea;
 
     @FXML
-    private Button dashboardButton;
+    private Button homeButton;
 
     @FXML
     private Button studentsButton;
+
+    @FXML
+    private Button usersButton;
+
+    @FXML
+    private Button settingsButton;
+
 
     @FXML
     public void initialize() {
@@ -35,15 +42,27 @@ public class DashboardController {
 
         if (currentUser != null) {
 
+            System.out.println("Role = [" + currentUser.getRole() + "]");
+
             welcomeLabel.setText("Welcome, " + currentUser.getFullName());
 
-            roleLabel.setText("Role: " + currentUser.getRole());
+            roleLabel.setText("Role:   " + currentUser.getRole());
+
+            if ("Registrar".equalsIgnoreCase(currentUser.getRole().trim())) {
+
+                usersButton.setVisible(false);
+                usersButton.setManaged(false);
+
+                settingsButton.setVisible(false);
+                settingsButton.setManaged(false);
+
+            }
 
         }
 
         loadPage("/org/shakaal/collegemanagementapp/fxml/dashboard-home.fxml");
 
-        dashboardButton.setOnAction(e -> loadPage("/org/shakaal/collegemanagementapp/fxml/dashboard-home.fxml"));
+        homeButton.setOnAction(e -> loadPage("/org/shakaal/collegemanagementapp/fxml/dashboard-home.fxml"));
 
         studentsButton.setOnAction(e -> loadPage("/org/shakaal/collegemanagementapp/fxml/students.fxml"));
     }
