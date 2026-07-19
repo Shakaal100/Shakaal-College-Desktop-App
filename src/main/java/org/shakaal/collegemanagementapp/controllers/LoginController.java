@@ -91,21 +91,28 @@ public class LoginController {
 
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/org/shakaal/collegemanagementapp/fxml/dashboard.fxml"));
 
             Parent root = loader.load();
 
             Stage stage = (Stage) loginButton.getScene().getWindow();
 
-            stage.setScene(new Scene(root));
+            // Remember current window state
+            boolean maximized = stage.isMaximized();
+
+            Scene scene = stage.getScene();
+
+            scene.setRoot(root);
 
             stage.setTitle("College Management System");
 
+            // Restore it
+            stage.setMaximized(maximized);
+
             stage.show();
 
-        }
-
-        catch (IOException e) {
+        } catch (IOException e) {
 
             e.printStackTrace();
 
