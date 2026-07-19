@@ -37,7 +37,7 @@
 
                         </ImageView>
 
-                        <Label styleClass="logo-text" text="College Manager" />
+                        <Label styleClass="logo-text" text="DASHBOARD" />
 
                     </children>
 
@@ -45,9 +45,9 @@
 
                 <Separator />
 
-                <Button fx:id="dashboardButton" styleClass="menu-button" text="🏠 Dashboard" />
+                <Button fx:id="dashboardButton" styleClass="menu-button" text="🏠  Home" />
 
-                <Button fx:id="studentsButton" styleClass="menu-button" text="🎓 Students" />
+                <Button fx:id="studentsButton" styleClass="menu-button" text="🎓  Students" />
 
                 <Button styleClass="menu-button" text="👨‍🏫  Teachers" />
 
@@ -82,7 +82,7 @@
             <children>
 
                 <Label
-                        text="Dashboard"
+                        text="Shakaal College Management System"
                         styleClass="page-title"/>
 
                 <Region HBox.hgrow="ALWAYS"/>
