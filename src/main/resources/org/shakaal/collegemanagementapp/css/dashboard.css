@@ -149,6 +149,24 @@
 
 }
 
+.welcome-text {
+
+    -fx-font-size: 17px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #1E293B;
+
+}
+
+.role-text {
+
+    -fx-font-size: 13px;
+
+    -fx-text-fill: #64748B;
+
+}
+
 
 /* ==========================================================
    SEARCH FIELD
