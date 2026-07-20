@@ -17,18 +17,18 @@
     <left>
 
         <VBox alignment="CENTER"
-              spacing="25"
+              spacing="40"
               prefWidth="500"
               styleClass="left-pane">
 
             <children>
 
-                <ImageView fitWidth="260"
-                           fitHeight="260"
+                <ImageView fitWidth="300"
+                           fitHeight="300"
                            preserveRatio="true">
 
                     <image>
-                        <Image url="@../images/Logo.jpg"/>
+                        <Image url="@../images/Logo.png"/>
                     </image>
 
                 </ImageView>

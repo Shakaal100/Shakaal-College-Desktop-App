@@ -32,7 +32,7 @@
                         <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
 
                             <image>
-                                <Image url="@../images/Logo.jpg" />
+                                <Image url="@../images/Logo.png" />
                             </image>
 
                         </ImageView>
