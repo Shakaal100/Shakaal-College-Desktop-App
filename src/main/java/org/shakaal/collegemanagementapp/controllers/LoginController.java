@@ -32,6 +32,9 @@ public class LoginController {
 
         loginButton.setOnAction(event -> handleLogin());
 
+        usernameField.setOnAction(event -> passwordField.requestFocus());
+        passwordField.setOnAction(event -> handleLogin());
+
     }
 
 

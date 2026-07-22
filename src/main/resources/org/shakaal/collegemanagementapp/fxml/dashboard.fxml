@@ -67,8 +67,11 @@
 
                 <Pane VBox.vgrow="ALWAYS">
                <children>
-      
-                      <Button layoutX="28.0" layoutY="78.0" styleClass="logout-button" text="🚪  Logout" />
+
+                   <Button
+                           text="Logout"
+                           styleClass="logout-button"
+                           onAction="#logout"/>
                </children></Pane>
 
             </children>

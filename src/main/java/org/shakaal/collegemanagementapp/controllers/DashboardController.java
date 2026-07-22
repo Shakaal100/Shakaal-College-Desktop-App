@@ -8,6 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.application.Platform;
 
 import java.io.IOException;
 
@@ -33,6 +36,9 @@ public class DashboardController {
 
     @FXML
     private Button settingsButton;
+
+    @FXML
+    private Button logoutButton;
 
 
     @FXML
@@ -67,6 +73,7 @@ public class DashboardController {
         studentsButton.setOnAction(e -> loadPage("/org/shakaal/collegemanagementapp/fxml/students.fxml"));
 
         usersButton.setOnAction(e -> loadPage("/org/shakaal/collegemanagementapp/fxml/user-management.fxml"));
+
     }
 
 
@@ -86,5 +93,39 @@ public class DashboardController {
             e.printStackTrace();
 
         }
+    }
+
+    @FXML
+    private void logout() {
+
+        try {
+
+            // Clear the current logged-in user
+            Session.setCurrentUser(null);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/login.fxml"));
+
+            Parent root = loader.load();
+
+            Stage stage = (Stage) contentArea.getScene().getWindow();
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+
+            stage.setTitle("College Management System");
+
+            stage.setMaximized(false);
+
+            stage.centerOnScreen();
+
+            stage.show();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
     }
 }
