@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.shakaal.collegemanagementapp.controllers.AddUserController"
+            stylesheets="@../css/add-student.css"
+            prefWidth="750"
+            prefHeight="300">
+
+    <top>
+        <Label text="Add User"
+               styleClass="title-label"
+               BorderPane.alignment="CENTER"/>
+    </top>
+
+    <center>
+
+        <GridPane hgap="20"
+                  vgap="18"
+                  alignment="CENTER">
+
+            <padding>
+                <Insets top="30"
+                        right="40"
+                        bottom="30"
+                        left="40"/>
+            </padding>
+
+            <!-- User Name -->
+            <Label text="User Name"
+                   GridPane.rowIndex="0"
+                   GridPane.columnIndex="0"/>
+
+            <TextField fx:id="usernameField"
+                       promptText="Enter the Username"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="1"/>
+
+            <!-- Password -->
+            <Label text="Password"
+                   GridPane.rowIndex="1"
+                   GridPane.columnIndex="0"/>
+
+            <TextField fx:id="passwordField"
+                       promptText="Enter the password"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="1"/>
+
+            <!-- Full Name -->
+            <Label text="Full Name"
+                   GridPane.rowIndex="2"
+                   GridPane.columnIndex="0"/>
+
+            <TextField fx:id="fullNameField"
+                       promptText="Enter full Name"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="1"/>
+
+            <!-- Role -->
+            <Label text="Role"
+                   GridPane.rowIndex="3"
+                   GridPane.columnIndex="0"/>
+
+            <ComboBox fx:id="roleComboBox"
+                      promptText="Select Role"
+                      GridPane.rowIndex="3"
+                      GridPane.columnIndex="1"/>
+
+
+        </GridPane>
+
+    </center>
+
+    <bottom>
+
+        <HBox spacing="20"
+              alignment="CENTER"
+              BorderPane.alignment="CENTER">
+
+            <padding>
+                <Insets bottom="30"/>
+            </padding>
+
+            <Button fx:id="saveButton"
+                    text="Save"
+                    styleClass="save-button"/>
+
+            <Button fx:id="cancelButton"
+                    text="Cancel"
+                    styleClass="cancel-button"/>
+
+        </HBox>
+
+    </bottom>
+
+</BorderPane>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.image.ImageView?>
+<BorderPane stylesheets="@../css/students.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.shakaal.collegemanagementapp.controllers.UserController">
+
+    <!-- ========================= -->
+    <!-- TOP SECTION -->
+    <!-- ========================= -->
+
+    <top>
+
+        <VBox spacing="15" styleClass="top-container">
+
+            <padding>
+                <Insets bottom="10" left="20" right="20" top="20" />
+            </padding>
+
+            <children>
+
+                <Label styleClass="page-title" text="Users Management" />
+
+                <HBox alignment="CENTER_LEFT" spacing="15">
+
+                    <children>
+
+                        <HBox prefWidth="350"
+                              prefHeight="45"
+                              spacing="12"
+                              alignment="CENTER_LEFT"
+                              styleClass="search-box">
+
+                            <ImageView fx:id="searchIcon"
+                                       fitWidth="24"
+                                       fitHeight="24"
+                                       preserveRatio="true"/>
+
+                            <TextField fx:id="searchField"
+                                       promptText="Search users..."
+                                       styleClass="search-field"
+                                       HBox.hgrow="ALWAYS"/>
+                        </HBox>
+
+                        <Region HBox.hgrow="ALWAYS" />
+
+                        <Button fx:id="addUserButton" styleClass="add-button" text="+ Add User" />
+
+                    </children>
+
+                </HBox>
+
+            </children>
+
+        </VBox>
+
+    </top>
+
+    <!-- ========================= -->
+    <!-- CENTER -->
+    <!-- ========================= -->
+
+    <center>
+
+        <VBox spacing="15" styleClass="content-container">
+
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="10" />
+            </padding>
+
+            <children>
+
+                <Label fx:id="totalUsersLabel" styleClass="student-count" text="Total Users : 0" />
+
+                <TableView fx:id="userTable" VBox.vgrow="ALWAYS">
+
+                    <columns>
+
+                        <TableColumn fx:id="idColumn" text="ID" />
+
+                        <TableColumn fx:id="fullNameColumn" text="Full Name" />
+
+                        <TableColumn fx:id="usernameColumn" text="User Name" />
+
+                        <TableColumn fx:id="roleColumn" text="Role" />
+
+                        <TableColumn fx:id="createdAtColumn" text="Created Date" />
+
+                        <TableColumn
+                                fx:id="actionsColumn"
+                                resizable="false"
+                                text="Actions"/>
+
+                    </columns>
+
+                </TableView>
+
+            </children>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

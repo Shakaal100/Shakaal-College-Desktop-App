@@ -123,71 +123,42 @@ public class AddStudentController implements Initializable{
 
         Student student = new Student();
 
-        student.setFirstName(
-                firstNameField.getText()
-        );
+        student.setFirstName(firstNameField.getText());
 
-        student.setLastName(
-                lastNameField.getText()
-        );
+        student.setLastName(lastNameField.getText());
 
-        student.setGender(
-                genderComboBox.getValue()
-        );
+        student.setGender(genderComboBox.getValue());
 
-        student.setDateOfBirth(
-                dateOfBirthPicker.getValue()
-        );
+        student.setDateOfBirth(dateOfBirthPicker.getValue());
 
-        student.setPhone(
-                phoneField.getText()
-        );
+        student.setPhone(phoneField.getText());
 
-        student.setEmail(
-                emailField.getText()
-        );
+        student.setEmail(emailField.getText());
 
-        student.setAddress(
-                addressArea.getText()
-        );
+        student.setAddress(addressArea.getText());
 
-        Course selectedCourse =
-                courseComboBox.getValue();
+        Course selectedCourse = courseComboBox.getValue();
 
-        student.setCourseId(
-                selectedCourse.getCourseId()
-        );
+        student.setCourseId(selectedCourse.getCourseId());
 
-        StudentDAO studentDAO =
-                new StudentDAO();
+        StudentDAO studentDAO = new StudentDAO();
 
         boolean success;
 
         if (selectedStudent != null) {
 
-            student.setStudentId(
-                    selectedStudent.getStudentId()
-            );
+            student.setStudentId(selectedStudent.getStudentId());
 
-            success =
-                    studentDAO.updateStudent(
-                            student
-                    );
+            success = studentDAO.updateStudent(student);
 
         } else {
 
-            success =
-                    studentDAO.addStudent(
-                            student
-                    );
+            success = studentDAO.addStudent(student);
         }
 
         if (success) {
 
-            Alert alert =
-                    new Alert(
-                            Alert.AlertType.INFORMATION
-                    );
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
             alert.setTitle("Success");
 
@@ -195,15 +166,11 @@ public class AddStudentController implements Initializable{
 
             if (selectedStudent != null) {
 
-                alert.setContentText(
-                        "Student updated successfully."
-                );
+                alert.setContentText("Student updated successfully.");
 
             } else {
 
-                alert.setContentText(
-                        "Student saved successfully."
-                );
+                alert.setContentText("Student saved successfully.");
             }
 
             alert.showAndWait();
@@ -214,10 +181,7 @@ public class AddStudentController implements Initializable{
 
     private void closeWindow() {
 
-        Stage stage =
-                (Stage) cancelButton
-                        .getScene()
-                        .getWindow();
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
 
         stage.close();
     }
