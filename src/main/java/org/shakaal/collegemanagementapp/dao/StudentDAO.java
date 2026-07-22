@@ -50,9 +50,10 @@ public class StudentDAO {
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """;
 
-        try {
-            Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql);
+        try
+                (Connection connection = DatabaseConnection.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql))
+        {
 
             statement.setString(1, student.getFirstName());
 
@@ -117,12 +118,10 @@ public class StudentDAO {
                         ON s.course_id = c.course_id
                         """;
 
-        try {
-
-            Connection connection = DatabaseConnection.getConnection();
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-
+        try
+                (Connection connection = DatabaseConnection.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(sql))
+        {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -182,12 +181,10 @@ public class StudentDAO {
             WHERE student_id = ?
             """;
 
-        try {
-
-            Connection connection = DatabaseConnection.getConnection();
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-
+        try
+                (Connection connection = DatabaseConnection.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(sql))
+        {
             statement.setString(1, student.getFirstName());
             statement.setString(2, student.getLastName());
             statement.setString(3, student.getGender());
@@ -226,12 +223,10 @@ public class StudentDAO {
 
         String sql = "DELETE FROM students WHERE student_id = ?";
 
-        try {
-
-            Connection connection = DatabaseConnection.getConnection();
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-
+        try
+                (Connection connection = DatabaseConnection.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(sql))
+        {
             statement.setInt(1, studentId);
 
             return statement.executeUpdate() > 0;
@@ -277,12 +272,10 @@ public class StudentDAO {
            OR courses.course_name LIKE ?
     """;
 
-        try {
-
-            Connection connection = DatabaseConnection.getConnection();
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-
+        try
+                (Connection connection = DatabaseConnection.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(sql))
+        {
             String searchKeyword = "%" + keyword + "%";
 
             statement.setString(1, searchKeyword);
@@ -345,12 +338,10 @@ public class StudentDAO {
 
         String sql = "SELECT COUNT(*) FROM students";
 
-        try {
-
-            Connection connection = DatabaseConnection.getConnection();
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-
+        try
+                (Connection connection = DatabaseConnection.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(sql))
+        {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {

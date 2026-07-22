@@ -65,6 +65,8 @@ public class DashboardController {
         homeButton.setOnAction(e -> loadPage("/org/shakaal/collegemanagementapp/fxml/dashboard-home.fxml"));
 
         studentsButton.setOnAction(e -> loadPage("/org/shakaal/collegemanagementapp/fxml/students.fxml"));
+
+        usersButton.setOnAction(e -> loadPage("/org/shakaal/collegemanagementapp/fxml/user-management.fxml"));
     }
 
 

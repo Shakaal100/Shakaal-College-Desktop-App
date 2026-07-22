@@ -20,12 +20,10 @@ public class UserDAO {
             AND status = 'ACTIVE'
             """;
 
-        try {
-
-            Connection connection = DatabaseConnection.getConnection();
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-
+        try
+                (Connection connection = DatabaseConnection.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(sql))
+        {
             statement.setString(1, username);
 
             statement.setString(2, password);
@@ -85,12 +83,10 @@ public class UserDAO {
                 )
             """;
 
-        try {
-
-            Connection connection = DatabaseConnection.getConnection();
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-
+        try
+                (Connection connection = DatabaseConnection.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(sql))
+        {
             statement.setString(1, user.getUsername());
 
             statement.setString(2, user.getPasswordHash());
@@ -124,12 +120,10 @@ public class UserDAO {
             ORDER BY full_name
             """;
 
-        try {
-
-            Connection connection = DatabaseConnection.getConnection();
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-
+        try
+                (Connection connection = DatabaseConnection.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(sql))
+        {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -171,12 +165,10 @@ public class UserDAO {
             WHERE user_id = ?
             """;
 
-        try {
-
-            Connection connection = DatabaseConnection.getConnection();
-
-            PreparedStatement statement = connection.prepareStatement(sql);
-
+        try
+                (Connection connection = DatabaseConnection.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(sql))
+        {
             statement.setInt(1, userId);
 
             return statement.executeUpdate() > 0;
