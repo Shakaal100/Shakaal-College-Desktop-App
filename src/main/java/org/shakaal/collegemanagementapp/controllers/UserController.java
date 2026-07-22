@@ -86,17 +86,17 @@ public class UserController implements Initializable{
 
         // RESPONSIVE TABLE COLUMNS   **********
 
-        idColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.06));
+        idColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.08));
 
-        usernameColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.14));
+        usernameColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.20));
 
-        fullNameColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.14));
+        fullNameColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.24));
 
-        roleColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.10));
+        roleColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.14));
 
-        createdAtColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.14));
+        createdAtColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.16));
 
-        actionsColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.16));
+        actionsColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.18));
 
         Image image = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/search.png"));
 

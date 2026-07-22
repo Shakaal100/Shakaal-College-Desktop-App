@@ -99,7 +99,7 @@
                         <TableColumn
                                 fx:id="actionsColumn"
                                 resizable="false"
-                                text="Actions"/>
+                                text="Delete User"/>
 
                     </columns>
 
