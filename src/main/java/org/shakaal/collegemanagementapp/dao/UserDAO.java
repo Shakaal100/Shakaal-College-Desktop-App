@@ -3,6 +3,7 @@ package org.shakaal.collegemanagementapp.dao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.shakaal.collegemanagementapp.database.DatabaseConnection;
+import org.shakaal.collegemanagementapp.models.Student;
 import org.shakaal.collegemanagementapp.models.User;
 
 import java.sql.*;
@@ -179,5 +180,59 @@ public class UserDAO {
 
             return false;
         }
+    }
+
+
+    public ObservableList<User> searchUsers(String keyword) {
+
+        ObservableList<User> userList =
+                FXCollections.observableArrayList();
+
+        String sql = """
+        SELECT *
+            FROM users
+            WHERE CAST(user_id AS TEXT) LIKE ?
+               OR full_name LIKE ?
+               OR username LIKE ?
+               OR role LIKE ?
+        """;
+
+        try
+                (Connection connection = DatabaseConnection.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(sql))
+        {
+            String searchKeyword = "%" + keyword + "%";
+
+            statement.setString(1, searchKeyword);
+            statement.setString(2, searchKeyword);
+            statement.setString(3, searchKeyword);
+            statement.setString(4, searchKeyword);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+
+                User user = new User();
+
+                user.setUserId(resultSet.getInt("user_id"));
+                user.setFullName(resultSet.getString("full_name"));
+                user.setUsername(resultSet.getString("username"));
+                user.setRole(resultSet.getString("role"));
+                String createdAt = resultSet.getString("created_at");
+
+                user.setCreatedAt(LocalDate.parse(createdAt.substring(0, 10)));
+
+                userList.add(user);
+
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return userList;
+
     }
 }

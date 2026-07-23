@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.shakaal.collegemanagementapp.dao.StudentDAO;
 import org.shakaal.collegemanagementapp.dao.UserDAO;
 
 import java.net.URL;
@@ -79,6 +80,15 @@ public class UserController implements Initializable{
         loadUsers();
 
         configureActionColumn();
+
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            UserDAO userDAO = new UserDAO();
+
+            userTable.setItems(userDAO.searchUsers(newValue)
+            );
+
+        });
 
         addUserButton.setOnAction(event -> openAddUserWindow());
 
