@@ -82,13 +82,49 @@ public class AddUserController implements Initializable{
 
     private void saveUser() {
 
+        if (usernameField.getText().trim().isEmpty()) {
+
+            showError("Username is required.");
+
+            usernameField.requestFocus();
+
+            return;
+        }
+
+        if (passwordField.getText().trim().isEmpty()) {
+
+            showError("Password is required.");
+
+            passwordField.requestFocus();
+
+            return;
+        }
+
+        if (fullNameField.getText().trim().isEmpty()) {
+
+            showError("Full name is required.");
+
+            fullNameField.requestFocus();
+
+            return;
+        }
+
+        if (roleComboBox.getValue() == null) {
+
+            showError("Please select a role.");
+
+            roleComboBox.requestFocus();
+
+            return;
+        }
+
         User user = new User();
 
-        user.setUsername(usernameField.getText());
+        user.setUsername(usernameField.getText().trim());
 
-        user.setPasswordHash(passwordField.getText());
+        user.setPasswordHash(passwordField.getText().trim());
 
-        user.setFullName(fullNameField.getText());
+        user.setFullName(fullNameField.getText().trim());
 
         user.setRole(roleComboBox.getValue());
 
@@ -133,6 +169,21 @@ public class AddUserController implements Initializable{
         Stage stage = (Stage) cancelButton.getScene().getWindow();
 
         stage.close();
+    }
+
+
+    private void showError(String message) {
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle("Validation Error");
+
+        alert.setHeaderText(null);
+
+        alert.setContentText(message);
+
+        alert.showAndWait();
+
     }
 
 
