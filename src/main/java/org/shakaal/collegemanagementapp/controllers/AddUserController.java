@@ -58,7 +58,7 @@ public class AddUserController implements Initializable{
 
         usernameField.setOnAction(event -> passwordField.requestFocus());
 
-        passwordField.setOnAction(event -> roleComboBox.requestFocus());
+        passwordField.setOnAction(event -> fullNameField.requestFocus());
 
         fullNameField.setOnAction(event -> roleComboBox.requestFocus());
 
@@ -81,6 +81,42 @@ public class AddUserController implements Initializable{
     }
 
     private void saveUser() {
+
+        if (usernameField.getText().trim().isEmpty()) {
+
+            showError("Username is required.");
+
+            usernameField.requestFocus();
+
+            return;
+        }
+
+        if (passwordField.getText().trim().isEmpty()) {
+
+            showError("Password is required.");
+
+            passwordField.requestFocus();
+
+            return;
+        }
+
+        if (fullNameField.getText().trim().isEmpty()) {
+
+            showError("Full name is required.");
+
+            fullNameField.requestFocus();
+
+            return;
+        }
+
+        if (roleComboBox.getValue() == null) {
+
+            showError("Please select a role.");
+
+            roleComboBox.requestFocus();
+
+            return;
+        }
 
         User user = new User();
 
@@ -133,6 +169,20 @@ public class AddUserController implements Initializable{
         Stage stage = (Stage) cancelButton.getScene().getWindow();
 
         stage.close();
+    }
+
+    private void showError(String message) {
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle("Validation Error");
+
+        alert.setHeaderText(null);
+
+        alert.setContentText(message);
+
+        alert.showAndWait();
+
     }
 
 

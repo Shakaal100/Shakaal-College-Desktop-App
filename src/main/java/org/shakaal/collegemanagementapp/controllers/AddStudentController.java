@@ -121,6 +121,78 @@ public class AddStudentController implements Initializable{
 
     private void saveStudent() {
 
+        if (firstNameField.getText().trim().isEmpty()) {
+
+            showError("First name is required.");
+
+            firstNameField.requestFocus();
+
+            return;
+        }
+
+        if (lastNameField.getText().trim().isEmpty()) {
+
+            showError("Last name is required.");
+
+            lastNameField.requestFocus();
+
+            return;
+        }
+
+        if (genderComboBox.getValue() == null) {
+
+            showError("Please select a gender.");
+
+            genderComboBox.requestFocus();
+
+            return;
+        }
+
+        if (dateOfBirthPicker.getValue() == null) {
+
+            showError("Please select the date of birth.");
+
+            dateOfBirthPicker.requestFocus();
+
+            return;
+        }
+
+        if (phoneField.getText().trim().isEmpty()) {
+
+            showError("Phone number is required.");
+
+            phoneField.requestFocus();
+
+            return;
+        }
+
+        if (emailField.getText().trim().isEmpty()) {
+
+            showError("Email address is required.");
+
+            emailField.requestFocus();
+
+            return;
+        }
+
+        if (addressArea.getText().trim().isEmpty()) {
+
+            showError("Address is required.");
+
+            addressArea.requestFocus();
+
+            return;
+        }
+
+        if (courseComboBox.getValue() == null) {
+
+            showError("Please select a course.");
+
+            courseComboBox.requestFocus();
+
+            return;
+        }
+
         Student student = new Student();
 
         student.setFirstName(firstNameField.getText());
@@ -184,6 +256,20 @@ public class AddStudentController implements Initializable{
         Stage stage = (Stage) cancelButton.getScene().getWindow();
 
         stage.close();
+    }
+
+
+    private void showError(String message) {
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle("Validation Error");
+
+        alert.setHeaderText(null);
+
+        alert.setContentText(message);
+
+        alert.showAndWait();
     }
 
 
