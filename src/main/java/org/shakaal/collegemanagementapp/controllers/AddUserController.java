@@ -58,7 +58,7 @@ public class AddUserController implements Initializable{
 
         usernameField.setOnAction(event -> passwordField.requestFocus());
 
-        passwordField.setOnAction(event -> roleComboBox.requestFocus());
+        passwordField.setOnAction(event -> fullNameField.requestFocus());
 
         fullNameField.setOnAction(event -> roleComboBox.requestFocus());
 
