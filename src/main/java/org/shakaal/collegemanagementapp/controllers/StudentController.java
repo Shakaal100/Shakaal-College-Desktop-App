@@ -3,6 +3,7 @@ package org.shakaal.collegemanagementapp.controllers;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -75,6 +76,9 @@ public class StudentController implements Initializable{
     private TableColumn<Student, Integer> courseColumn;
 
     @FXML
+    private TableColumn<Student, String> statusColumn;
+
+    @FXML
     private TableColumn<Student, Void> actionsColumn;
 
     private final StudentDAO studentDAO = new StudentDAO();
@@ -104,21 +108,117 @@ public class StudentController implements Initializable{
 
         // RESPONSIVE TABLE COLUMNS   **********
 
+
         idColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.06));
 
-        firstNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.14));
+        firstNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
 
-        lastNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.14));
+        lastNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
 
-        genderColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.10));
+        genderColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.08));
 
-        dobColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.14));
+        dobColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
 
         phoneColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
 
-        courseColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.14));
+        courseColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.16));
 
-        actionsColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.16));
+        statusColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.08));
+
+        actionsColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.11));
+
+        idColumn.setStyle("-fx-alignment: CENTER;");
+
+        genderColumn.setStyle("-fx-alignment: CENTER;");
+
+        statusColumn.setStyle("-fx-alignment: CENTER;");
+
+        actionsColumn.setStyle("-fx-alignment: CENTER;");
+
+        statusColumn.setCellFactory(column -> new TableCell<Student, String>() {
+
+            @Override
+            protected void updateItem(String status, boolean empty) {
+
+                super.updateItem(status, empty);
+
+                if (empty || status == null) {
+
+                    setText(null);
+                    setGraphic(null);
+
+                } else {
+
+                    Label badge = new Label(status);
+
+                    badge.setCursor(Cursor.HAND);
+
+                    badge.getStyleClass().add("status-badge");
+
+                    if (status.equalsIgnoreCase("Active")) {
+
+                        badge.getStyleClass().add("status-active");
+
+                    } else {
+
+                        badge.getStyleClass().add("status-inactive");
+
+                    }
+
+                    badge.setOnMouseClicked(event -> {
+
+                        Student student = getTableView().getItems().get(getIndex());
+
+                        String newStatus = student.getStatus().equalsIgnoreCase("Active")
+                                ? "Inactive"
+                                : "Active";
+
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+                        alert.setTitle("Confirm Status Change");
+                        alert.setHeaderText(null);
+
+                        alert.setContentText("Are you sure you want to change the status of\n\n"
+                                        + student.getFirstName() + " "
+                                        + student.getLastName()
+                                        + "\n\nto "
+                                        + newStatus + "?"
+                        );
+
+                        Optional<ButtonType> result = alert.showAndWait();
+
+                        if (result.isPresent() && result.get() == ButtonType.OK) {
+
+                            boolean success = studentDAO.updateStudentStatus(
+                                    student.getStudentId(),
+                                    newStatus
+                            );
+
+                            if (success) {
+
+                                refreshStudents();
+
+                            } else {
+
+                                Alert error = new Alert(Alert.AlertType.ERROR);
+
+                                error.setTitle("Failed");
+
+                                error.setHeaderText(null);
+
+                                error.setContentText("Failed to update student status.");
+
+                                error.showAndWait();
+                            }
+                        }
+
+                    });
+
+                    setGraphic(badge);
+                    setText(null);
+                }
+            }
+        });
 
         Image image = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/search.png"));
 
@@ -140,8 +240,9 @@ public class StudentController implements Initializable{
 
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
 
-
         courseColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
     }
 

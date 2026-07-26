@@ -101,6 +101,10 @@
                         <TableColumn fx:id="courseColumn" text="Course" />
 
                         <TableColumn
+                                fx:id="statusColumn"
+                                text="Status"/>
+
+                        <TableColumn
                                 fx:id="actionsColumn"
                                 resizable="false"
                                 text="Actions"/>

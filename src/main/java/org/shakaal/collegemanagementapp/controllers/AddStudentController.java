@@ -213,6 +213,8 @@ public class AddStudentController implements Initializable{
 
         student.setCourseId(selectedCourse.getCourseId());
 
+        student.setStatus("Active");
+
         StudentDAO studentDAO = new StudentDAO();
 
         boolean success;

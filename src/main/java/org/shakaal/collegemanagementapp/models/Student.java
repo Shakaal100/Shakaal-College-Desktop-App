@@ -37,6 +37,8 @@ public class Student {
 
     private String courseName;
 
+    private String status;
+
     // ===============================
     // Empty Constructor
     // ===============================
@@ -48,7 +50,7 @@ public class Student {
     // Full Constructor
     // ===============================
 
-    public Student(int studentId, String firstName, String lastName, String gender, LocalDate dateOfBirth, String phone, String email, String address, int courseId, String courseName) {
+    public Student(int studentId, String firstName, String lastName, String gender, LocalDate dateOfBirth, String phone, String email, String address, int courseId, String courseName, String status) {
 
         this.studentId = studentId;
         this.firstName = firstName;
@@ -60,6 +62,7 @@ public class Student {
         this.address = address;
         this.courseId = courseId;
         this.courseName = courseName;
+        this.status = status;
     }
 
     // ===============================
@@ -144,5 +147,13 @@ public class Student {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

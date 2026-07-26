@@ -46,8 +46,8 @@ public class StudentDAO {
 
         String sql = """
         INSERT INTO students
-        (first_name, last_name, gender, date_of_birth, phone, email, address, course_id)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        (first_name, last_name, gender, date_of_birth, phone, email, address, course_id, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         """;
 
         try
@@ -71,6 +71,8 @@ public class StudentDAO {
             statement.setString(7, student.getAddress());
 
             statement.setInt(8, student.getCourseId());
+
+            statement.setString(9, student.getStatus());
 
             int rowsAffected = statement.executeUpdate();
 
@@ -112,7 +114,8 @@ public class StudentDAO {
                             s.email,
                             s.address,
                             s.course_id,
-                            c.course_name
+                            c.course_name,
+                            s.status
                         FROM students s
                         INNER JOIN courses c
                         ON s.course_id = c.course_id
@@ -148,6 +151,8 @@ public class StudentDAO {
 
                 student.setCourseName(resultSet.getString("course_name"));
 
+                student.setStatus(resultSet.getString("status"));
+
                 studentList.add(student);
 
             }
@@ -177,7 +182,7 @@ public class StudentDAO {
         String sql = """
             UPDATE students
             SET first_name = ?, last_name = ?, gender = ?, date_of_birth = ?,
-                phone = ?, email = ?, address = ?, course_id = ?
+                phone = ?, email = ?, address = ?, course_id = ?, status = ?
             WHERE student_id = ?
             """;
 
@@ -193,9 +198,10 @@ public class StudentDAO {
             statement.setString(6, student.getEmail());
             statement.setString(7, student.getAddress());
             statement.setInt(8, student.getCourseId());
+            statement.setString(9, student.getStatus());
 
             // The last parameter identifies WHICH student to update
-            statement.setInt(9, student.getStudentId());
+            statement.setInt(10, student.getStudentId());
 
             return statement.executeUpdate() > 0;
 
@@ -265,7 +271,8 @@ public class StudentDAO {
         FROM students
         LEFT JOIN courses
             ON students.course_id = courses.course_id
-        WHERE students.first_name LIKE ?
+        WHERE students.student_id LIKE ?
+           OR students.first_name LIKE ?
            OR students.last_name LIKE ?
            OR students.phone LIKE ?
            OR students.email LIKE ?
@@ -283,6 +290,7 @@ public class StudentDAO {
             statement.setString(3, searchKeyword);
             statement.setString(4, searchKeyword);
             statement.setString(5, searchKeyword);
+            statement.setString(6, searchKeyword);
 
             ResultSet resultSet = statement.executeQuery();
 
@@ -308,7 +316,11 @@ public class StudentDAO {
 
                 student.setCourseId(resultSet.getInt("course_id"));
 
+                student.setStatus(resultSet.getString("status"));
+
                 student.setCourseName(resultSet.getString("course_name"));
+
+                student.setStatus(resultSet.getString("status"));
 
                 studentList.add(student);
 
@@ -358,6 +370,31 @@ public class StudentDAO {
 
         return 0;
 
+    }
+
+    public boolean updateStudentStatus(int studentId, String status) {
+
+        String sql = """
+            UPDATE students
+            SET status = ?
+            WHERE student_id = ?
+            """;
+
+        try (
+                Connection connection = DatabaseConnection.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)
+        ) {
+
+            statement.setString(1, status);
+            statement.setInt(2, studentId);
+
+            return statement.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }

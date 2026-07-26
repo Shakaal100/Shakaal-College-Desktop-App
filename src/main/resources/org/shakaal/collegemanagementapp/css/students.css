@@ -351,3 +351,35 @@
 .table-row-cell:hover .table-cell {
     -fx-text-fill: #1e293b;
 }
+
+/* ============================
+   STATUS BADGES
+   ============================ */
+
+.status-badge{
+
+    -fx-padding: 4 12 4 12;
+
+    -fx-background-radius: 20;
+
+    -fx-font-weight: bold;
+
+    -fx-font-size: 12px;
+
+}
+
+.status-active{
+
+    -fx-background-color: #DCFCE7;
+
+    -fx-text-fill: #15803D;
+
+}
+
+.status-inactive{
+
+    -fx-background-color: #FEE2E2;
+
+    -fx-text-fill: #DC2626;
+
+}
