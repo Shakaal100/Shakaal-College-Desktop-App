@@ -240,14 +240,14 @@
                               prefWidth="170"
                               styleClass="modern-combo"/>
 
-                    <ComboBox fx:id="genderFilter"
+                    <ComboBox fx:id="genderFilterComboBox"
                               styleClass="modern-combo"
                               promptText="Gender"/>
 
 
                     <!-- Status Filter -->
 
-                    <ComboBox fx:id="statusFilter"
+                    <ComboBox fx:id="statusFilterComboBox"
                               styleClass="modern-combo"
                               promptText="Status"/>
 

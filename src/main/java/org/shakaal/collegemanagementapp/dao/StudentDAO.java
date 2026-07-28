@@ -260,29 +260,46 @@ public class StudentDAO {
      * @param keyword Search keyword.
      * @return ObservableList of matching students.
      */
-    public ObservableList<Student> searchStudents(String keyword) {
+    public ObservableList<Student> searchStudents(
+            String keyword,
+            String course,
+            String gender,
+            String status) {
 
-        ObservableList<Student> studentList =
-                FXCollections.observableArrayList();
+        ObservableList<Student> studentList = FXCollections.observableArrayList();
 
-        String sql = """
-        SELECT students.*,
-               courses.course_name
-        FROM students
-        LEFT JOIN courses
-            ON students.course_id = courses.course_id
-        WHERE students.student_id LIKE ?
-           OR students.first_name LIKE ?
-           OR students.last_name LIKE ?
-           OR students.phone LIKE ?
-           OR students.email LIKE ?
-           OR courses.course_name LIKE ?
-    """;
+        StringBuilder sql = new StringBuilder("""
+                SELECT students.*,
+                       courses.course_name
+                FROM students
+                LEFT JOIN courses
+                    ON students.course_id = courses.course_id
+                WHERE
+                (
+                    students.student_id LIKE ?
+                    OR students.first_name LIKE ?
+                    OR students.last_name LIKE ?
+                    OR students.phone LIKE ?
+                    OR students.email LIKE ?
+                    OR courses.course_name LIKE ?
+                )
+            """);
 
-        try
-                (Connection connection = DatabaseConnection.getConnection();
-                 PreparedStatement statement = connection.prepareStatement(sql))
-        {
+        if (!"All Courses".equals(course)) {
+            sql.append(" AND courses.course_name = ?");
+        }
+
+        if (!"All Genders".equals(gender)) {
+            sql.append(" AND students.gender = ?");
+        }
+
+        if (!"All Status".equals(status)) {
+            sql.append(" AND students.status = ?");
+        }
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql.toString())) {
+
             String searchKeyword = "%" + keyword + "%";
 
             statement.setString(1, searchKeyword);
@@ -292,6 +309,20 @@ public class StudentDAO {
             statement.setString(5, searchKeyword);
             statement.setString(6, searchKeyword);
 
+            int parameterIndex = 7;
+
+            if (!"All Courses".equals(course)) {
+                statement.setString(parameterIndex++, course);
+            }
+
+            if (!"All Genders".equals(gender)) {
+                statement.setString(parameterIndex++, gender);
+            }
+
+            if (!"All Status".equals(status)) {
+                statement.setString(parameterIndex++, status);
+            }
+
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -299,41 +330,25 @@ public class StudentDAO {
                 Student student = new Student();
 
                 student.setStudentId(resultSet.getInt("student_id"));
-
                 student.setFirstName(resultSet.getString("first_name"));
-
                 student.setLastName(resultSet.getString("last_name"));
-
                 student.setGender(resultSet.getString("gender"));
-
                 student.setDateOfBirth(LocalDate.parse(resultSet.getString("date_of_birth")));
-
                 student.setPhone(resultSet.getString("phone"));
-
                 student.setEmail(resultSet.getString("email"));
-
                 student.setAddress(resultSet.getString("address"));
-
                 student.setCourseId(resultSet.getInt("course_id"));
-
-                student.setStatus(resultSet.getString("status"));
-
                 student.setCourseName(resultSet.getString("course_name"));
-
                 student.setStatus(resultSet.getString("status"));
 
                 studentList.add(student);
-
             }
 
         } catch (SQLException e) {
-
             e.printStackTrace();
-
         }
 
         return studentList;
-
     }
 
     // =====================================================

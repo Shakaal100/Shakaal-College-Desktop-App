@@ -592,9 +592,19 @@
 
     -fx-font-size:14px;
 
+    -fx-cursor: hand;
+
     -fx-background-color:white;
 
     -fx-text-fill:#334155;
+
+}
+
+.combo-box-popup .list-cell:hover{
+
+    -fx-background-color:#EFF6FF;
+
+    -fx-text-fill:#2563EB;
 
 }
 

@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.shakaal.collegemanagementapp.dao.CourseDAO;
 import org.shakaal.collegemanagementapp.dao.StudentDAO;
+import org.shakaal.collegemanagementapp.models.Course;
 import org.shakaal.collegemanagementapp.models.Student;
 
 import java.net.URL;
@@ -61,6 +62,12 @@ public class StudentController implements Initializable{
 
     @FXML
     private ComboBox<String> courseFilterComboBox;
+
+    @FXML
+    private ComboBox<String> genderFilterComboBox;
+
+    @FXML
+    private ComboBox<String> statusFilterComboBox;
 
 
     @FXML
@@ -118,23 +125,49 @@ public class StudentController implements Initializable{
         configureActionColumn();
 
         loadStatistics();
+
         loadCourseFilter();
+
+        loadGenderFilter();
+
+        loadStatusFilter();
+
+        // ******* SEARCH FILTER LISTENER ********
 
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
 
-            StudentDAO studentDAO = new StudentDAO();
-
-            studentTable.setItems(studentDAO.searchStudents(newValue)
-            );
+            filterStudents();
 
         });
+
+
+        // ****** COMBO-BOX LISTENERS *********
+
+        courseFilterComboBox.setOnAction(event -> {
+
+            filterStudents();
+
+        });
+
+        genderFilterComboBox.setOnAction(event -> {
+
+            filterStudents();
+
+        });
+
+        statusFilterComboBox.setOnAction(event -> {
+
+            filterStudents();
+
+        });
+
+        // ****** ADD STUDENT BUTTON *********
 
         addStudentButton.setOnAction(event -> openAddStudentWindow());
 
         studentTable.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
 
         // RESPONSIVE TABLE COLUMNS   **********
-
 
         idColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.06));
 
@@ -483,20 +516,7 @@ public class StudentController implements Initializable{
     }
 
 
-    private void loadCourseFilter() {
-
-        courseFilterComboBox.getItems().add("All Courses");
-
-        // We'll add the course names here
-
-        courseFilterComboBox.getSelectionModel().selectFirst();
-    }
-
-
-    private void updatePercentages(int total,
-                                   int male,
-                                   int female,
-                                   int active) {
+    private void updatePercentages(int total, int male, int female, int active) {
 
         if (total == 0) {
 
@@ -510,26 +530,69 @@ public class StudentController implements Initializable{
 
         }
 
-        double malePercentage =
-                male * 100.0 / total;
+        double malePercentage = male * 100.0 / total;
 
-        double femalePercentage =
-                female * 100.0 / total;
+        double femalePercentage = female * 100.0 / total;
 
-        double activePercentage =
-                active * 100.0 / total;
+        double activePercentage = active * 100.0 / total;
 
-        malePercentageLabel.setText(
-                String.format("%.1f%% of total students", malePercentage)
+        malePercentageLabel.setText(String.format("%.1f%% of total students", malePercentage));
+
+        femalePercentageLabel.setText(String.format("%.1f%% of total students", femalePercentage));
+
+        activePercentageLabel.setText(String.format("%.1f%% of total students", activePercentage));
+
+    }
+
+
+
+    private void filterStudents() {
+
+        studentTable.setItems(
+
+                studentDAO.searchStudents(
+
+                        searchField.getText(),
+
+                        courseFilterComboBox.getValue(),
+
+                        genderFilterComboBox.getValue(),
+
+                        statusFilterComboBox.getValue()
+
+                )
+
         );
 
-        femalePercentageLabel.setText(
-                String.format("%.1f%% of total students", femalePercentage)
-        );
+    }
 
-        activePercentageLabel.setText(
-                String.format("%.1f%% of total students", activePercentage)
-        );
+    private void loadGenderFilter() {
+
+        genderFilterComboBox.getItems().addAll("All Genders", "Male", "Female");
+
+        genderFilterComboBox.getSelectionModel().selectFirst();
+
+    }
+
+    private void loadStatusFilter() {
+
+        statusFilterComboBox.getItems().addAll("All Status", "Active", "Inactive");
+
+        statusFilterComboBox.getSelectionModel().selectFirst();
+
+    }
+
+    private void loadCourseFilter() {
+
+        courseFilterComboBox.getItems().add("All Courses");
+
+        for (Course course : courseDAO.getAllCourses()) {
+
+            courseFilterComboBox.getItems().add(course.getCourseName());
+
+        }
+
+        courseFilterComboBox.getSelectionModel().selectFirst();
 
     }
 
