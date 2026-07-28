@@ -32,6 +32,7 @@ import java.io.IOException;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import org.shakaal.collegemanagementapp.session.Session;
 
 
 public class StudentController implements Initializable{
@@ -328,7 +329,15 @@ public class StudentController implements Initializable{
 
                     private final Button deleteButton = new Button();
 
-                    private final HBox buttons = new HBox(10, editButton, deleteButton);
+                    private final HBox buttons = new HBox(10);
+
+                    {
+                        buttons.getChildren().add(editButton);
+
+                        if (Session.getCurrentUser().getRole().equals("ADMIN")) {
+                            buttons.getChildren().add(deleteButton);
+                        }
+                    }
 
                     {
                         editButton.getStyleClass().add("edit-button");
@@ -451,6 +460,22 @@ public class StudentController implements Initializable{
     }
 
     private void deleteStudent(Student student) {
+
+        if (!Session.getCurrentUser().getRole().equalsIgnoreCase("ADMIN")) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            alert.setTitle("Access Denied");
+
+            alert.setHeaderText(null);
+
+            alert.setContentText("Only administrators can delete students.");
+
+            alert.showAndWait();
+
+            return;
+        }
+
 
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
 
