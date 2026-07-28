@@ -7,6 +7,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.shakaal.collegemanagementapp.dao.CourseDAO;
 import org.shakaal.collegemanagementapp.dao.StudentDAO;
 import org.shakaal.collegemanagementapp.models.Student;
 
@@ -47,7 +48,29 @@ public class StudentController implements Initializable{
     private Button addStudentButton;
 
     @FXML
-    private Label totalStudentsLabel;
+    private Label totalStudentsCountLabel;
+
+    @FXML
+    private Label maleStudentsCountLabel;
+
+    @FXML
+    private Label femaleStudentsCountLabel;
+
+    @FXML
+    private Label activeStudentsCountLabel;
+
+    @FXML
+    private ComboBox<String> courseFilterComboBox;
+
+
+    @FXML
+    private Label malePercentageLabel;
+
+    @FXML
+    private Label femalePercentageLabel;
+
+    @FXML
+    private Label activePercentageLabel;
 
     @FXML
     private TableView<Student> studentTable;
@@ -82,6 +105,7 @@ public class StudentController implements Initializable{
     private TableColumn<Student, Void> actionsColumn;
 
     private final StudentDAO studentDAO = new StudentDAO();
+    private final CourseDAO courseDAO = new CourseDAO();
 
 
     @Override
@@ -92,6 +116,9 @@ public class StudentController implements Initializable{
         loadStudents();
 
         configureActionColumn();
+
+        loadStatistics();
+        loadCourseFilter();
 
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
 
@@ -134,6 +161,10 @@ public class StudentController implements Initializable{
         statusColumn.setStyle("-fx-alignment: CENTER;");
 
         actionsColumn.setStyle("-fx-alignment: CENTER;");
+
+
+        // ****** METHODS TO CHANGE THE STATUS COLUMN ACTIVE AND INACTIVE ******
+
 
         statusColumn.setCellFactory(column -> new TableCell<Student, String>() {
 
@@ -178,12 +209,7 @@ public class StudentController implements Initializable{
                         alert.setTitle("Confirm Status Change");
                         alert.setHeaderText(null);
 
-                        alert.setContentText("Are you sure you want to change the status of\n\n"
-                                        + student.getFirstName() + " "
-                                        + student.getLastName()
-                                        + "\n\nto "
-                                        + newStatus + "?"
-                        );
+                        alert.setContentText("Are you sure you want to change the status of\n\n" + student.getFirstName() + " " + student.getLastName() + "\n\nto " + newStatus + "?");
 
                         Optional<ButtonType> result = alert.showAndWait();
 
@@ -197,6 +223,7 @@ public class StudentController implements Initializable{
                             if (success) {
 
                                 refreshStudents();
+                                loadStatistics();
 
                             } else {
 
@@ -255,7 +282,6 @@ public class StudentController implements Initializable{
 
             studentTable.setItems(students);
 
-         totalStudentsLabel.setText("Total Students : " + students.size());
 
 
     }
@@ -307,8 +333,7 @@ public class StudentController implements Initializable{
 
                         deleteButton.setOnAction(event -> {
 
-                            Student student =
-                                    getTableView().getItems().get(getIndex());
+                            Student student = getTableView().getItems().get(getIndex());
 
                             deleteStudent(student);
 
@@ -316,10 +341,7 @@ public class StudentController implements Initializable{
                     }
 
                     @Override
-                    protected void updateItem(
-                            Void item,
-                            boolean empty
-                    ) {
+                    protected void updateItem(Void item, boolean empty) {
 
                         super.updateItem(item, empty);
 
@@ -336,12 +358,7 @@ public class StudentController implements Initializable{
 
         try {
 
-            FXMLLoader loader =
-                    new FXMLLoader(
-                            getClass().getResource(
-                                    "/org/shakaal/collegemanagementapp/fxml/add-student.fxml"
-                            )
-                    );
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/add-student.fxml"));
 
             Parent root = loader.load();
 
@@ -349,13 +366,12 @@ public class StudentController implements Initializable{
 
             stage.setTitle("Add Student");
 
-            stage.setScene(
-                    new Scene(root)
-            );
+            stage.setScene(new Scene(root));
 
             stage.showAndWait();
 
             refreshStudents();
+            loadStatistics();
 
         } catch (IOException e) {
 
@@ -386,6 +402,7 @@ public class StudentController implements Initializable{
             stage.showAndWait();
 
             refreshStudents();
+            loadStatistics();
 
         } catch (IOException e) {
 
@@ -393,10 +410,7 @@ public class StudentController implements Initializable{
         }
     }
 
-    private void updateTotalStudents() {
 
-        totalStudentsLabel.setText("Total Students: " + studentTable.getItems().size());
-    }
 
     private void refreshStudents() {
 
@@ -405,28 +419,15 @@ public class StudentController implements Initializable{
 
     private void deleteStudent(Student student) {
 
-        Alert confirmation =
-                new Alert(
-                        Alert.AlertType.CONFIRMATION
-                );
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
 
-        confirmation.setTitle(
-                "Delete Student"
-        );
+        confirmation.setTitle("Delete Student");
 
-        confirmation.setHeaderText(
-                null
-        );
+        confirmation.setHeaderText(null);
 
-        confirmation.setContentText(
-                "Are you sure you want to delete "
-                        + student.getFirstName()
-                        + " "
-                        + student.getLastName()
-                        + "?"
-        );
+        confirmation.setContentText("Are you sure you want to delete " + student.getFirstName() + " " + student.getLastName() + "?");
 
-        Optional<ButtonType> result = confirmation.showAndWait();
+              Optional<ButtonType> result = confirmation.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
 
@@ -447,8 +448,93 @@ public class StudentController implements Initializable{
                 success.showAndWait();
 
                 refreshStudents();
+                loadStatistics();
             }
         }
     }
+
+
+    private void loadStatistics() {
+
+        int totalStudents = studentDAO.getStudentCount();
+
+        int maleStudents = studentDAO.getMaleStudentCount();
+
+        int femaleStudents = studentDAO.getFemaleStudentCount();
+
+        int activeStudents = studentDAO.getActiveStudentCount();
+
+        // Display the numbers
+
+        totalStudentsCountLabel.setText(String.valueOf(totalStudents));
+
+        maleStudentsCountLabel.setText(String.valueOf(maleStudents));
+
+        femaleStudentsCountLabel.setText(String.valueOf(femaleStudents));
+
+        activeStudentsCountLabel.setText(String.valueOf(activeStudents));
+
+        updatePercentages(
+                totalStudents,
+                maleStudents,
+                femaleStudents,
+                activeStudents
+        );
+    }
+
+
+    private void loadCourseFilter() {
+
+        courseFilterComboBox.getItems().add("All Courses");
+
+        // We'll add the course names here
+
+        courseFilterComboBox.getSelectionModel().selectFirst();
+    }
+
+
+    private void updatePercentages(int total,
+                                   int male,
+                                   int female,
+                                   int active) {
+
+        if (total == 0) {
+
+            malePercentageLabel.setText("0% of total students");
+
+            femalePercentageLabel.setText("0% of total students");
+
+            activePercentageLabel.setText("0% of total students");
+
+            return;
+
+        }
+
+        double malePercentage =
+                male * 100.0 / total;
+
+        double femalePercentage =
+                female * 100.0 / total;
+
+        double activePercentage =
+                active * 100.0 / total;
+
+        malePercentageLabel.setText(
+                String.format("%.1f%% of total students", malePercentage)
+        );
+
+        femalePercentageLabel.setText(
+                String.format("%.1f%% of total students", femalePercentage)
+        );
+
+        activePercentageLabel.setText(
+                String.format("%.1f%% of total students", activePercentage)
+        );
+
+    }
+
+
+
+
 
 }

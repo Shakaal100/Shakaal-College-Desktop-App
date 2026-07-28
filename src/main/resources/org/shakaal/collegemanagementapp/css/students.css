@@ -383,3 +383,225 @@
     -fx-text-fill: #DC2626;
 
 }
+
+
+/* ==========================================================
+   STATISTICS CARDS
+   ========================================================== */
+
+.statistics-card{
+
+    -fx-background-color:#D8F1D4;
+
+    -fx-background-radius:18;
+
+    -fx-border-radius:18;
+
+    -fx-border-color:#E5E7EB;
+
+    -fx-padding:10;
+
+    -fx-pref-width:220;
+
+    -fx-pref-height:80;
+
+    -fx-alignment:center-left;
+
+    -fx-effect:dropshadow(gaussian,
+            rgba(0,0,0,.08),
+            12,
+            0,
+            0,
+            2);
+
+}
+
+.statistics-card:hover{
+
+    -fx-effect:dropshadow(gaussian,
+            rgba(37,99,235,.20),
+            18,
+            0,
+            0,
+            4);
+
+}
+
+.statistics-title{
+
+    -fx-font-size:17px;
+
+    -fx-text-fill:#64748B;
+
+}
+
+.statistics-number{
+
+    -fx-font-size:26px;
+
+    -fx-font-weight:bold;
+
+    -fx-text-fill:#0F172A;
+
+}
+
+.statistics-subtitle{
+
+    -fx-font-size:14px;
+
+    -fx-text-fill:#212121;
+
+}
+
+.icon-circle{
+
+    -fx-pref-width:54;
+
+    -fx-pref-height:54;
+
+    -fx-background-radius:27;
+
+    -fx-alignment:center;
+
+}
+
+/* COLORS */
+
+.blue-circle{
+
+    -fx-background-color:#DBEAFE;
+
+}
+
+.green-circle{
+
+    -fx-background-color:red;
+
+}
+
+.pink-circle{
+
+    -fx-background-color:#FCE7F3;
+
+}
+
+.purple-circle{
+
+    -fx-background-color:#EDE9FE;
+
+}
+
+.statistics-card:hover{
+
+    -fx-cursor:hand;
+
+    -fx-effect:dropshadow(gaussian,
+            rgba(37,99,235,.15),
+            18,
+            0,
+            0,
+            4);
+
+}
+
+.total-card{
+
+    -fx-background-color:#F5F3FF;
+    -fx-border-color:#DDD6FE;
+
+}
+
+
+/* ==========================================================
+   MODERN COMBO BOX
+   ========================================================== */
+
+.modern-combo{
+
+    -fx-background-color:white;
+
+    -fx-background-radius:12;
+
+    -fx-border-radius:12;
+
+    -fx-border-color:#D1D5DB;
+
+    -fx-border-width:1;
+
+    -fx-pref-height:42;
+
+    -fx-font-size:14px;
+
+    -fx-padding:0 10 0 10;
+
+    -fx-cursor:hand;
+
+}
+
+.modern-combo:hover{
+
+    -fx-border-color:#2563EB;
+
+}
+
+.modern-combo:focused{
+
+    -fx-border-color:#2563EB;
+
+    -fx-background-insets:0;
+
+}
+
+.modern-combo .arrow-button{
+
+    -fx-background-color:transparent;
+
+}
+
+.modern-combo .arrow{
+
+    -fx-background-color:#64748B;
+
+}
+
+.modern-combo .list-cell{
+
+    -fx-text-fill:#334155;
+
+    -fx-font-size:14px;
+
+    -fx-padding:8 12;
+
+}
+
+.combo-box-popup .list-view{
+
+    -fx-background-color:white;
+
+    -fx-background-radius:12;
+
+    -fx-border-radius:12;
+
+    -fx-border-color:#E2E8F0;
+
+}
+
+.combo-box-popup .list-cell{
+
+    -fx-padding:10;
+
+    -fx-font-size:14px;
+
+    -fx-background-color:white;
+
+    -fx-text-fill:#334155;
+
+}
+
+.combo-box-popup .list-cell:selected{
+
+    -fx-background-color:#2563EB;
+
+    -fx-text-fill:white;
+
+}

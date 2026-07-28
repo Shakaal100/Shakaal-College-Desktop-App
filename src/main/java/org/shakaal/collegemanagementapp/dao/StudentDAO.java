@@ -372,6 +372,95 @@ public class StudentDAO {
 
     }
 
+
+    public int getMaleStudentCount() {
+
+        String sql = """
+            SELECT COUNT(*)
+            FROM students
+            WHERE gender = 'Male'
+            """;
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            if (resultSet.next()) {
+
+                return resultSet.getInt(1);
+
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return 0;
+
+    }
+
+
+
+    public int getFemaleStudentCount() {
+
+        String sql = """
+            SELECT COUNT(*)
+            FROM students
+            WHERE gender = 'Female'
+            """;
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            if (resultSet.next()) {
+
+                return resultSet.getInt(1);
+
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return 0;
+
+    }
+
+
+
+    public int getActiveStudentCount() {
+
+        String sql = """
+            SELECT COUNT(*)
+            FROM students
+            WHERE status = 'Active'
+            """;
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            if (resultSet.next()) {
+
+                return resultSet.getInt(1);
+
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return 0;
+
+    }
+
     public boolean updateStudentStatus(int studentId, String status) {
 
         String sql = """
