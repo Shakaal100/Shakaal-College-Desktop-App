@@ -46,7 +46,7 @@ public class StudentDAO {
 
         String sql = """
         INSERT INTO students
-        (first_name, last_name, gender, date_of_birth, phone, email, address, course_id, status)
+        (first_name, last_name, gender, registered_date, phone, email, address, course_id, status)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         """;
 
@@ -62,7 +62,7 @@ public class StudentDAO {
             statement.setString(3, student.getGender());
 
             // LocalDate ---> String
-            statement.setString(4, student.getDateOfBirth().toString());
+            statement.setString(4, student.getRegisteredDate().toString());
 
             statement.setString(5, student.getPhone());
 
@@ -109,7 +109,7 @@ public class StudentDAO {
                             s.first_name,
                             s.last_name,
                             s.gender,
-                            s.date_of_birth,
+                            s.registered_date,
                             s.phone,
                             s.email,
                             s.address,
@@ -139,7 +139,7 @@ public class StudentDAO {
 
                 student.setGender(resultSet.getString("gender"));
 
-                student.setDateOfBirth(LocalDate.parse(resultSet.getString("date_of_birth")));
+                student.setRegisteredDate(LocalDate.parse(resultSet.getString("registered_date")));
 
                 student.setPhone(resultSet.getString("phone"));
 
@@ -181,7 +181,7 @@ public class StudentDAO {
 
         String sql = """
             UPDATE students
-            SET first_name = ?, last_name = ?, gender = ?, date_of_birth = ?,
+            SET first_name = ?, last_name = ?, gender = ?, registered_date = ?,
                 phone = ?, email = ?, address = ?, course_id = ?, status = ?
             WHERE student_id = ?
             """;
@@ -193,7 +193,7 @@ public class StudentDAO {
             statement.setString(1, student.getFirstName());
             statement.setString(2, student.getLastName());
             statement.setString(3, student.getGender());
-            statement.setString(4, student.getDateOfBirth().toString());
+            statement.setString(4, student.getRegisteredDate().toString());
             statement.setString(5, student.getPhone());
             statement.setString(6, student.getEmail());
             statement.setString(7, student.getAddress());
@@ -333,7 +333,7 @@ public class StudentDAO {
                 student.setFirstName(resultSet.getString("first_name"));
                 student.setLastName(resultSet.getString("last_name"));
                 student.setGender(resultSet.getString("gender"));
-                student.setDateOfBirth(LocalDate.parse(resultSet.getString("date_of_birth")));
+                student.setRegisteredDate(LocalDate.parse(resultSet.getString("registered_date")));
                 student.setPhone(resultSet.getString("phone"));
                 student.setEmail(resultSet.getString("email"));
                 student.setAddress(resultSet.getString("address"));

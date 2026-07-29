@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import org.shakaal.collegemanagementapp.dao.CourseDAO;
@@ -34,9 +35,6 @@ public class AddStudentController implements Initializable{
 
     @FXML
     private ComboBox<String> genderComboBox;
-
-    @FXML
-    private DatePicker dateOfBirthPicker;
 
     @FXML
     private TextField phoneField;
@@ -85,7 +83,7 @@ public class AddStudentController implements Initializable{
 
         emailField.setOnAction(event -> addressArea.requestFocus());
 
-        genderComboBox.setOnAction(event -> dateOfBirthPicker.requestFocus());
+        //genderComboBox.setOnAction(event -> dateOfBirthPicker.requestFocus());
     }
 
     public void setStudent(Student student) {
@@ -97,8 +95,6 @@ public class AddStudentController implements Initializable{
         lastNameField.setText(student.getLastName());
 
         genderComboBox.setValue(student.getGender());
-
-        dateOfBirthPicker.setValue(student.getDateOfBirth());
 
         phoneField.setText(student.getPhone());
 
@@ -148,18 +144,29 @@ public class AddStudentController implements Initializable{
             return;
         }
 
-        if (dateOfBirthPicker.getValue() == null) {
-
-            showError("Please select the date of birth.");
-
-            dateOfBirthPicker.requestFocus();
-
-            return;
-        }
 
         if (phoneField.getText().trim().isEmpty()) {
 
             showError("Phone number is required.");
+
+            phoneField.requestFocus();
+
+            return;
+        }
+
+        String phone = phoneField.getText().trim();
+
+        if (!phone.matches("\\d{10}")) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            alert.setTitle("Invalid Phone Number");
+
+            alert.setHeaderText(null);
+
+            alert.setContentText("Phone number must contain exactly 10 digits.");
+
+            alert.showAndWait();
 
             phoneField.requestFocus();
 
@@ -201,7 +208,7 @@ public class AddStudentController implements Initializable{
 
         student.setGender(genderComboBox.getValue());
 
-        student.setDateOfBirth(dateOfBirthPicker.getValue());
+        student.setRegisteredDate(LocalDate.now());
 
         student.setPhone(phoneField.getText());
 

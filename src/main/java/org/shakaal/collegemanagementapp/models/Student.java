@@ -25,7 +25,7 @@ public class Student {
 
     private String gender;
 
-    private LocalDate dateOfBirth;
+    private LocalDate registeredDate;
 
     private String phone;
 
@@ -50,13 +50,13 @@ public class Student {
     // Full Constructor
     // ===============================
 
-    public Student(int studentId, String firstName, String lastName, String gender, LocalDate dateOfBirth, String phone, String email, String address, int courseId, String courseName, String status) {
+    public Student(int studentId, String firstName, String lastName, String gender, LocalDate registeredDate, String phone, String email, String address, int courseId, String courseName, String status) {
 
         this.studentId = studentId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
+        this.registeredDate = registeredDate;
         this.phone = phone;
         this.email = email;
         this.address = address;
@@ -101,12 +101,12 @@ public class Student {
         this.gender = gender;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public LocalDate getRegisteredDate() {
+        return registeredDate;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setRegisteredDate(LocalDate registeredDate) {
+        this.registeredDate = registeredDate;
     }
 
     public String getPhone() {

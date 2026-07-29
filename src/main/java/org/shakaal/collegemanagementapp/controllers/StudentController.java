@@ -30,8 +30,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
 import org.shakaal.collegemanagementapp.session.Session;
 
 
@@ -98,7 +96,7 @@ public class StudentController implements Initializable{
     private TableColumn<Student, String> genderColumn;
 
     @FXML
-    private TableColumn<Student, LocalDate> dobColumn;
+    private TableColumn<Student, LocalDate> registeredDateColumn;
 
     @FXML
     private TableColumn<Student, String> phoneColumn;
@@ -178,7 +176,7 @@ public class StudentController implements Initializable{
 
         genderColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.08));
 
-        dobColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
+        registeredDateColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
 
         phoneColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
 
@@ -297,7 +295,7 @@ public class StudentController implements Initializable{
 
         genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
 
-        dobColumn.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
+        registeredDateColumn.setCellValueFactory(new PropertyValueFactory<>("registeredDate"));
 
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
 

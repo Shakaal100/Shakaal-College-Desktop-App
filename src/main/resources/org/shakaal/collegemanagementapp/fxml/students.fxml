@@ -296,7 +296,7 @@
 
                         <TableColumn fx:id="genderColumn" text="Gender" />
 
-                        <TableColumn fx:id="dobColumn" text="Date of Birth" />
+                        <TableColumn fx:id="registeredDateColumn" text="Registered Date" />
 
                         <TableColumn fx:id="phoneColumn" text="Phone" />
 

@@ -339,7 +339,7 @@
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #dbeafe;
+    -fx-background-color: #94E2ED;
 }
 
 .table-row-cell:selected .table-cell {
@@ -347,7 +347,7 @@
 }
 
 .table-row-cell:hover {
-    -fx-background-color: #F0F0F0;
+    -fx-background-color: #dbeafe;
 }
 
 .table-row-cell:hover .table-cell {
