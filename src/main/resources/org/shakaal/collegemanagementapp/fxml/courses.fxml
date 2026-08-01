@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Separator?>
+<BorderPane stylesheets="@../css/courses.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.shakaal.collegemanagementapp.controllers.CourseController">
+
+    <!-- ========================= -->
+    <!-- TOP SECTION -->
+    <!-- ========================= -->
+
+    <top>
+
+        <VBox spacing="18"
+              styleClass="top-container">
+
+            <padding>
+                <Insets top="20"
+                        left="20"
+                        right="20"
+                        bottom="15"/>
+            </padding>
+
+            <children>
+
+                <!-- ================= Statistics Cards ================= -->
+
+                <HBox spacing="25"
+
+                      alignment="TOP_LEFT">
+
+                    <!-- ================= LEFT SIDE ================= -->
+
+                    <VBox fx:id="statisticsPane"
+                          spacing="20">
+
+                        <!-- FIRST ROW -->
+
+                        <HBox spacing="20">
+
+                            <!-- Total Courses -->
+
+                            <HBox spacing="15"
+                                  alignment="CENTER_LEFT"
+                                  styleClass="statistics-card">
+
+                                <StackPane styleClass="icon-circle blue-circle">
+
+                                    <ImageView fitHeight="24"
+                                               fitWidth="24"
+                                               preserveRatio="true">
+
+                                        <image>
+                                            <Image url="@../icons/students.png"/>
+                                        </image>
+
+                                    </ImageView>
+
+                                </StackPane>
+
+                                <VBox spacing="8">
+
+                                    <Label text="Total Courses"
+                                           styleClass="statistics-title"/>
+
+                                    <Label fx:id="totalCoursesCountLabel"
+                                           text="0"
+                                           styleClass="statistics-number"/>
+
+                                </VBox>
+
+                            </HBox>
+
+                            <!-- Available -->
+
+                            <HBox spacing="15"
+                                  alignment="CENTER_LEFT"
+                                  styleClass="statistics-card">
+
+                                <StackPane styleClass="icon-circle green-circle">
+
+                                    <ImageView fitHeight="26"
+                                               fitWidth="26"
+                                               preserveRatio="true">
+
+                                        <image>
+                                            <Image url="@../icons/male.png"/>
+                                        </image>
+
+                                    </ImageView>
+
+                                </StackPane>
+
+                                <VBox spacing="8">
+
+                                    <Label text="Available Courses"
+                                           styleClass="statistics-title"/>
+
+                                    <Label fx:id="availableCoursesCountLabel"
+                                           text="0"
+                                           styleClass="statistics-number"/>
+
+                                </VBox>
+
+                            </HBox>
+
+                        </HBox>
+
+                        <!-- SECOND ROW -->
+
+                        <HBox>
+
+                            <HBox spacing="15"
+                                  alignment="CENTER_LEFT"
+                                  styleClass="statistics-card">
+
+                                <StackPane styleClass="icon-circle pink-circle">
+
+                                    <ImageView fitHeight="26"
+                                               fitWidth="26"
+                                               preserveRatio="true">
+
+                                        <image>
+                                            <Image url="@../icons/female.png"/>
+                                        </image>
+
+                                    </ImageView>
+
+                                </StackPane>
+
+                                <VBox spacing="8">
+
+                                    <Label text="Archived Courses"
+                                           styleClass="statistics-title"/>
+
+                                    <Label fx:id="archivedCoursesCountLabel"
+                                           text="0"
+                                           styleClass="statistics-number"/>
+
+                                </VBox>
+
+                            </HBox>
+
+                        </HBox>
+
+                    </VBox>
+                    <!-- ========================= -->
+                    <!-- RIGHT SIDE -->
+                    <!-- ========================= -->
+
+                    <VBox fx:id="pieChartContainer"
+                          spacing="20"
+                          prefWidth="400"
+                          minWidth="400"
+                          maxWidth="400"
+                          styleClass="pie-chart-container">
+
+                        <Label text="Students by Course"
+                               styleClass="chart-title"/>
+
+                        <HBox spacing="35"
+                              alignment="CENTER_LEFT">
+
+                        <PieChart fx:id="coursePieChart"
+                                  prefWidth="200"
+                                  prefHeight="200"
+                                  legendVisible="false"
+                                  labelsVisible="false"/>
+
+                            <VBox fx:id="legendContainer"
+                                  spacing="15"
+                                  alignment="CENTER_LEFT"
+                                  HBox.hgrow="ALWAYS"/>
+
+                        </HBox>
+
+                    </VBox>
+                </HBox>
+
+
+                <!-- ================= Search & Filters ================= -->
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="15">
+
+                    <!-- Search Box -->
+
+                    <HBox prefWidth="280"
+                          prefHeight="45"
+                          spacing="12"
+                          alignment="CENTER_LEFT"
+                          styleClass="search-box">
+
+                        <ImageView fx:id="searchIcon"
+                                   fitWidth="24"
+                                   fitHeight="24"
+                                   preserveRatio="true"/>
+
+                        <TextField fx:id="searchField"
+                                   promptText="Search Courses..."
+                                   styleClass="search-field"
+                                   HBox.hgrow="ALWAYS"/>
+
+                    </HBox>
+
+                    <!-- Status Filter -->
+
+                    <ComboBox fx:id="statusFilterComboBox"
+                              styleClass="modern-combo"
+                              promptText="Status"/>
+                    
+
+
+                    <!-- Add Student -->
+
+                    <Button fx:id="addCourseButton"
+                            text="+ Add Course"
+                            styleClass="add-button"/>
+
+                </HBox>
+
+            </children>
+
+        </VBox>
+
+    </top>
+
+    <!-- ========================= -->
+    <!-- CENTER -->
+    <!-- ========================= -->
+
+    <center>
+
+        <HBox spacing="20"
+              BorderPane.alignment="CENTER">
+
+            <padding>
+                <Insets top="10"
+                        left="20"
+                        right="20"
+                        bottom="20"/>
+            </padding>
+
+            <!-- ========================= -->
+            <!-- LEFT SIDE (TABLE) -->
+            <!-- ========================= -->
+
+            <VBox spacing="15"
+                  HBox.hgrow="ALWAYS">
+
+                <TableView fx:id="courseTable"
+                           VBox.vgrow="ALWAYS">
+
+                    <columns>
+
+                        <TableColumn fx:id="idColumn"
+                                     text="ID"/>
+
+                        <TableColumn fx:id="courseCodeColumn"
+                                     text="Course Code"/>
+
+                        <TableColumn fx:id="courseNameColumn"
+                                     text="Course Name"/>
+
+                        <TableColumn fx:id="scheduleColumn"
+                                     text="Schedule"/>
+
+                        <TableColumn fx:id="courseFeeColumn"
+                                     text="Fee"/>
+
+                        <TableColumn fx:id="studentsCountColumn"
+                                     text="Students"/>
+
+                        <TableColumn fx:id="statusColumn"
+                                     text="Status"/>
+
+                        <TableColumn fx:id="actionsColumn"
+                                     text="Actions"/>
+
+                    </columns>
+
+                </TableView>
+
+            </VBox>
+
+
+        </HBox>
+
+    </center>
+
+</BorderPane>
+

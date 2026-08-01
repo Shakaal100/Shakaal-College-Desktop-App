@@ -51,7 +51,7 @@
 
                 <Button styleClass="menu-button" text="👨‍🏫  Teachers" />
 
-                <Button styleClass="menu-button" text="📚   Courses" />
+                <Button fx:id="coursesButton" styleClass="menu-button" text="📚   Courses" />
 
                 <Button styleClass="menu-button" text="🏫   Classes" />
 
