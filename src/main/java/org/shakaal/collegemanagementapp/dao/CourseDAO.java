@@ -178,71 +178,6 @@ public class CourseDAO {
     }
 
     //    *************************************************
-    //    ******** SEARCH COURSES  ************************
-    //   ***************************************************
-
-    public ObservableList<Course> searchCourses(String keyword) {
-
-        ObservableList<Course> courseList = FXCollections.observableArrayList();
-
-        String sql = """
-            SELECT *
-            FROM courses
-            WHERE course_code LIKE ?
-               OR course_name LIKE ?
-               OR duration LIKE ?
-               OR schedule LIKE ?
-               OR status LIKE ?
-            """;
-
-        try (
-                Connection connection = DatabaseConnection.getConnection();
-                PreparedStatement statement = connection.prepareStatement(sql)
-        ) {
-
-            String searchKeyword = "%" + keyword + "%";
-
-            statement.setString(1, searchKeyword);
-            statement.setString(2, searchKeyword);
-            statement.setString(3, searchKeyword);
-            statement.setString(4, searchKeyword);
-            statement.setString(5, searchKeyword);
-
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-
-                Course course = new Course();
-
-                course.setCourseId(resultSet.getInt("course_id"));
-
-                course.setCourseCode(resultSet.getString("course_code"));
-
-                course.setCourseName(resultSet.getString("course_name"));
-
-                course.setDuration(resultSet.getString("duration"));
-
-                course.setSchedule(resultSet.getString("schedule"));
-
-                course.setCourseFee(resultSet.getDouble("course_fee"));
-
-                course.setStatus(resultSet.getString("status"));
-
-                course.setCourseInfoPath(resultSet.getString("course_info_path"));
-
-                courseList.add(course);
-
-            }
-
-        } catch (SQLException e) {
-
-            e.printStackTrace();
-        }
-        return courseList;
-    }
-
-
-    //    *************************************************
     //    ********TOTAL COURSES COUNT  ********************
     //   ***************************************************
 
@@ -385,5 +320,80 @@ public class CourseDAO {
         }
 
         return pieChartData;
+    }
+
+    //    *************************************************
+    //    ******** STATUS FILTER METHOD  *****************
+    //   ***************************************************
+
+
+    public ObservableList<Course> filterCourses(String keyword, String status) {
+
+        ObservableList<Course> courseList = FXCollections.observableArrayList();
+
+        String sql = """
+        SELECT
+            c.*,
+            COUNT(s.student_id) AS students_count
+        FROM courses c
+        LEFT JOIN students s
+            ON c.course_id = s.course_id
+        WHERE
+            (c.course_name LIKE ? OR c.schedule LIKE ?)
+            AND
+            (? = 'All' OR c.status = ?)
+        GROUP BY c.course_id
+        ORDER BY c.course_id
+        """;
+
+        try (
+                Connection connection = DatabaseConnection.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)
+        ) {
+
+            String searchKeyword = "%" + keyword + "%";
+
+            statement.setString(1, searchKeyword);
+            statement.setString(2, searchKeyword);
+
+            statement.setString(3, status);
+            statement.setString(4, status);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+
+                Course course = new Course();
+
+                course.setCourseId(resultSet.getInt("course_id"));
+
+                course.setCourseCode(resultSet.getString("course_code"));
+
+                course.setCourseName(resultSet.getString("course_name"));
+
+                course.setDuration(resultSet.getString("duration"));
+
+                course.setSchedule(resultSet.getString("schedule"));
+
+                course.setCourseFee(resultSet.getDouble("course_fee"));
+
+                course.setStatus(resultSet.getString("status"));
+
+                course.setCourseInfoPath(resultSet.getString("course_info_path"));
+
+                course.setStudentsCount(resultSet.getInt("students_count"));
+
+                courseList.add(course);
+
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return courseList;
+
     }
 }

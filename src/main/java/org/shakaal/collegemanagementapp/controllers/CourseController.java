@@ -5,12 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -121,11 +116,11 @@ public class CourseController implements Initializable{
 
          loadCourses();
 
+         configureFilters();
+
         loadPieChart();
 
-        // initializeFilters();
-
-        // initializeSearch();
+        loadStatistics();
 
 
         Image image = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/search.png"));
@@ -147,6 +142,28 @@ public class CourseController implements Initializable{
         courseFeeColumn.setCellValueFactory(new PropertyValueFactory<>("courseFee"));
         studentsCountColumn.setCellValueFactory(new PropertyValueFactory<>("studentsCount"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+
+        courseFeeColumn.setCellFactory(column -> new TableCell<Course, Double>() {
+
+            @Override
+            protected void updateItem(Double fee, boolean empty) {
+
+                super.updateItem(fee, empty);
+
+                if (empty || fee == null) {
+
+                    setText(null);
+
+                } else {
+
+                    setText(String.format("$%.2f", fee));
+
+                }
+
+            }
+
+        });
 
 
         // ***************** RESPONSIVE TABLE COLUMNS *****************
@@ -243,6 +260,62 @@ public class CourseController implements Initializable{
             i++;
 
         }
+
+    }
+
+
+    private void configureFilters() {
+
+        // Search listener
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            filterCourses();
+
+        });
+
+        // Status filter setup
+        statusFilterComboBox.getItems().addAll(
+                "All",
+                "Available",
+                "Archived"
+        );
+
+        statusFilterComboBox.setValue("All");
+
+        // Status listener
+        statusFilterComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+
+            filterCourses();
+
+        });
+
+    }
+    // Helper method for courses filtering
+
+    private void filterCourses() {
+
+        String keyword = searchField.getText().trim();
+
+        String status = statusFilterComboBox.getValue();
+
+        courseTable.setItems(courseDAO.filterCourses(keyword, status));
+
+    }
+
+
+    private void loadStatistics() {
+
+        totalCoursesCountLabel.setText(
+                String.valueOf(courseDAO.getTotalCourseCount())
+        );
+
+        availableCoursesCountLabel.setText(
+                String.valueOf(courseDAO.getAvailableCourseCount())
+        );
+
+        archivedCoursesCountLabel.setText(
+                String.valueOf(courseDAO.getArchivedCourseCount())
+        );
 
     }
 

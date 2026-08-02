@@ -161,6 +161,8 @@
 
                         </HBox>
 
+
+
                     </VBox>
                     <!-- ========================= -->
                     <!-- RIGHT SIDE -->
@@ -173,7 +175,7 @@
                           maxWidth="400"
                           styleClass="pie-chart-container">
 
-                        <Label text="Students by Course"
+                        <Label text="Students by Course (Only Available Courses)"
                                styleClass="chart-title"/>
 
                         <HBox spacing="35"

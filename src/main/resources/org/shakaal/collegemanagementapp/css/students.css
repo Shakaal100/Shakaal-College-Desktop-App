@@ -413,13 +413,13 @@
 
 .statistics-card{
 
-    -fx-background-color:#D8F1D4;
+    -fx-background-color:#79C1D2;
 
     -fx-background-radius:18;
 
     -fx-border-radius:18;
 
-    -fx-border-color:#E5E7EB;
+    -fx-border-color:#000000;
 
     -fx-padding:10;
 
@@ -453,7 +453,7 @@
 
     -fx-font-size:17px;
 
-    -fx-text-fill:#64748B;
+    -fx-text-fill:#430D36;
 
 }
 
