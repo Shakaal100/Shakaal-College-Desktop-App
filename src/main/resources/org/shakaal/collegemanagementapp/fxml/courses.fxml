@@ -235,7 +235,8 @@
 
                     <Button fx:id="addCourseButton"
                             text="+ Add Course"
-                            styleClass="add-button"/>
+                            styleClass="add-button"
+                            onAction="#handleAddCourse"/>
 
                 </HBox>
 

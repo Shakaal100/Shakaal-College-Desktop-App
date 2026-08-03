@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/26"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.shakaal.collegemanagementapp.controllers.AddCourseController"
+            stylesheets="@../css/add-course.css">
+
+    <!-- ================= FORM ================= -->
+
+    <center>
+
+        <HBox spacing="35"
+              alignment="CENTER_LEFT">
+
+            <padding>
+                <Insets top="30"
+                        right="30"
+                        bottom="30"
+                        left="30"/>
+            </padding>
+
+            <!-- ================= LEFT LOGO ================= -->
+
+            <VBox alignment="CENTER"
+                  spacing="15"
+                  prefWidth="180">
+
+                <ImageView fitWidth="150"
+                           fitHeight="150"
+                           preserveRatio="true">
+
+                    <image>
+                        <Image url="@../images/MyLogo.png"/>
+                    </image>
+
+                </ImageView>
+
+                <Label text="Shakaal College"
+                       styleClass="logo-title"/>
+
+                <Label text="Management System"
+                       styleClass="logo-subtitle"/>
+
+            </VBox>
+
+            <!-- ================= FORM ================= -->
+
+            <GridPane hgap="25"
+                      vgap="18">
+
+                <!-- Row 0 -->
+
+                <Label text="Course Code"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="0"/>
+
+                <TextField fx:id="courseCodeField"
+                           promptText="CS101"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Duration"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="2"/>
+
+                <ComboBox fx:id="durationComboBox"
+                          promptText="Select Duration"
+                          GridPane.rowIndex="0"
+                          GridPane.columnIndex="3"/>
+
+                <!-- Row 1 -->
+
+                <Label text="Course Name"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="0"/>
+
+                <TextField fx:id="courseNameField"
+                           promptText="Computer Science"
+                           GridPane.rowIndex="1"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Schedule"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="2"/>
+
+                <ComboBox fx:id="scheduleComboBox"
+                          promptText="Select Schedule"
+                          GridPane.rowIndex="1"
+                          GridPane.columnIndex="3"/>
+
+                <!-- Row 2 -->
+
+                <Label text="Course Fee"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="0"/>
+
+                <TextField fx:id="courseFeeField"
+                           promptText="8000"
+                           GridPane.rowIndex="2"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Status"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="2"/>
+
+                <ComboBox fx:id="statusComboBox"
+                          promptText="Select Status"
+                          GridPane.rowIndex="2"
+                          GridPane.columnIndex="3"/>
+
+                <!-- Row 3 -->
+
+                <!-- Course PDF -->
+
+                <Label text="Course PDF"
+                       GridPane.rowIndex="6"
+                       GridPane.columnIndex="0"/>
+
+                <HBox spacing="10"
+                      alignment="CENTER_LEFT"
+                      GridPane.rowIndex="6"
+                      GridPane.columnIndex="1"
+                      GridPane.columnSpan="3">
+
+                    <!-- Folder Icon -->
+                    <ImageView fx:id="browseIcon"
+                               fitWidth="40"
+                               fitHeight="40"
+                               preserveRatio="true">
+
+                        <image>
+                            <Image url="@../icons/folder.png"/>
+                        </image>
+
+                    </ImageView>
+
+                    <!-- Browse -->
+                    <Label fx:id="browseLabel"
+                           text="Browse"
+                           styleClass="browse-label"/>
+
+                    <!-- Selected File -->
+                    <Label fx:id="selectedFileLabel"
+                           text="No file selected"
+                           styleClass="selected-file-label"/>
+
+                </HBox>
+
+            </GridPane>
+
+        </HBox>
+
+    </center>
+
+    <!-- ================= FOOTER ================= -->
+
+    <bottom>
+
+        <HBox spacing="15"
+              alignment="CENTER_RIGHT"
+              styleClass="footer-container">
+
+            <padding>
+                <Insets top="15"
+                        right="30"
+                        bottom="20"
+                        left="30"/>
+            </padding>
+
+            <Button fx:id="cancelButton"
+                    text="Cancel"
+                    styleClass="cancel-button"/>
+
+            <Button fx:id="saveButton"
+                    text="Save Course"
+                    styleClass="save-button"/>
+
+        </HBox>
+
+    </bottom>
+
+</BorderPane>

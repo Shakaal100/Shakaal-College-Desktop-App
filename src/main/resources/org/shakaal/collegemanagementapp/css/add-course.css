@@ -1,0 +1,280 @@
+/* ==========================================================
+   ROOT
+   ========================================================== */
+
+.root {
+
+    -fx-background-color: #F8FAFC;
+
+    -fx-font-family: "Segoe UI";
+
+}
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.header-container {
+
+    -fx-background-color: white;
+
+    -fx-background-radius: 0 0 18 18;
+
+    -fx-effect: dropshadow(gaussian,
+            rgba(0,0,0,0.08),
+            12,
+            0,
+            0,
+            2);
+
+}
+
+/* ==========================================================
+   TITLES
+   ========================================================== */
+
+.page-title {
+
+    -fx-font-size: 26;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #1E40AF;
+
+}
+
+.page-subtitle {
+
+    -fx-font-size: 14;
+
+    -fx-text-fill: #64748B;
+
+}
+
+/* ==========================================================
+   LABELS
+   ========================================================== */
+
+.label {
+
+    -fx-font-size: 14;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #334155;
+
+}
+
+/* ==========================================================
+   TEXTFIELDS
+   ========================================================== */
+
+.text-field {
+
+    -fx-pref-height: 42;
+
+    -fx-background-radius: 10;
+
+    -fx-border-radius: 10;
+
+    -fx-border-color: #CBD5E1;
+
+    -fx-background-color: white;
+
+    -fx-font-size: 14;
+
+    -fx-padding: 0 12;
+
+}
+
+.text-field:focused {
+
+    -fx-border-color: #2563EB;
+
+    -fx-border-width: 2;
+
+}
+
+/* ==========================================================
+   COMBO BOX
+   ========================================================== */
+
+.combo-box {
+
+    -fx-pref-height: 42;
+
+    -fx-background-radius: 10;
+
+    -fx-border-radius: 10;
+
+    -fx-background-color: white;
+
+    -fx-border-color: #CBD5E1;
+
+    -fx-font-size: 14;
+
+}
+
+.combo-box:focused {
+
+    -fx-border-color: #2563EB;
+
+    -fx-border-width: 2;
+
+}
+
+/* ==========================================================
+   PDF BUTTON
+   ========================================================== */
+
+#browsePdfButton {
+
+    -fx-background-color: #2563EB;
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 13;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 10;
+
+    -fx-cursor: hand;
+
+}
+
+#browsePdfButton:hover {
+
+    -fx-background-color: #1D4ED8;
+
+}
+
+/* ==========================================================
+   PDF LABEL
+   ========================================================== */
+
+#selectedPdfLabel {
+
+    -fx-font-size: 13;
+
+    -fx-text-fill: #64748B;
+
+    -fx-font-weight: normal;
+
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+
+.footer-container {
+
+    -fx-background-color: white;
+
+    -fx-border-color: #E2E8F0 transparent transparent transparent;
+
+}
+
+/* ==========================================================
+   CANCEL BUTTON
+   ========================================================== */
+
+.cancel-button {
+
+    -fx-background-color: #E2E8F0;
+
+    -fx-text-fill: #334155;
+
+    -fx-font-size: 14;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 10;
+
+    -fx-pref-width: 110;
+
+    -fx-pref-height: 42;
+
+    -fx-cursor: hand;
+
+}
+
+.cancel-button:hover {
+
+    -fx-background-color: #CBD5E1;
+
+}
+
+/* ==========================================================
+   SAVE BUTTON
+   ========================================================== */
+
+.save-button {
+
+    -fx-background-color: #2563EB;
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 14;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 10;
+
+    -fx-pref-width: 150;
+
+    -fx-pref-height: 42;
+
+    -fx-cursor: hand;
+
+}
+
+.save-button:hover {
+
+    -fx-background-color: #1D4ED8;
+
+}
+
+
+/* ==========================================================
+   BROWSE LABEL
+   ========================================================== */
+
+.browse-label {
+
+    -fx-font-size: 15px;
+
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #2563EB;
+
+    -fx-cursor: hand;
+
+}
+
+.browse-label:hover {
+
+    -fx-text-fill: #1D4ED8;
+
+    -fx-underline: true;
+
+}
+
+
+/* ==========================================================
+   SELECTED FILE
+   ========================================================== */
+
+.selected-file-label {
+
+    -fx-font-size: 14px;
+
+    -fx-text-fill: #64748B;
+
+}
+
+#browseIcon{
+
+    -fx-cursor: hand;
+
+}

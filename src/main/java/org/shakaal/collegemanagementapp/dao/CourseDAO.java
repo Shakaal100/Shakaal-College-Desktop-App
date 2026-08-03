@@ -396,4 +396,137 @@ public class CourseDAO {
         return courseList;
 
     }
+
+
+    //    *************************************************
+    //    ******** COURSE-CODE EXISTS CHECKING METHOD  *****
+    //   ***************************************************
+
+    public boolean courseCodeExists(String courseCode) {
+
+        String sql = """
+            SELECT COUNT(*)
+            FROM courses
+            WHERE course_code = ?
+            """;
+
+        try (
+                Connection connection = DatabaseConnection.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)
+        ) {
+
+            statement.setString(1, courseCode);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+
+                return resultSet.getInt(1) > 0;
+
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return false;
+
+    }
+
+
+
+    public boolean courseCodeExists(String courseCode, int courseId) {
+
+        String sql = """
+            SELECT COUNT(*)
+            FROM courses
+            WHERE course_code = ?
+            AND course_id <> ?
+            """;
+
+        try (
+                Connection connection = DatabaseConnection.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)
+        ) {
+
+            statement.setString(1, courseCode);
+
+            statement.setInt(2, courseId);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+
+                return resultSet.getInt(1) > 0;
+
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return false;
+
+    }
+
+
+    public boolean updateCourseStatus(int courseId, String status) {
+
+        String sql = """
+            UPDATE courses
+            SET status = ?
+            WHERE course_id = ?
+            """;
+
+        try (
+                Connection connection = DatabaseConnection.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)
+        ) {
+
+            statement.setString(1, status);
+
+            statement.setInt(2, courseId);
+
+            return statement.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return false;
+
+    }
+
+
+    public boolean deleteCourse(int courseId) {
+
+        String sql = """
+            DELETE FROM courses
+            WHERE course_id = ?
+            """;
+
+        try (
+                Connection connection = DatabaseConnection.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)
+        ) {
+
+            statement.setInt(1, courseId);
+
+            return statement.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return false;
+
+    }
 }

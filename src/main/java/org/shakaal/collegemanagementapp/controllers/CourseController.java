@@ -3,7 +3,11 @@ package org.shakaal.collegemanagementapp.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 
@@ -13,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.shakaal.collegemanagementapp.dao.CourseDAO;
 import org.shakaal.collegemanagementapp.models.Course;
 
@@ -20,9 +25,16 @@ import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import org.shakaal.collegemanagementapp.session.Session;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 
 public class CourseController implements Initializable{
 
@@ -114,14 +126,15 @@ public class CourseController implements Initializable{
 
         configureTable();
 
-         loadCourses();
+        configureFilters();
 
-         configureFilters();
+        configureStatusColumn();
 
-        loadPieChart();
+        configureButtons();
 
-        loadStatistics();
+        configureActionColumn();
 
+        refreshDashboard();
 
         Image image = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/search.png"));
 
@@ -305,17 +318,457 @@ public class CourseController implements Initializable{
 
     private void loadStatistics() {
 
-        totalCoursesCountLabel.setText(
-                String.valueOf(courseDAO.getTotalCourseCount())
+        totalCoursesCountLabel.setText(String.valueOf(courseDAO.getTotalCourseCount()));
+
+        availableCoursesCountLabel.setText(String.valueOf(courseDAO.getAvailableCourseCount()));
+
+        archivedCoursesCountLabel.setText(String.valueOf(courseDAO.getArchivedCourseCount()));
+
+    }
+
+
+    private void configureButtons() {
+
+        addCourseButton.setOnAction(event -> handleAddCourse());
+
+    }
+
+
+    @FXML
+    private void handleAddCourse() {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/add-course.fxml"));
+
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+
+            stage.setTitle("Add Course");
+
+            stage.setScene(new Scene(root));
+
+            stage.setResizable(false);
+
+            stage.show();
+
+            refreshDashboard();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+
+    private void configureStatusColumn() {
+
+        statusColumn.setCellFactory(column -> new TableCell<Course, String>() {
+
+            @Override
+            protected void updateItem(String status, boolean empty) {
+
+                super.updateItem(status, empty);
+
+                if (empty || status == null) {
+
+                    setText(null);
+                    setGraphic(null);
+
+                } else {
+
+                    Label badge = new Label(status);
+
+                    badge.setCursor(Cursor.HAND);
+
+                    badge.getStyleClass().add("status-badge");
+
+                    if (status.equalsIgnoreCase("Available")) {
+
+                        badge.getStyleClass().add("status-active");
+
+                    } else {
+
+                        badge.getStyleClass().add("status-inactive");
+
+                    }
+
+                    badge.setOnMouseClicked(event -> {
+
+                        Course course = getTableView().getItems().get(getIndex());
+
+                        String newStatus = course.getStatus().equalsIgnoreCase("Available")
+                                ? "Archived"
+                                : "Available";
+
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+                        alert.setTitle("Confirm Status Change");
+                        alert.setHeaderText(null);
+
+                        String message;
+
+                        if (newStatus.equalsIgnoreCase("Archived")) {
+
+                            message = "Are you sure you want to archive the course\n\n"
+                                    + course.getCourseName()
+                                    + "?";
+
+                        } else {
+
+                            message = "Are you sure you want to make the course\n\n"
+                                    + course.getCourseName()
+                                    + "\navailable again?";
+
+                        }
+
+                        alert.setContentText(message);
+
+                        Optional<ButtonType> result = alert.showAndWait();
+
+                        if (result.isPresent() && result.get() == ButtonType.OK) {
+
+                            boolean success = courseDAO.updateCourseStatus(
+                                    course.getCourseId(),
+                                    newStatus
+                            );
+
+                            if (success) {
+
+                                refreshDashboard();
+
+                            } else {
+
+                                Alert error = new Alert(Alert.AlertType.ERROR);
+
+                                error.setTitle("Failed");
+
+                                error.setHeaderText(null);
+
+                                error.setContentText("Failed to update course status.");
+
+                                error.showAndWait();
+
+                            }
+
+                        }
+
+                    });
+
+                    setGraphic(badge);
+
+                    setText(null);
+
+                }
+
+            }
+
+        });
+
+    }
+
+
+    private void configureActionColumn() {
+
+        actionsColumn.setCellFactory(param -> new TableCell<>() {
+
+            private final Button editButton = new Button();
+
+            private final Button infoButton = new Button();
+
+            private final Button deleteButton = new Button();
+
+
+
+            private final HBox buttons = new HBox(10);
+
+            {
+
+                buttons.getChildren().add(editButton);
+
+                if (Session.getCurrentUser().getRole().equals("ADMIN")) {
+
+                    buttons.getChildren().add(deleteButton);
+
+                } else {
+
+                    buttons.getChildren().add(infoButton);
+
+                }
+
+                buttons.setAlignment(Pos.CENTER);
+
+                editButton.getStyleClass().add("edit-button");
+
+                infoButton.getStyleClass().add("info-button");
+
+                deleteButton.getStyleClass().add("delete-button");
+
+                // ---------- Edit Icon ----------
+
+                Image editImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/edit.png"));
+
+                ImageView editView = new ImageView(editImage);
+
+                editView.setFitWidth(16);
+
+                editView.setFitHeight(16);
+
+                editButton.setGraphic(editView);
+
+                editButton.setTooltip(new Tooltip("Edit Course"));
+
+                // ---------- Info Icon ----------
+
+                Image infoImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/pdf.png"));
+
+                ImageView infoView = new ImageView(infoImage);
+
+                infoView.setFitWidth(18);
+
+                infoView.setFitHeight(18);
+
+                infoButton.setGraphic(infoView);
+
+                infoButton.setTooltip(new Tooltip("View Course Information"));
+
+                // ---------- Delete Icon ----------
+
+                Image deleteImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/delete.png"));
+
+                ImageView deleteView = new ImageView(deleteImage);
+
+                deleteView.setFitWidth(18);
+
+                deleteView.setFitHeight(18);
+
+                deleteButton.setGraphic(deleteView);
+
+                deleteButton.setTooltip(new Tooltip("Delete Course"));
+
+                // ---------- Actions ----------
+
+                editButton.setOnAction(event -> {
+
+                    Course course = getTableView().getItems().get(getIndex());
+
+                    openEditCourseWindow(course);
+
+                });
+
+                infoButton.setOnAction(event -> {
+
+                    Course course = getTableView().getItems().get(getIndex());
+
+                    openCourseInfo(course);
+
+                });
+
+                deleteButton.setOnAction(event -> {
+
+                    Course course = getTableView().getItems().get(getIndex());
+
+                    deleteCourse(course);
+
+                });
+
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+
+                super.updateItem(item, empty);
+
+                if (empty) {
+
+                    setGraphic(null);
+
+                } else {
+
+                    setGraphic(buttons);
+
+                }
+
+            }
+
+        });
+
+    }
+
+    private void openCourseInfo(Course course) {
+
+        if (course.getCourseInfoPath() == null ||
+                course.getCourseInfoPath().isBlank()) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+
+            alert.setTitle("No Course Information");
+
+            alert.setHeaderText(null);
+
+            alert.setContentText("This course has no PDF attached.");
+
+            alert.showAndWait();
+
+            return;
+
+        }
+
+        File pdfFile = new File(course.getCourseInfoPath());
+
+        if (!pdfFile.exists()) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            alert.setTitle("File Not Found");
+
+            alert.setHeaderText(null);
+
+            alert.setContentText("The course information PDF could not be found.");
+
+            alert.showAndWait();
+
+            return;
+
+        }
+
+        try {
+
+            Desktop.getDesktop().open(pdfFile);
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            alert.setTitle("Unable to Open PDF");
+
+            alert.setHeaderText(null);
+
+            alert.setContentText("An error occurred while opening the PDF.");
+
+            alert.showAndWait();
+
+        }
+
+    }
+
+
+    private void openEditCourseWindow(Course course) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/org/shakaal/collegemanagementapp/fxml/add-course.fxml")
+            );
+
+            Parent root = loader.load();
+
+            AddCourseController controller = loader.getController();
+
+            controller.setCourse(course);
+
+            Stage stage = new Stage();
+
+            stage.setTitle("Edit Course");
+
+            stage.setScene(new Scene(root));
+
+            stage.setResizable(false);
+
+            stage.showAndWait();
+
+            refreshDashboard();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+
+    private void deleteCourse(Course course) {
+
+        if (course.getStudentsCount() > 0) {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+
+            alert.setTitle("Cannot Delete");
+
+            alert.setHeaderText(null);
+
+            alert.setContentText("This course cannot be deleted because " + course.getStudentsCount() + " student(s) are currently enrolled.");
+
+            alert.showAndWait();
+
+            return;
+
+        }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+        alert.setTitle("Delete Course");
+
+        alert.setHeaderText(null);
+
+        alert.setContentText(
+                "Are you sure you want to delete\n\n"
+                        + course.getCourseName()
+                        + " ?"
         );
 
-        availableCoursesCountLabel.setText(
-                String.valueOf(courseDAO.getAvailableCourseCount())
-        );
+        Optional<ButtonType> result = alert.showAndWait();
 
-        archivedCoursesCountLabel.setText(
-                String.valueOf(courseDAO.getArchivedCourseCount())
-        );
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+
+            boolean success = courseDAO.deleteCourse(course.getCourseId());
+
+            if (success) {
+
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+
+                successAlert.setTitle("Success");
+
+                successAlert.setHeaderText(null);
+
+                successAlert.setContentText("Course deleted successfully.");
+
+                successAlert.showAndWait();
+
+                refreshDashboard();
+
+            } else {
+
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+
+                errorAlert.setTitle("Error");
+
+                errorAlert.setHeaderText(null);
+
+                errorAlert.setContentText("Failed to delete course.");
+
+                errorAlert.showAndWait();
+
+            }
+
+        }
+
+    }
+
+
+    private void refreshDashboard() {
+
+        loadCourses();
+
+        loadStatistics();
+
+        loadPieChart();
 
     }
 
