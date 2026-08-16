@@ -138,6 +138,10 @@ public class AddUserController implements Initializable{
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
+
             alert.setTitle("Success");
 
             alert.setHeaderText(null);
@@ -151,6 +155,10 @@ public class AddUserController implements Initializable{
         } else {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
 
             alert.setTitle("Error");
 
@@ -174,6 +182,10 @@ public class AddUserController implements Initializable{
     private void showError(String message) {
 
         Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+        alert.getDialogPane().getStyleClass().add("alert-dialog");
 
         alert.setTitle("Validation Error");
 

@@ -1,6 +1,6 @@
 package org.shakaal.collegemanagementapp.dao;
 
-import org.shakaal.collegemanagementapp.database.DatabaseConnection;
+import org.shakaal.collegemanagementapp.database.DatabaseClass;
 import org.shakaal.collegemanagementapp.models.Student;
 
 import java.sql.Connection;
@@ -15,16 +15,16 @@ import javafx.collections.ObservableList;
  * ==========================================================
  * StudentDAO.java
  * ==========================================================
- *
+
  * Data Access Object (DAO)
- *
+
  * Responsible for all database operations related
  * to the Students table.
- *
+
  * This class communicates directly with SQLite.
- *
+
  * It DOES NOT know anything about JavaFX controls.
- *
+
  * Author: Shakaal
  * Project: College Management System
  * ==========================================================
@@ -51,8 +51,8 @@ public class StudentDAO {
         """;
 
         try
-                (Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql))
+                (Connection connection = DatabaseClass.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(sql))
         {
 
             statement.setString(1, student.getFirstName());
@@ -89,9 +89,9 @@ public class StudentDAO {
         }
 
     }
+    /**=====================================================
+    // GET ALL STUDENTS
     // =====================================================
-// GET ALL STUDENTS
-// =====================================================
 
     /**
      * Retrieves all students from the database.
@@ -100,8 +100,7 @@ public class StudentDAO {
      */
     public ObservableList<Student> getAllStudents() {
 
-        ObservableList<Student> studentList =
-                FXCollections.observableArrayList();
+        ObservableList<Student> studentList = FXCollections.observableArrayList();
 
         String sql = """
                         SELECT
@@ -122,7 +121,7 @@ public class StudentDAO {
                         """;
 
         try
-                (Connection connection = DatabaseConnection.getConnection();
+                (Connection connection = DatabaseClass.getConnection();
                  PreparedStatement statement = connection.prepareStatement(sql))
         {
             ResultSet resultSet = statement.executeQuery();
@@ -139,7 +138,11 @@ public class StudentDAO {
 
                 student.setGender(resultSet.getString("gender"));
 
-                student.setRegisteredDate(LocalDate.parse(resultSet.getString("registered_date")));
+                String registeredDate = resultSet.getString("registered_date");
+
+                if (registeredDate != null) {
+                    student.setRegisteredDate(LocalDate.parse(registeredDate));
+                }
 
                 student.setPhone(resultSet.getString("phone"));
 
@@ -187,7 +190,7 @@ public class StudentDAO {
             """;
 
         try
-                (Connection connection = DatabaseConnection.getConnection();
+                (Connection connection = DatabaseClass.getConnection();
                  PreparedStatement statement = connection.prepareStatement(sql))
         {
             statement.setString(1, student.getFirstName());
@@ -230,7 +233,7 @@ public class StudentDAO {
         String sql = "DELETE FROM students WHERE student_id = ?";
 
         try
-                (Connection connection = DatabaseConnection.getConnection();
+                (Connection connection = DatabaseClass.getConnection();
                  PreparedStatement statement = connection.prepareStatement(sql))
         {
             statement.setInt(1, studentId);
@@ -256,7 +259,7 @@ public class StudentDAO {
     /**
      * Searches students by first name, last name,
      * phone or email.
-     *
+
      * @param keyword Search keyword.
      * @return ObservableList of matching students.
      */
@@ -297,7 +300,7 @@ public class StudentDAO {
             sql.append(" AND students.status = ?");
         }
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = DatabaseClass.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql.toString())) {
 
             String searchKeyword = "%" + keyword + "%";
@@ -366,7 +369,7 @@ public class StudentDAO {
         String sql = "SELECT COUNT(*) FROM students";
 
         try
-                (Connection connection = DatabaseConnection.getConnection();
+                (Connection connection = DatabaseClass.getConnection();
                  PreparedStatement statement = connection.prepareStatement(sql))
         {
             ResultSet resultSet = statement.executeQuery();
@@ -396,7 +399,7 @@ public class StudentDAO {
             WHERE gender = 'Male'
             """;
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = DatabaseClass.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
 
@@ -426,7 +429,7 @@ public class StudentDAO {
             WHERE gender = 'Female'
             """;
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = DatabaseClass.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
 
@@ -456,7 +459,7 @@ public class StudentDAO {
             WHERE status = 'Active'
             """;
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = DatabaseClass.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
 
@@ -485,7 +488,7 @@ public class StudentDAO {
             """;
 
         try (
-                Connection connection = DatabaseConnection.getConnection();
+                Connection connection = DatabaseClass.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
 

@@ -50,6 +50,10 @@ public class LoginController {
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
 
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
+
             alert.setHeaderText(null);
 
             alert.setTitle("Missing Information");
@@ -76,6 +80,10 @@ public class LoginController {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
 
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
+
             alert.setHeaderText(null);
 
             alert.setTitle("Login Failed");
@@ -94,8 +102,7 @@ public class LoginController {
 
         try {
 
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/org/shakaal/collegemanagementapp/fxml/dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/dashboard.fxml"));
 
             Parent root = loader.load();
 

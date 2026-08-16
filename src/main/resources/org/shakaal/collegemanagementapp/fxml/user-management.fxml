@@ -92,6 +92,8 @@
 
                         <TableColumn fx:id="usernameColumn" text="User Name" />
 
+                        <TableColumn fx:id="passwordColumn" text="Password" />
+
                         <TableColumn fx:id="roleColumn" text="Role" />
 
                         <TableColumn fx:id="createdAtColumn" text="Created Date" />

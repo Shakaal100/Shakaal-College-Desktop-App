@@ -1,0 +1,22 @@
+/* =========================================================
+   GLOBAL ALERT STYLING
+   ========================================================= */
+
+.alert-dialog {
+    -fx-font-size: 16px;
+}
+
+
+/* ---------- Alert Content ---------- */
+
+.alert-dialog .content {
+    -fx-font-size: 16px;
+}
+
+
+/* ---------- Alert Buttons ---------- */
+
+.alert-dialog .button {
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}

@@ -49,7 +49,7 @@
 
                 <Button fx:id="studentsButton" styleClass="menu-button" text="🎓   Students" />
 
-                <Button styleClass="menu-button" text="👨‍🏫  Teachers" />
+                <Button fx:id="teachersButton" styleClass="menu-button" text="👨‍🏫  Teachers" />
 
                 <Button fx:id="coursesButton" styleClass="menu-button" text="📚   Courses" />
 
@@ -68,7 +68,7 @@
                 <Pane VBox.vgrow="ALWAYS">
                <children>
 
-                   <Button
+                   <Button fx:id="logoutButton"
                            text="Logout"
                            styleClass="logout-button"
                            onAction="#logout"/>

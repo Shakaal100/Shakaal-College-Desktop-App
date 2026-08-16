@@ -19,14 +19,13 @@ import java.sql.SQLException;
  * ==========================================================
  */
 
-public final class DatabaseConnection {
+public final class DatabaseClass {
 
     // =====================================================
     // Database Path
     // =====================================================
 
-    private static final String DATABASE_URL =
-            "jdbc:sqlite:databaseFiles/student_registration.db";
+    private static final String DATABASE_URL = "jdbc:sqlite:databaseFiles/student_registration.db";
 
     // =====================================================
     // Private Constructor
@@ -37,7 +36,7 @@ public final class DatabaseConnection {
 
      * This is a utility class.
      */
-    private DatabaseConnection() {
+    private DatabaseClass() {
 
     }
 
@@ -53,10 +52,7 @@ public final class DatabaseConnection {
      */
     public static Connection getConnection() throws SQLException {
 
-        java.io.File file = new java.io.File("jdbc:sqlite:databaseFiles/student_registration.db");
 
-        System.out.println("Exists: " + file.exists());
-        System.out.println("Absolute Path: " + file.getAbsolutePath());
 
         return DriverManager.getConnection(DATABASE_URL);
 

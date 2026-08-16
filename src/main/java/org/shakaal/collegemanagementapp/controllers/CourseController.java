@@ -260,9 +260,7 @@ public class CourseController implements Initializable{
             Circle circle = new Circle(7);
             circle.setFill(DASHBOARD_COLORS[i % DASHBOARD_COLORS.length]);
 
-            Label label = new Label(
-                    item.getName() + " (" + (int)item.getPieValue() + ")"
-            );
+            Label label = new Label(item.getName() + " (" + (int)item.getPieValue() + ")");
 
             label.getStyleClass().add("legend-label");
 
@@ -406,6 +404,10 @@ public class CourseController implements Initializable{
 
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
+                        alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+                        alert.getDialogPane().getStyleClass().add("alert-dialog");
+
                         alert.setTitle("Confirm Status Change");
                         alert.setHeaderText(null);
 
@@ -443,6 +445,10 @@ public class CourseController implements Initializable{
                             } else {
 
                                 Alert error = new Alert(Alert.AlertType.ERROR);
+
+                                error.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+                                error.getDialogPane().getStyleClass().add("alert-dialog");
 
                                 error.setTitle("Failed");
 
@@ -605,6 +611,10 @@ public class CourseController implements Initializable{
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
 
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
+
             alert.setTitle("No Course Information");
 
             alert.setHeaderText(null);
@@ -622,6 +632,10 @@ public class CourseController implements Initializable{
         if (!pdfFile.exists()) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
 
             alert.setTitle("File Not Found");
 
@@ -645,6 +659,10 @@ public class CourseController implements Initializable{
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
 
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
+
             alert.setTitle("Unable to Open PDF");
 
             alert.setHeaderText(null);
@@ -662,9 +680,7 @@ public class CourseController implements Initializable{
 
         try {
 
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/org/shakaal/collegemanagementapp/fxml/add-course.fxml")
-            );
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/add-course.fxml"));
 
             Parent root = loader.load();
 
@@ -699,6 +715,10 @@ public class CourseController implements Initializable{
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
 
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
+
             alert.setTitle("Cannot Delete");
 
             alert.setHeaderText(null);
@@ -712,6 +732,10 @@ public class CourseController implements Initializable{
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+        alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+        alert.getDialogPane().getStyleClass().add("alert-dialog");
 
         alert.setTitle("Delete Course");
 
@@ -733,6 +757,10 @@ public class CourseController implements Initializable{
 
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
 
+                successAlert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+                successAlert.getDialogPane().getStyleClass().add("alert-dialog");
+
                 successAlert.setTitle("Success");
 
                 successAlert.setHeaderText(null);
@@ -746,6 +774,10 @@ public class CourseController implements Initializable{
             } else {
 
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+
+                errorAlert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+                errorAlert.getDialogPane().getStyleClass().add("alert-dialog");
 
                 errorAlert.setTitle("Error");
 

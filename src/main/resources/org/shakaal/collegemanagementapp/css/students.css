@@ -321,6 +321,39 @@
     -fx-scale-x: 0.95;
     -fx-scale-y: 0.95;
 }
+
+
+.info-button {
+
+    -fx-background-color: #79E493;
+
+    -fx-text-fill: white;
+
+    -fx-min-width: 50;
+
+    -fx-background-radius: 20;
+
+    -fx-cursor: hand;
+
+}
+
+.info-button:hover {
+
+    -fx-background-color: #37D75E;
+
+    -fx-scale-x: 1.08;
+
+    -fx-scale-y: 1.08;
+
+}
+
+.info-button:pressed {
+
+    -fx-scale-x: 0.95;
+
+    -fx-scale-y: 0.95;
+
+}
 /* ==========================================================
    SOME CSS FIX OF THE TABLE VIEW, ESPECIALLY THE FONT OF CELLS TEXT
    ========================================================== */

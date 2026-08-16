@@ -1,33 +1,40 @@
 package org.shakaal.collegemanagementapp.models;
 
 public class Teacher {
-
-    private int teacherId;
+    private int teacherID;
     private String fullName;
     private String gender;
     private String phone;
     private String email;
     private String specialization;
+    private double salary;
+    private String status;
 
-    // Empty Constructor
-    public Teacher() {
+    // Empty constructor
+
+    public Teacher(){
 
     }
 
-    // Full Constructor
-    public Teacher(int teacherId, String fullName, String gender,
-                   String phone, String email, String specialization) {
-        this.teacherId = teacherId;
+    //Full Constructor
+
+    public Teacher(int teacherID, String fullName, String gender, String phone, String email, String specialization, double salary, String status) {
+        this.teacherID = teacherID;
         this.fullName = fullName;
         this.gender = gender;
         this.phone = phone;
         this.email = email;
         this.specialization = specialization;
+        this.salary = salary;
+        this.status = status;
     }
 
+
     // Getters
-    public int getTeacherId() {
-        return teacherId;
+
+
+    public int getTeacherID() {
+        return teacherID;
     }
 
     public String getFullName() {
@@ -50,9 +57,19 @@ public class Teacher {
         return specialization;
     }
 
+    public double getSalary() {
+        return salary;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
     // Setters
-    public void setTeacherId(int teacherId) {
-        this.teacherId = teacherId;
+
+
+    public void setTeacherID(int teacherID) {
+        this.teacherID = teacherID;
     }
 
     public void setFullName(String fullName) {
@@ -75,8 +92,17 @@ public class Teacher {
         this.specialization = specialization;
     }
 
-    @Override
-    public String toString() {
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    // toString Method
+
+    public String toString(){
         return fullName;
     }
 }

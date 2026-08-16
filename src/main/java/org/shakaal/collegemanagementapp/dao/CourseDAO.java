@@ -3,15 +3,13 @@ package org.shakaal.collegemanagementapp.dao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
-import org.shakaal.collegemanagementapp.database.DatabaseConnection;
+import org.shakaal.collegemanagementapp.database.DatabaseClass;
 import org.shakaal.collegemanagementapp.models.Course;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class CourseDAO {
 
@@ -35,7 +33,7 @@ public class CourseDAO {
             """;
 
         try (
-                Connection connection = DatabaseConnection.getConnection();
+                Connection connection = DatabaseClass.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql);
                 ResultSet resultSet = statement.executeQuery())
         {
@@ -95,7 +93,7 @@ public class CourseDAO {
             """;
 
         try (
-                Connection connection = DatabaseConnection.getConnection();
+                Connection connection = DatabaseClass.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
 
@@ -145,7 +143,7 @@ public class CourseDAO {
             """;
 
         try (
-                Connection connection = DatabaseConnection.getConnection();
+                Connection connection = DatabaseClass.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
 
@@ -189,7 +187,7 @@ public class CourseDAO {
             """;
 
         try (
-                Connection connection = DatabaseConnection.getConnection();
+                Connection connection = DatabaseClass.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql);
                 ResultSet resultSet = statement.executeQuery()
         ) {
@@ -223,7 +221,7 @@ public class CourseDAO {
             """;
 
         try (
-                Connection connection = DatabaseConnection.getConnection();
+                Connection connection = DatabaseClass.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql);
                 ResultSet resultSet = statement.executeQuery()
         ) {
@@ -258,7 +256,7 @@ public class CourseDAO {
             """;
 
         try (
-                Connection connection = DatabaseConnection.getConnection();
+                Connection connection = DatabaseClass.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql);
                 ResultSet resultSet = statement.executeQuery()
         ) {
@@ -299,7 +297,7 @@ public class CourseDAO {
             ORDER BY total_students DESC
             """;
 
-        try (Connection connection = DatabaseConnection.getConnection();
+        try (Connection connection = DatabaseClass.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
 
@@ -347,7 +345,7 @@ public class CourseDAO {
         """;
 
         try (
-                Connection connection = DatabaseConnection.getConnection();
+                Connection connection = DatabaseClass.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
 
@@ -411,7 +409,7 @@ public class CourseDAO {
             """;
 
         try (
-                Connection connection = DatabaseConnection.getConnection();
+                Connection connection = DatabaseClass.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
 
@@ -447,7 +445,7 @@ public class CourseDAO {
             """;
 
         try (
-                Connection connection = DatabaseConnection.getConnection();
+                Connection connection = DatabaseClass.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
 
@@ -483,7 +481,7 @@ public class CourseDAO {
             """;
 
         try (
-                Connection connection = DatabaseConnection.getConnection();
+                Connection connection = DatabaseClass.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
 
@@ -512,7 +510,7 @@ public class CourseDAO {
             """;
 
         try (
-                Connection connection = DatabaseConnection.getConnection();
+                Connection connection = DatabaseClass.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql)
         ) {
 

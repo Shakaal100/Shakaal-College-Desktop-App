@@ -171,6 +171,10 @@ public class AddCourseController implements Initializable {
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
 
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
+
             alert.setTitle("Missing Information");
 
             alert.setHeaderText(null);
@@ -190,6 +194,10 @@ public class AddCourseController implements Initializable {
             if (courseDAO.courseCodeExists(courseCodeField.getText().trim())) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
+
+                alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+                alert.getDialogPane().getStyleClass().add("alert-dialog");
 
                 alert.setTitle("Duplicate Course");
 
@@ -211,6 +219,10 @@ public class AddCourseController implements Initializable {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
 
+                alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+                alert.getDialogPane().getStyleClass().add("alert-dialog");
+
                 alert.setTitle("Duplicate Course");
 
                 alert.setHeaderText(null);
@@ -230,6 +242,10 @@ public class AddCourseController implements Initializable {
         if (selectedPdfFile == null) {
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
+
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
 
             alert.setTitle("Missing PDF");
 
@@ -252,6 +268,10 @@ public class AddCourseController implements Initializable {
         } catch (NumberFormatException e) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
 
             alert.setTitle("Invalid Fee");
 
@@ -282,6 +302,10 @@ public class AddCourseController implements Initializable {
         } catch (IOException e) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
 
             alert.setTitle("PDF Error");
 
@@ -329,6 +353,10 @@ public class AddCourseController implements Initializable {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
+
             alert.setTitle("Success");
 
             alert.setHeaderText(null);
@@ -346,6 +374,10 @@ public class AddCourseController implements Initializable {
         } else {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
 
             alert.setTitle("Error");
 

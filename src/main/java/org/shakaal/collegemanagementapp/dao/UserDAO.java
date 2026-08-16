@@ -2,8 +2,7 @@ package org.shakaal.collegemanagementapp.dao;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.shakaal.collegemanagementapp.database.DatabaseConnection;
-import org.shakaal.collegemanagementapp.models.Student;
+import org.shakaal.collegemanagementapp.database.DatabaseClass;
 import org.shakaal.collegemanagementapp.models.User;
 
 import java.sql.*;
@@ -22,7 +21,7 @@ public class UserDAO {
             """;
 
         try
-                (Connection connection = DatabaseConnection.getConnection();
+                (Connection connection = DatabaseClass.getConnection();
                  PreparedStatement statement = connection.prepareStatement(sql))
         {
             statement.setString(1, username);
@@ -85,7 +84,7 @@ public class UserDAO {
             """;
 
         try
-                (Connection connection = DatabaseConnection.getConnection();
+                (Connection connection = DatabaseClass.getConnection();
                  PreparedStatement statement = connection.prepareStatement(sql))
         {
             statement.setString(1, user.getUsername());
@@ -122,7 +121,7 @@ public class UserDAO {
             """;
 
         try
-                (Connection connection = DatabaseConnection.getConnection();
+                (Connection connection = DatabaseClass.getConnection();
                  PreparedStatement statement = connection.prepareStatement(sql))
         {
             ResultSet resultSet = statement.executeQuery();
@@ -167,7 +166,7 @@ public class UserDAO {
             """;
 
         try
-                (Connection connection = DatabaseConnection.getConnection();
+                (Connection connection = DatabaseClass.getConnection();
                  PreparedStatement statement = connection.prepareStatement(sql))
         {
             statement.setInt(1, userId);
@@ -198,7 +197,7 @@ public class UserDAO {
         """;
 
         try
-                (Connection connection = DatabaseConnection.getConnection();
+                (Connection connection = DatabaseClass.getConnection();
                  PreparedStatement statement = connection.prepareStatement(sql))
         {
             String searchKeyword = "%" + keyword + "%";

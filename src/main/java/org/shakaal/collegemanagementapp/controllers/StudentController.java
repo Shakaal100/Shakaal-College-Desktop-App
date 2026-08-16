@@ -170,9 +170,9 @@ public class StudentController implements Initializable{
 
         idColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.06));
 
-        firstNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
+        firstNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.11));
 
-        lastNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
+        lastNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.11));
 
         genderColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.08));
 
@@ -180,7 +180,7 @@ public class StudentController implements Initializable{
 
         phoneColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
 
-        courseColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.16));
+        courseColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.18));
 
         statusColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.08));
 
@@ -193,6 +193,16 @@ public class StudentController implements Initializable{
         statusColumn.setStyle("-fx-alignment: CENTER;");
 
         actionsColumn.setStyle("-fx-alignment: CENTER;");
+
+        firstNameColumn.setStyle("-fx-alignment: CENTER;");
+
+        lastNameColumn.setStyle("-fx-alignment: CENTER;");
+
+        registeredDateColumn.setStyle("-fx-alignment: CENTER;");
+
+        phoneColumn.setStyle("-fx-alignment: CENTER;");
+
+        courseColumn.setStyle("-fx-alignment: CENTER;");
 
 
         // ****** METHODS TO CHANGE THE STATUS COLUMN ACTIVE AND INACTIVE ******
@@ -238,6 +248,10 @@ public class StudentController implements Initializable{
 
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
+                        alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+                        alert.getDialogPane().getStyleClass().add("alert-dialog");
+
                         alert.setTitle("Confirm Status Change");
                         alert.setHeaderText(null);
 
@@ -260,6 +274,10 @@ public class StudentController implements Initializable{
                             } else {
 
                                 Alert error = new Alert(Alert.AlertType.ERROR);
+
+                                error.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+                                error.getDialogPane().getStyleClass().add("alert-dialog");
 
                                 error.setTitle("Failed");
 
@@ -310,11 +328,7 @@ public class StudentController implements Initializable{
 
             ObservableList<Student> students = studentDAO.getAllStudents();
 
-            System.out.println("Students loaded = " + students.size());
-
             studentTable.setItems(students);
-
-
 
     }
 
@@ -463,6 +477,10 @@ public class StudentController implements Initializable{
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
 
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
+
             alert.setTitle("Access Denied");
 
             alert.setHeaderText(null);
@@ -476,6 +494,10 @@ public class StudentController implements Initializable{
 
 
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+
+        confirmation.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+        confirmation.getDialogPane().getStyleClass().add("alert-dialog");
 
         confirmation.setTitle("Delete Student");
 
@@ -494,6 +516,10 @@ public class StudentController implements Initializable{
             if (deleted) {
 
                 Alert success = new Alert(Alert.AlertType.INFORMATION);
+
+                success.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+                success.getDialogPane().getStyleClass().add("alert-dialog");
 
                 success.setTitle("Success");
 
@@ -530,12 +556,7 @@ public class StudentController implements Initializable{
 
         activeStudentsCountLabel.setText(String.valueOf(activeStudents));
 
-        updatePercentages(
-                totalStudents,
-                maleStudents,
-                femaleStudents,
-                activeStudents
-        );
+        updatePercentages(totalStudents, maleStudents, femaleStudents, activeStudents);
     }
 
 

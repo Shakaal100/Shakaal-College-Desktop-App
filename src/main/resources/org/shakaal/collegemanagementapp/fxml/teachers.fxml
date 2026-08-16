@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ComboBox?>
+<BorderPane stylesheets="@../css/students.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.shakaal.collegemanagementapp.controllers.TeacherController">
+
+    <!-- ========================= -->
+    <!-- TOP SECTION -->
+    <!-- ========================= -->
+
+    <top>
+
+        <VBox spacing="18"
+              styleClass="top-container">
+
+            <padding>
+                <Insets top="20"
+                        left="20"
+                        right="20"
+                        bottom="15"/>
+            </padding>
+
+            <children>
+
+                <!-- ================= Statistics Cards ================= -->
+
+                <FlowPane fx:id="statisticsPane"
+                          hgap="20"
+                          vgap="20"
+                          prefWrapLength="1200">
+
+                    <!-- ================= TOTAL STUDENTS ================= -->
+
+                    <HBox spacing="15"
+                          alignment="CENTER_LEFT"
+                          styleClass="statistics-card  ">
+
+                        <StackPane styleClass="icon-circle blue-circle">
+
+                            <ImageView fitHeight="24"
+                                       fitWidth="24"
+                                       preserveRatio="true">
+
+                                <image>
+                                    <Image url="@../icons/students.png"/>
+                                </image>
+
+                            </ImageView>
+
+                        </StackPane>
+
+                        <VBox spacing="2">
+
+                            <Label text="Total Teachers"
+                                   styleClass="statistics-title"/>
+
+                            <Label fx:id="totalTeachersCountLabel"
+                                   text="0"
+                                   styleClass="statistics-number"/>
+
+                            <Label text="All Registered Teachers"
+                                   styleClass="statistics-subtitle"/>
+
+                        </VBox>
+
+                    </HBox>
+
+                    <!-- ================= MALE ================= -->
+
+                    <HBox spacing="15"
+                          alignment="CENTER_LEFT"
+                          styleClass="statistics-card">
+
+                        <StackPane styleClass="icon-circle green-circle">
+
+                            <ImageView fitHeight="26"
+                                       fitWidth="26"
+                                       preserveRatio="true">
+
+                                <image>
+                                    <Image url="@../icons/male.png"/>
+                                </image>
+
+                            </ImageView>
+
+                        </StackPane>
+
+                        <VBox spacing="2">
+
+                            <Label text="Male Teachers"
+                                   styleClass="statistics-title"/>
+
+                            <Label fx:id="maleTeachersCountLabel"
+                                   text="0"
+                                   styleClass="statistics-number"/>
+
+                            <Label fx:id="malePercentageLabel"
+                                   text="0% of total students"
+                                   styleClass="statistics-subtitle"/>
+
+                        </VBox>
+
+                    </HBox>
+
+
+
+
+
+                    <!-- ================= FEMALE ================= -->
+
+                    <HBox spacing="15"
+                          alignment="CENTER_LEFT"
+                          styleClass="statistics-card">
+
+                        <StackPane styleClass="icon-circle pink-circle">
+
+                            <ImageView fitHeight="26"
+                                       fitWidth="26"
+                                       preserveRatio="true">
+
+                                <image>
+                                    <Image url="@../icons/female.png"/>
+                                </image>
+
+                            </ImageView>
+
+                        </StackPane>
+
+                        <VBox spacing="2">
+
+                            <Label text="Female Teachers"
+                                   styleClass="statistics-title"/>
+
+                            <Label fx:id="femaleTeachersCountLabel"
+                                   text="0"
+                                   styleClass="statistics-number"/>
+
+                            <Label fx:id="femalePercentageLabel"
+                                   text="0% of total students"
+                                   styleClass="statistics-subtitle"/>
+
+                        </VBox>
+
+                    </HBox>
+
+
+                    <!-- ================= ACTIVE ================= -->
+
+                    <HBox spacing="15"
+                          alignment="CENTER_LEFT"
+                          styleClass="statistics-card">
+
+                        <StackPane styleClass="icon-circle purple-circle">
+
+                            <ImageView fitHeight="30"
+                                       fitWidth="30"
+                                       preserveRatio="true">
+
+                                <image>
+                                    <Image url="@../icons/active.png"/>
+                                </image>
+
+                            </ImageView>
+
+                        </StackPane>
+
+                        <VBox spacing="2">
+
+                            <Label text="Active Teachers"
+                                   styleClass="statistics-title"/>
+
+                            <Label fx:id="activeTeachersCountLabel"
+                                   text="0"
+                                   styleClass="statistics-number"/>
+
+                            <Label fx:id="activePercentageLabel"
+                                   text="0% of total students"
+                                   styleClass="statistics-subtitle"/>
+
+                        </VBox>
+
+                    </HBox>
+
+                </FlowPane>
+
+
+                <!-- ================= Search & Filters ================= -->
+
+                <HBox alignment="CENTER_LEFT"
+                      spacing="15">
+
+                    <!-- Search Box -->
+
+                    <HBox prefWidth="250"
+                          prefHeight="45"
+                          spacing="12"
+                          alignment="CENTER_LEFT"
+                          styleClass="search-box">
+
+                        <ImageView fx:id="searchIcon"
+                                   fitWidth="24"
+                                   fitHeight="24"
+                                   preserveRatio="true"/>
+
+                        <TextField fx:id="searchField"
+                                   promptText="Search teachers..."
+                                   styleClass="search-field"
+                                   HBox.hgrow="ALWAYS"/>
+
+                    </HBox>
+
+                    <ComboBox fx:id="genderFilterComboBox"
+                              styleClass="modern-combo"
+                              promptText="Gender"/>
+
+
+                    <!-- Status Filter -->
+
+                    <ComboBox fx:id="statusFilterComboBox"
+                              styleClass="modern-combo"
+                              promptText="Status"/>
+
+
+                    <Region HBox.hgrow="ALWAYS"/>
+
+
+                    <!-- Add Student -->
+
+                    <Button fx:id="addTeacherButton"
+                            text="+ Add Teacher"
+                            styleClass="add-button"/>
+
+                </HBox>
+
+            </children>
+
+        </VBox>
+
+    </top>
+
+    <!-- ========================= -->
+    <!-- CENTER -->
+    <!-- ========================= -->
+
+    <center>
+
+        <VBox spacing="15" styleClass="content-container">
+
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="10" />
+            </padding>
+
+            <children>
+
+
+                <TableView fx:id="teacherTable" VBox.vgrow="ALWAYS">
+
+                    <columns>
+
+                        <TableColumn fx:id="teacherIdColumn" text="ID" />
+
+                        <TableColumn fx:id="fullNameColumn" text="Full Name" />
+
+                        <TableColumn fx:id="genderColumn" text="Gender" />
+
+                        <TableColumn fx:id="phoneColumn" text="Phone" />
+
+                        <TableColumn fx:id="specializationColumn" text="Specialization" />
+
+                        <TableColumn fx:id="salaryColumn" text="Salary" />
+
+                        <TableColumn
+                                fx:id="statusColumn"
+                                text="Status"/>
+
+                        <TableColumn
+                                fx:id="actionsColumn"
+                                resizable="false"
+                                text="Actions"/>
+
+                    </columns>
+
+                </TableView>
+
+            </children>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>
+

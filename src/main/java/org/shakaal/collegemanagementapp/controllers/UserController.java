@@ -58,6 +58,9 @@ public class UserController implements Initializable{
     private TableColumn<User, String> usernameColumn;
 
     @FXML
+    private TableColumn<User, String> passwordColumn;
+
+    @FXML
     private TableColumn<User, String> fullNameColumn;
 
     @FXML
@@ -98,13 +101,15 @@ public class UserController implements Initializable{
 
         idColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.08));
 
-        usernameColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.20));
+        usernameColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.12));
 
-        fullNameColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.24));
+        passwordColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.18));
 
-        roleColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.14));
+        fullNameColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.20));
 
-        createdAtColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.16));
+        roleColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.10));
+
+        createdAtColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.12));
 
         actionsColumn.prefWidthProperty().bind(userTable.widthProperty().multiply(0.18));
 
@@ -119,6 +124,8 @@ public class UserController implements Initializable{
         idColumn.setCellValueFactory(new PropertyValueFactory<>("userId"));
 
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+
+        passwordColumn.setCellValueFactory(new PropertyValueFactory<>("passwordHash"));
 
         fullNameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
 
@@ -171,8 +178,7 @@ public class UserController implements Initializable{
 
                         deleteButton.setOnAction(event -> {
 
-                            User user =
-                                    getTableView().getItems().get(getIndex());
+                            User user = getTableView().getItems().get(getIndex());
 
                             deleteUser(user);
 
@@ -200,8 +206,7 @@ public class UserController implements Initializable{
 
         try {
 
-            FXMLLoader loader =
-                    new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/add-user.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/add-user.fxml"));
 
             Parent root = loader.load();
 
@@ -240,6 +245,10 @@ public class UserController implements Initializable{
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
 
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
+
             alert.setTitle("Operation Not Allowed");
 
             alert.setHeaderText(null);
@@ -252,6 +261,10 @@ public class UserController implements Initializable{
         }
 
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+
+        confirmation.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+        confirmation.getDialogPane().getStyleClass().add("alert-dialog");
 
         confirmation.setTitle("Delete Student");
 
@@ -270,6 +283,10 @@ public class UserController implements Initializable{
             if (deleted) {
 
                 Alert success = new Alert(Alert.AlertType.INFORMATION);
+
+                success.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+                success.getDialogPane().getStyleClass().add("alert-dialog");
 
                 success.setTitle("Success");
 

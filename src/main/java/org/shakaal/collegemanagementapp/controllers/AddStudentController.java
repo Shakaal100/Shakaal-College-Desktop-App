@@ -160,6 +160,10 @@ public class AddStudentController implements Initializable{
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
 
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
+
             alert.setTitle("Invalid Phone Number");
 
             alert.setHeaderText(null);
@@ -222,7 +226,7 @@ public class AddStudentController implements Initializable{
 
         student.setStatus("Active");
 
-        StudentDAO studentDAO = new StudentDAO();
+        //StudentDAO studentDAO = new StudentDAO();
 
         boolean success;
 
@@ -240,6 +244,10 @@ public class AddStudentController implements Initializable{
         if (success) {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+            alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+            alert.getDialogPane().getStyleClass().add("alert-dialog");
 
             alert.setTitle("Success");
 
@@ -271,6 +279,10 @@ public class AddStudentController implements Initializable{
     private void showError(String message) {
 
         Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.getDialogPane().getStylesheets().add(getClass().getResource("/org/shakaal/collegemanagementapp/css/global.css").toExternalForm());
+
+        alert.getDialogPane().getStyleClass().add("alert-dialog");
 
         alert.setTitle("Validation Error");
 
