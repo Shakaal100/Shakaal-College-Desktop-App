@@ -243,7 +243,8 @@
 
                     <Button fx:id="addTeacherButton"
                             text="+ Add Teacher"
-                            styleClass="add-button"/>
+                            styleClass="add-button"
+                            onAction="#handleAddTeacher"/>
 
                 </HBox>
 

@@ -1,5 +1,7 @@
 package org.shakaal.collegemanagementapp.database;
 
+import org.shakaal.collegemanagementapp.storage.AppDataManager;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -25,7 +27,7 @@ public final class DatabaseClass {
     // Database Path
     // =====================================================
 
-    private static final String DATABASE_URL = "jdbc:sqlite:databaseFiles/student_registration.db";
+    private static final String url = "jdbc:sqlite:" + AppDataManager.getDatabaseFile().getAbsolutePath();
 
     // =====================================================
     // Private Constructor
@@ -53,8 +55,9 @@ public final class DatabaseClass {
     public static Connection getConnection() throws SQLException {
 
 
+        return DriverManager.getConnection(url);
 
-        return DriverManager.getConnection(DATABASE_URL);
+
 
     }
 

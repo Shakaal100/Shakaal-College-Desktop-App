@@ -3,17 +3,22 @@ package org.shakaal.collegemanagementapp.controllers;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 import org.shakaal.collegemanagementapp.dao.TeacherDAO;
 import org.shakaal.collegemanagementapp.models.Teacher;
 import org.shakaal.collegemanagementapp.session.Session;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class TeacherController {
@@ -374,11 +379,7 @@ public class TeacherController {
                             if (result.isPresent() && result.get() == ButtonType.OK) {
 
 
-                                boolean success =
-                                        teacherDAO.updateTeacherStatus(
-                                                teacher.getTeacherID(),
-                                                newStatus
-                                        );
+                                boolean success = teacherDAO.updateTeacherStatus(teacher.getTeacherID(), newStatus);
 
 
                                 if (success) {
@@ -502,7 +503,7 @@ public class TeacherController {
 
                             Teacher teacher = getTableView().getItems().get(getIndex());
 
-                           // openEditTeacherWindow(teacher);
+                            openEditTeacherWindow(teacher);
 
                         });
 
@@ -513,7 +514,15 @@ public class TeacherController {
 
                             Teacher teacher = getTableView().getItems().get(getIndex());
 
-                           // openTeacherInfo(teacher);
+                            System.out.println("=================================");
+                            System.out.println("INFO BUTTON CLICKED");
+                            System.out.println("Teacher ID: " + teacher.getTeacherID());
+                            System.out.println("Teacher Name: " + teacher.getFullName());
+                            System.out.println("Picture Path: [" + teacher.getPicturePath() + "]");
+                            System.out.println("Teacher Object: " + teacher);
+                            System.out.println("=================================");
+
+                            openTeacherInfo(teacher);
 
                         });
 
@@ -549,6 +558,117 @@ public class TeacherController {
 
                 });
 
+    }
+
+    @FXML
+    private void handleAddTeacher() {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/add-teacher.fxml"));
+
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+
+            stage.setTitle("Add Teacher");
+
+            Scene scene = new Scene(root, 900, 650);
+
+            stage.setScene(scene);
+
+            stage.setResizable(false);
+
+            stage.showAndWait();
+            refreshTeachers();
+            loadTeachers();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+
+    private void openEditTeacherWindow(
+            Teacher teacher
+    ) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/add-teacher.fxml"));
+
+
+            Parent root = loader.load();
+
+
+            AddTeacherController controller = loader.getController();
+
+
+            // Pass the selected teacher to the AddTeacherController.
+            // This switches it into UPDATE mode.
+            controller.setTeacher(teacher);
+
+
+            Stage stage = new Stage();
+
+
+            stage.setTitle("Edit Teacher");
+
+
+            Scene scene = new Scene(root, 900, 650);
+
+
+            stage.setScene(scene);
+
+            stage.setResizable(false);
+
+            stage.showAndWait();
+
+            refreshTeachers();
+
+            loadStatistics();
+
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+
+
+    private void openTeacherInfo(Teacher teacher) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/teacher-info-window.fxml"));
+
+            Parent root = loader.load();
+
+            TeacherInfoController controller = loader.getController();
+
+            // Pass the selected teacher to the info window
+            controller.setTeacher(teacher);
+
+            Stage stage = new Stage();
+
+            stage.setTitle("Teacher Information");
+
+            Scene scene = new Scene(root, 850, 650);
+
+            stage.setScene(scene);
+
+            stage.setResizable(false);
+
+            stage.showAndWait();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
     }
 
 
@@ -588,11 +708,7 @@ public class TeacherController {
 
         alert.setHeaderText(null);
 
-        alert.setContentText(
-                "Are you sure you want to delete\n\n"
-                        + teacher.getFullName()
-                        + "?"
-        );
+        alert.setContentText("Are you sure you want to delete\n\n" + teacher.getFullName() + "?");
 
         Optional<ButtonType> result = alert.showAndWait();
 
@@ -601,9 +717,7 @@ public class TeacherController {
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
 
-            boolean success = teacherDAO.deleteTeacher(
-                    teacher.getTeacherID()
-            );
+            boolean success = teacherDAO.deleteTeacher(teacher.getTeacherID());
 
 
             // ---------- SUCCESS ----------
@@ -620,11 +734,7 @@ public class TeacherController {
 
                 successAlert.setHeaderText(null);
 
-                successAlert.setContentText(
-                        "Teacher \n\n\""
-                                + teacher.getFullName()
-                                + "\"\n\n was deleted successfully."
-                );
+                successAlert.setContentText("Teacher \n\n\"" + teacher.getFullName() + "\"\n\n was deleted successfully.");
 
                 successAlert.showAndWait();
 
@@ -648,9 +758,7 @@ public class TeacherController {
 
                 error.setHeaderText(null);
 
-                error.setContentText(
-                        "Failed to delete teacher."
-                );
+                error.setContentText("Failed to delete teacher.");
 
                 error.showAndWait();
 

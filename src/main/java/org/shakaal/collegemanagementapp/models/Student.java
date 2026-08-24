@@ -39,6 +39,8 @@ public class Student {
 
     private String status;
 
+    private String picturePath;
+
     // ===============================
     // Empty Constructor
     // ===============================
@@ -50,7 +52,7 @@ public class Student {
     // Full Constructor
     // ===============================
 
-    public Student(int studentId, String firstName, String lastName, String gender, LocalDate registeredDate, String phone, String email, String address, int courseId, String courseName, String status) {
+    public Student(int studentId, String firstName, String lastName, String gender, LocalDate registeredDate, String phone, String email, String address, int courseId, String courseName, String status, String picturePath) {
 
         this.studentId = studentId;
         this.firstName = firstName;
@@ -63,6 +65,7 @@ public class Student {
         this.courseId = courseId;
         this.courseName = courseName;
         this.status = status;
+        this.picturePath = picturePath;
     }
 
     // ===============================
@@ -155,6 +158,14 @@ public class Student {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 
     @Override

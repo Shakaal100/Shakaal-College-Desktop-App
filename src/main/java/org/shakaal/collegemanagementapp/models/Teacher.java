@@ -10,6 +10,8 @@ public class Teacher {
     private double salary;
     private String status;
 
+    private String picturePath;
+
     // Empty constructor
 
     public Teacher(){
@@ -18,7 +20,7 @@ public class Teacher {
 
     //Full Constructor
 
-    public Teacher(int teacherID, String fullName, String gender, String phone, String email, String specialization, double salary, String status) {
+    public Teacher(int teacherID, String fullName, String gender, String phone, String email, String specialization, double salary, String status, String picturePath) {
         this.teacherID = teacherID;
         this.fullName = fullName;
         this.gender = gender;
@@ -27,6 +29,7 @@ public class Teacher {
         this.specialization = specialization;
         this.salary = salary;
         this.status = status;
+        this.picturePath = picturePath;
     }
 
 
@@ -65,6 +68,10 @@ public class Teacher {
         return status;
     }
 
+    public String getPicturePath() {
+        return picturePath;
+    }
+
     // Setters
 
 
@@ -98,6 +105,10 @@ public class Teacher {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 
     // toString Method

@@ -7,10 +7,7 @@ import org.shakaal.collegemanagementapp.database.DatabaseClass;
 import org.shakaal.collegemanagementapp.models.Teacher;
 import org.shakaal.collegemanagementapp.session.Session;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class TeacherDAO {
 
@@ -42,6 +39,7 @@ public class TeacherDAO {
                 teacher.setSpecialization(resultSet.getString("specialization"));
                 teacher.setSalary(resultSet.getDouble("salary"));
                 teacher.setStatus(resultSet.getString("status"));
+                teacher.setPicturePath(resultSet.getString("picture_path"));
 
                 teacherList.add(teacher);
             }
@@ -54,66 +52,148 @@ public class TeacherDAO {
         return teacherList;
 
     }
+    // ************************************************************
+    // *********************** ADD TEACHER ***********************
+    // ************************************************************
 
-    // *********************  ADD TEACHER METHOD ***************
-
-    public boolean addTeacher(Teacher teacher) {
+    public int addTeacher(Teacher teacher) {
 
         String sql = """
-                    INSERT INTO teachers (full_name, gender, phone, email, specialization, salary)
-                    VALUES (?, ?, ?, ?, ?, ?)
-                    """;
+        INSERT INTO teachers
+        (full_name, gender, phone, email, specialization, salary)
+        VALUES (?, ?, ?, ?, ?, ?)
+        """;
 
-        try
-                (Connection connection = DatabaseClass.getConnection();
-                PreparedStatement statement = connection.prepareStatement(sql))
+        try (
+                Connection connection = DatabaseClass.getConnection();
 
-        {
+                PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)
+             ) {
+
             statement.setString(1, teacher.getFullName());
+
             statement.setString(2, teacher.getGender());
+
             statement.setString(3, teacher.getPhone());
+
             statement.setString(4, teacher.getEmail());
+
             statement.setString(5, teacher.getSpecialization());
+
             statement.setDouble(6, teacher.getSalary());
+
 
             int rowsAffected = statement.executeUpdate();
 
-            return rowsAffected > 0;
+
+            if (rowsAffected == 0) {
+
+                return -1;
+            }
+
+
+            // Retrieve the ID SQLite generated
+            try (ResultSet resultSet = statement.getGeneratedKeys()) {
+
+                if (resultSet.next()) {
+
+                    return resultSet.getInt(1);
+                }
+            }
+
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
         }
 
-        catch ( SQLException e ) {
-             e.printStackTrace();
 
-             return false;
-        }
-
+        return -1;
     }
 
-    // ************************ UPDATE TEACHER *****************
+    // ************************************************************
+    // *********************** UPDATE PICTURE PATH ***********************
+    // ************************************************************
+
+    public boolean updateTeacherPicturePath(
+            int teacherId,
+            String picturePath
+    ) {
+
+        String sql = """
+        UPDATE teachers
+        SET picture_path = ?
+        WHERE teacher_id = ?
+        """;
+
+        try (
+                Connection connection = DatabaseClass.getConnection();
+
+                PreparedStatement statement = connection.prepareStatement(sql)
+        ) {
+
+            statement.setString(1, picturePath);
+
+            statement.setInt(2, teacherId);
+
+
+            return statement.executeUpdate() > 0;
+
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+            return false;
+        }
+    }
+
+    // ************************************************************
+    // *********************** UPDATE TEACHER ***********************
+    // ************************************************************
 
     public boolean updateTeacher(Teacher teacher) {
+
         String sql = """
-                    UPDATE teachers
-                    SET full_name = ?, gender = ?, phone = ?, email = ?, specialization = ?, salary = ?
-                    WHERE teacher_id = ?
-                """;
+        UPDATE teachers
+        SET full_name = ?,
+            gender = ?,
+            phone = ?,
+            email = ?,
+            specialization = ?,
+            salary = ?,
+            picture_path = ?
+        WHERE teacher_id = ?
+        """;
 
         try
                 (Connection connection = DatabaseClass.getConnection();
-                 PreparedStatement statement = connection.prepareStatement(sql)) {
+                 PreparedStatement statement = connection.prepareStatement(sql))
+        {
+
             statement.setString(1, teacher.getFullName());
+
             statement.setString(2, teacher.getGender());
+
             statement.setString(3, teacher.getPhone());
+
             statement.setString(4, teacher.getEmail());
+
             statement.setString(5, teacher.getSpecialization());
+
             statement.setDouble(6, teacher.getSalary());
 
-            // Last Parameter identifies WHICH teacher to update
+            // New picture path
+            statement.setString(7, teacher.getPicturePath());
 
-            statement.setInt(7, teacher.getTeacherID());
+            // Which teacher should be updated?
+            statement.setInt(8, teacher.getTeacherID());
+
 
             return statement.executeUpdate() > 0;
+
         } catch (SQLException e) {
+
             e.printStackTrace();
 
             return false;
@@ -131,8 +211,7 @@ public class TeacherDAO {
             String gender,
             String status) {
 
-        ObservableList<Teacher> teacherList =
-                FXCollections.observableArrayList();
+        ObservableList<Teacher> teacherList = FXCollections.observableArrayList();
 
         StringBuilder sql = new StringBuilder("""
             SELECT *
@@ -204,6 +283,8 @@ public class TeacherDAO {
                 teacher.setSalary(resultSet.getDouble("salary"));
 
                 teacher.setStatus(resultSet.getString("status"));
+
+                teacher.setPicturePath(resultSet.getString("picture_path"));
 
                 teacherList.add(teacher);
             }

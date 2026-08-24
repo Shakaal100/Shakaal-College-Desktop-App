@@ -95,8 +95,8 @@ public class StudentController implements Initializable{
     @FXML
     private TableColumn<Student, String> genderColumn;
 
-    @FXML
-    private TableColumn<Student, LocalDate> registeredDateColumn;
+//    @FXML
+//    private TableColumn<Student, LocalDate> registeredDateColumn;
 
     @FXML
     private TableColumn<Student, String> phoneColumn;
@@ -170,21 +170,21 @@ public class StudentController implements Initializable{
 
         idColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.06));
 
-        firstNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.11));
+        firstNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
 
-        lastNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.11));
+        lastNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
 
         genderColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.08));
 
-        registeredDateColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
+        //registeredDateColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
 
         phoneColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
 
         courseColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.18));
 
-        statusColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.08));
+        statusColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.09));
 
-        actionsColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.11));
+        actionsColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.22));
 
         idColumn.setStyle("-fx-alignment: CENTER;");
 
@@ -198,7 +198,7 @@ public class StudentController implements Initializable{
 
         lastNameColumn.setStyle("-fx-alignment: CENTER;");
 
-        registeredDateColumn.setStyle("-fx-alignment: CENTER;");
+        //registeredDateColumn.setStyle("-fx-alignment: CENTER;");
 
         phoneColumn.setStyle("-fx-alignment: CENTER;");
 
@@ -313,7 +313,7 @@ public class StudentController implements Initializable{
 
         genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
 
-        registeredDateColumn.setCellValueFactory(new PropertyValueFactory<>("registeredDate"));
+       // registeredDateColumn.setCellValueFactory(new PropertyValueFactory<>("registeredDate"));
 
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
 
@@ -339,60 +339,160 @@ public class StudentController implements Initializable{
 
                     private final Button editButton = new Button();
 
+                    private final Button infoButton = new Button();
+
                     private final Button deleteButton = new Button();
 
                     private final HBox buttons = new HBox(10);
 
                     {
-                        buttons.getChildren().add(editButton);
 
-                        if (Session.getCurrentUser().getRole().equals("ADMIN")) {
+                        // =====================================================
+                        // ADD BUTTONS TO THE ACTIONS CONTAINER
+                        // =====================================================
+
+                        buttons.getChildren().addAll(
+                                editButton,
+                                infoButton
+                        );
+
+                        // Delete is only available to administrators
+                        if (Session.getCurrentUser()
+                                .getRole()
+                                .equalsIgnoreCase("ADMIN")) {
+
                             buttons.getChildren().add(deleteButton);
                         }
                     }
 
+
+                    // =========================================================
+                    // BUTTON STYLING
+                    // =========================================================
+
                     {
+
                         editButton.getStyleClass().add("edit-button");
+
+                        infoButton.getStyleClass().add("info-button");
+
                         deleteButton.getStyleClass().add("delete-button");
 
-                        //Image view ICONS for edit button
 
-                        Image editImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/edit.png"));
+                        // =====================================================
+                        // EDIT ICON
+                        // =====================================================
+
+                        Image editImage = new Image(
+                                getClass().getResourceAsStream(
+                                        "/org/shakaal/collegemanagementapp/icons/edit.png"
+                                )
+                        );
 
                         ImageView editView = new ImageView(editImage);
+
                         editView.setFitWidth(16);
+
                         editView.setFitHeight(16);
 
                         editButton.setGraphic(editView);
 
-                        //Image view ICONS for delete button
 
-                        Image deleteImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/delete.png"));
+                        // =====================================================
+                        // INFO ICON
+                        // =====================================================
+
+                        Image infoImage = new Image(
+                                getClass().getResourceAsStream(
+                                        "/org/shakaal/collegemanagementapp/icons/info.png"
+                                )
+                        );
+
+                        ImageView infoView = new ImageView(infoImage);
+
+                        infoView.setFitWidth(18);
+
+                        infoView.setFitHeight(18);
+
+                        infoButton.setGraphic(infoView);
+
+
+                        // =====================================================
+                        // DELETE ICON
+                        // =====================================================
+
+                        Image deleteImage = new Image(
+                                getClass().getResourceAsStream(
+                                        "/org/shakaal/collegemanagementapp/icons/delete.png"
+                                )
+                        );
 
                         ImageView deleteView = new ImageView(deleteImage);
+
                         deleteView.setFitWidth(20);
+
                         deleteView.setFitHeight(20);
 
                         deleteButton.setGraphic(deleteView);
 
+
+                        // Center all action buttons
                         buttons.setAlignment(Pos.CENTER);
+
+
+                        // =====================================================
+                        // EDIT STUDENT
+                        // =====================================================
 
                         editButton.setOnAction(event -> {
 
-                            Student student = getTableView().getItems().get(getIndex());
+                            Student student =
+                                    getTableView()
+                                            .getItems()
+                                            .get(getIndex());
 
                             openEditStudentWindow(student);
 
                         });
 
+
+                        // =====================================================
+                        // STUDENT INFO
+                        // =====================================================
+
+                        infoButton.setOnAction(event -> {
+
+                            Student student =
+                                    getTableView()
+                                            .getItems()
+                                            .get(getIndex());
+
+                            openStudentInfo(student);
+
+                        });
+
+
+                        // =====================================================
+                        // DELETE STUDENT
+                        // =====================================================
+
                         deleteButton.setOnAction(event -> {
 
-                            Student student = getTableView().getItems().get(getIndex());
+                            Student student =
+                                    getTableView()
+                                            .getItems()
+                                            .get(getIndex());
 
                             deleteStudent(student);
 
                         });
+
                     }
+
+
+                    // =========================================================
+                    // TABLE CELL GRAPHIC
+                    // =========================================================
 
                     @Override
                     protected void updateItem(Void item, boolean empty) {
@@ -400,19 +500,30 @@ public class StudentController implements Initializable{
                         super.updateItem(item, empty);
 
                         if (empty) {
+
                             setGraphic(null);
+
                         } else {
+
                             setGraphic(buttons);
+
                         }
+
                     }
+
                 });
+
     }
 
     private void openAddStudentWindow() {
 
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/add-student.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/org/shakaal/collegemanagementapp/fxml/add-student.fxml"
+                    )
+            );
 
             Parent root = loader.load();
 
@@ -420,7 +531,11 @@ public class StudentController implements Initializable{
 
             stage.setTitle("Add Student");
 
-            stage.setScene(new Scene(root));
+            Scene scene = new Scene(root, 900, 650);
+
+            stage.setScene(scene);
+
+            stage.setResizable(false);
 
             stage.showAndWait();
 
@@ -430,6 +545,7 @@ public class StudentController implements Initializable{
         } catch (IOException e) {
 
             e.printStackTrace();
+
         }
     }
 
@@ -451,12 +567,57 @@ public class StudentController implements Initializable{
 
             stage.setTitle("Edit Student");
 
-            stage.setScene(new Scene(root));
+            Scene scene = new Scene(root, 900, 650);
+
+            stage.setScene(scene);
+
+            stage.setResizable(false);
 
             stage.showAndWait();
 
             refreshStudents();
             loadStatistics();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+
+
+    private void openStudentInfo(Student student) {
+
+        try {
+
+            // Load the student information FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/shakaal/collegemanagementapp/fxml/student-info-window.fxml"));
+
+            Parent root = loader.load();
+
+
+            // Get the controller belonging to the Info window
+            StudentInfoController controller = loader.getController();
+
+
+            // Pass the selected student to the Info controller
+            controller.setStudent(student);
+
+
+            // Create the Info window
+            Stage stage = new Stage();
+
+            stage.setTitle("Student Info");
+
+            Scene scene = new Scene(root, 850, 650);
+
+            stage.setScene(scene);
+
+            stage.setResizable(false);
+
+
+            // Show the window
+            stage.show();
 
         } catch (IOException e) {
 

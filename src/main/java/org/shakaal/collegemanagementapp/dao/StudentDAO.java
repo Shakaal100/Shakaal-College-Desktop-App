@@ -3,10 +3,7 @@ package org.shakaal.collegemanagementapp.dao;
 import org.shakaal.collegemanagementapp.database.DatabaseClass;
 import org.shakaal.collegemanagementapp.models.Student;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -42,7 +39,7 @@ public class StudentDAO {
      * @param student Student object
      * @return true if successful
      */
-    public boolean addStudent(Student student) {
+    public int addStudent(Student student) {
 
         String sql = """
         INSERT INTO students
@@ -50,44 +47,78 @@ public class StudentDAO {
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         """;
 
-        try
-                (Connection connection = DatabaseClass.getConnection();
-                 PreparedStatement statement = connection.prepareStatement(sql))
-        {
+        try (
+                Connection connection = DatabaseClass.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)
+             ) {
 
             statement.setString(1, student.getFirstName());
-
             statement.setString(2, student.getLastName());
-
             statement.setString(3, student.getGender());
-
-            // LocalDate ---> String
             statement.setString(4, student.getRegisteredDate().toString());
-
             statement.setString(5, student.getPhone());
-
             statement.setString(6, student.getEmail());
-
             statement.setString(7, student.getAddress());
-
             statement.setInt(8, student.getCourseId());
-
             statement.setString(9, student.getStatus());
 
             int rowsAffected = statement.executeUpdate();
 
-            return rowsAffected > 0;
+            if (rowsAffected == 0) {
+                return -1;
+            }
+
+            try (ResultSet resultSet = statement.getGeneratedKeys()) {
+
+                if (resultSet.next()) {
+
+                    return resultSet.getInt(1);
+
+                }
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
 
         }
 
-        catch (SQLException e) {
+        return -1;
+    }
+
+    /**=====================================================
+     // METHOD THAT TAKES THE GENERATED ID AND STORES FILENAME
+     // =====================================================
+     */
+
+
+    public boolean updateStudentPicturePath(
+            int studentId,
+            String picturePath
+    ) {
+
+        String sql = """
+        UPDATE students
+        SET picture_path = ?
+        WHERE student_id = ?
+        """;
+
+        try (
+                Connection connection = DatabaseClass.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)
+            ) {
+
+            statement.setString(1, picturePath);
+            statement.setInt(2, studentId);
+
+            return statement.executeUpdate() > 0;
+
+        } catch (SQLException e) {
 
             e.printStackTrace();
 
             return false;
-
         }
-
     }
     /**=====================================================
     // GET ALL STUDENTS
@@ -114,7 +145,8 @@ public class StudentDAO {
                             s.address,
                             s.course_id,
                             c.course_name,
-                            s.status
+                            s.status,
+                            s.picture_path
                         FROM students s
                         INNER JOIN courses c
                         ON s.course_id = c.course_id
@@ -156,6 +188,10 @@ public class StudentDAO {
 
                 student.setStatus(resultSet.getString("status"));
 
+                student.setPicturePath(resultSet.getString("picture_path"));
+
+
+
                 studentList.add(student);
 
             }
@@ -183,11 +219,12 @@ public class StudentDAO {
     public boolean updateStudent(Student student) {
 
         String sql = """
-            UPDATE students
-            SET first_name = ?, last_name = ?, gender = ?, registered_date = ?,
-                phone = ?, email = ?, address = ?, course_id = ?, status = ?
-            WHERE student_id = ?
-            """;
+        UPDATE students
+        SET first_name = ?, last_name = ?, gender = ?, registered_date = ?,
+            phone = ?, email = ?, address = ?, course_id = ?, status = ?,
+            picture_path = ?
+        WHERE student_id = ?
+        """;
 
         try
                 (Connection connection = DatabaseClass.getConnection();
@@ -203,8 +240,10 @@ public class StudentDAO {
             statement.setInt(8, student.getCourseId());
             statement.setString(9, student.getStatus());
 
-            // The last parameter identifies WHICH student to update
-            statement.setInt(10, student.getStudentId());
+            statement.setString(10, student.getPicturePath());
+
+            // Which student to update?
+            statement.setInt(11, student.getStudentId());
 
             return statement.executeUpdate() > 0;
 
@@ -214,7 +253,6 @@ public class StudentDAO {
             return false;
 
         }
-
     }
 
     // =====================================================
@@ -343,6 +381,7 @@ public class StudentDAO {
                 student.setCourseId(resultSet.getInt("course_id"));
                 student.setCourseName(resultSet.getString("course_name"));
                 student.setStatus(resultSet.getString("status"));
+                student.setPicturePath(resultSet.getString("picture_path"));
 
                 studentList.add(student);
             }
@@ -503,5 +542,9 @@ public class StudentDAO {
             return false;
         }
     }
+
+
+    // debug code
+
 
 }

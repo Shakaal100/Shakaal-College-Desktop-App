@@ -1,0 +1,208 @@
+Folder PATH listing
+Volume serial number is 000000D1 BAAA:60D4
+C:.
+|   .gitignore
+|   mvnw
+|   mvnw.cmd
+|   pom.xml
+|   project-structure.txt
+|   
++---.idea
+|   |   .gitignore
+|   |   compiler.xml
+|   |   encodings.xml
+|   |   jarRepositories.xml
+|   |   misc.xml
+|   |   vcs.xml
+|   |   workspace.xml
+|   |   
+|   \---inspectionProfiles
+|           Project_Default.xml
+|           
++---.mvn
+|   \---wrapper
+|           maven-wrapper.jar
+|           maven-wrapper.properties
+|           
++---CoursePDFs
+|       ABC COMPANY pdf.pdf
+|       AUTOMATA ASSIGNMENT 1.pdf
+|       
++---databaseFiles
+|       Student_registration.db
+|       
++---library JARs
+|       sqlite-jdbc-3.53.2.0.jar
+|       
++---src
+|   \---main
+|       +---java
+|       |   |   module-info.java
+|       |   |   
+|       |   \---org
+|       |       \---shakaal
+|       |           \---collegemanagementapp
+|       |               |   Main.java
+|       |               |   
+|       |               +---controllers
+|       |               |       AddCourseController.java
+|       |               |       AddStudentController.java
+|       |               |       AddUserController.java
+|       |               |       CourseController.java
+|       |               |       DashboardController.java
+|       |               |       DashboardHomeController.java
+|       |               |       LoginController.java
+|       |               |       StudentController.java
+|       |               |       TeacherController.java
+|       |               |       UserController.java
+|       |               |       
+|       |               +---dao
+|       |               |       CourseDAO.java
+|       |               |       StudentDAO.java
+|       |               |       TeacherDAO.java
+|       |               |       UserDAO.java
+|       |               |       
+|       |               +---database
+|       |               |       DatabaseClass.java
+|       |               |       
+|       |               +---models
+|       |               |       Course.java
+|       |               |       Student.java
+|       |               |       Teacher.java
+|       |               |       User.java
+|       |               |       
+|       |               \---session
+|       |                       Session.java
+|       |                       
+|       \---resources
+|           \---org
+|               \---shakaal
+|                   \---collegemanagementapp
+|                       +---css
+|                       |       add-course.css
+|                       |       add-student.css
+|                       |       courses.css
+|                       |       dashboard.css
+|                       |       global.css
+|                       |       login.css
+|                       |       students.css
+|                       |       
+|                       +---fxml
+|                       |       add-course.fxml
+|                       |       add-student.fxml
+|                       |       add-user.fxml
+|                       |       courses.fxml
+|                       |       dashboard-home.fxml
+|                       |       dashboard.fxml
+|                       |       login.fxml
+|                       |       students.fxml
+|                       |       teachers.fxml
+|                       |       user-management.fxml
+|                       |       
+|                       +---icons
+|                       |       active.png
+|                       |       delete.png
+|                       |       edit.png
+|                       |       female.png
+|                       |       folder.png
+|                       |       Info.png
+|                       |       lock.png
+|                       |       male.png
+|                       |       pdf.png
+|                       |       search.png
+|                       |       students.png
+|                       |       user.png
+|                       |       
+|                       \---images
+|                               Logo.png
+|                               MyLogo.png
+|                               
+\---target
+    +---classes
+    |   |   module-info.class
+    |   |   
+    |   \---org
+    |       \---shakaal
+    |           \---collegemanagementapp
+    |               |   Main.class
+    |               |   
+    |               +---controllers
+    |               |       AddCourseController.class
+    |               |       AddStudentController.class
+    |               |       AddUserController.class
+    |               |       CourseController$1.class
+    |               |       CourseController$2.class
+    |               |       CourseController$3.class
+    |               |       CourseController.class
+    |               |       DashboardController.class
+    |               |       DashboardHomeController.class
+    |               |       LoginController.class
+    |               |       StudentController$1.class
+    |               |       StudentController$2.class
+    |               |       StudentController.class
+    |               |       TeacherController$1.class
+    |               |       TeacherController$2.class
+    |               |       TeacherController$3.class
+    |               |       TeacherController.class
+    |               |       UserController$1.class
+    |               |       UserController.class
+    |               |       
+    |               +---css
+    |               |       add-course.css
+    |               |       add-student.css
+    |               |       courses.css
+    |               |       dashboard.css
+    |               |       global.css
+    |               |       login.css
+    |               |       students.css
+    |               |       
+    |               +---dao
+    |               |       CourseDAO.class
+    |               |       StudentDAO.class
+    |               |       TeacherDAO.class
+    |               |       UserDAO.class
+    |               |       
+    |               +---database
+    |               |       DatabaseClass.class
+    |               |       
+    |               +---fxml
+    |               |       add-course.fxml
+    |               |       add-student.fxml
+    |               |       add-user.fxml
+    |               |       courses.fxml
+    |               |       dashboard-home.fxml
+    |               |       dashboard.fxml
+    |               |       login.fxml
+    |               |       students.fxml
+    |               |       teachers.fxml
+    |               |       user-management.fxml
+    |               |       
+    |               +---icons
+    |               |       active.png
+    |               |       delete.png
+    |               |       edit.png
+    |               |       female.png
+    |               |       folder.png
+    |               |       Info.png
+    |               |       lock.png
+    |               |       male.png
+    |               |       pdf.png
+    |               |       search.png
+    |               |       students.png
+    |               |       user.png
+    |               |       
+    |               +---images
+    |               |       Logo.png
+    |               |       MyLogo.png
+    |               |       
+    |               +---models
+    |               |       Course.class
+    |               |       Student.class
+    |               |       Teacher.class
+    |               |       User.class
+    |               |       
+    |               \---session
+    |                       Session.class
+    |                       
+    \---generated-sources
+        \---annotations

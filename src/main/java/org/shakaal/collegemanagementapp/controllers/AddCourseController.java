@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.shakaal.collegemanagementapp.dao.CourseDAO;
+import org.shakaal.collegemanagementapp.storage.AppDataManager;
 
 import java.io.IOException;
 
@@ -125,21 +126,40 @@ public class AddCourseController implements Initializable {
         fileChooser.setTitle("Select Course Information PDF");
 
         fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("PDF Files", "*.pdf")
+                new FileChooser.ExtensionFilter(
+                        "PDF Files",
+                        "*.pdf"
+                )
         );
 
-        Stage stage = (Stage) browseLabel.getScene().getWindow();
+        // Use the last folder if it still exists
+        File lastFolder =
+                AppDataManager.getLastCourseBrowseFolder();
 
-        selectedPdfFile = fileChooser.showOpenDialog(stage);
+        if (lastFolder != null) {
+
+            fileChooser.setInitialDirectory(lastFolder);
+        }
+
+        Stage stage =
+                (Stage) browseLabel.getScene().getWindow();
+
+        selectedPdfFile =
+                fileChooser.showOpenDialog(stage);
 
         if (selectedPdfFile != null) {
 
-            selectedFileLabel.setText(selectedPdfFile.getName());
+            // Remember the folder for next time
+            AppDataManager.setLastCourseBrowseFolder(
+                    selectedPdfFile.getParentFile()
+            );
+
+            selectedFileLabel.setText(
+                    selectedPdfFile.getName()
+            );
 
             pdfChanged = true;
-
         }
-
     }
 
 
@@ -428,15 +448,7 @@ public class AddCourseController implements Initializable {
 
     private File createCoursePdfFolder() {
 
-        File pdfFolder = new File("CoursePDFs");
-
-        if (!pdfFolder.exists()) {
-
-            pdfFolder.mkdirs();
-
-        }
-
-        return pdfFolder;
+        return AppDataManager.getCoursePdfFolder();
 
     }
 }

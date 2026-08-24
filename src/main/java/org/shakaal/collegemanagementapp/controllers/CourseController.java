@@ -187,17 +187,17 @@ public class CourseController implements Initializable{
 
         courseCodeColumn.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.10));
 
-        courseNameColumn.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.20));
+        courseNameColumn.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.19));
 
-        scheduleColumn.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.12));
+        scheduleColumn.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.11));
 
         courseFeeColumn.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.12));
 
-        studentsCountColumn.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.12));
+        studentsCountColumn.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.10));
 
         statusColumn.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.11));
 
-        actionsColumn.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.13));
+        actionsColumn.prefWidthProperty().bind(courseTable.widthProperty().multiply(0.19));
 
         idColumn.setStyle("-fx-alignment: CENTER;");
 
@@ -496,6 +496,8 @@ public class CourseController implements Initializable{
                 buttons.getChildren().add(editButton);
 
                 if (Session.getCurrentUser().getRole().equals("ADMIN")) {
+
+                    buttons.getChildren().add(infoButton);
 
                     buttons.getChildren().add(deleteButton);
 

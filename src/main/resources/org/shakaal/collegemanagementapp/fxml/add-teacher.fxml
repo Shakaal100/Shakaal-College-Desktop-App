@@ -4,22 +4,21 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
+<?import javafx.scene.layout.Region?>
 <BorderPane xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.shakaal.collegemanagementapp.controllers.AddStudentController"
-            stylesheets="@../css/add-student.css"
-            styleClass="add-student-root">
-
+            fx:controller="org.shakaal.collegemanagementapp.controllers.AddTeacherController"
+            stylesheets="@../css/add-teacher.css"
+            styleClass="add-teacher-root">
 
     <!-- ========================================================= -->
     <!-- TOP : TITLE                                                -->
@@ -38,27 +37,23 @@
                         left="30"/>
             </padding>
 
-
             <!-- HEADER TEXT -->
-
             <VBox spacing="4">
 
-                <Label text="Add New Student"
+                <Label text="Add New Teacher"
                        styleClass="form-title"/>
 
-                <Label text="Enter student information and add a profile picture."
+                <Label text="Enter teacher information and add a profile picture."
                        styleClass="form-subtitle"/>
 
             </VBox>
 
 
             <!-- PUSHES LOGO TO THE RIGHT -->
-
             <Region HBox.hgrow="ALWAYS"/>
 
 
             <!-- COLLEGE LOGO -->
-
             <ImageView fx:id="collegeLogo"
                        fitWidth="85"
                        fitHeight="85"
@@ -94,15 +89,12 @@
 
 
             <!-- ================================================= -->
-            <!-- LEFT : STUDENT INFORMATION                         -->
+            <!-- LEFT : TEACHER INFORMATION                         -->
             <!-- ================================================= -->
 
             <VBox spacing="14"
                   prefWidth="470"
                   HBox.hgrow="ALWAYS">
-
-
-                <!-- SECTION TITLE -->
 
                 <HBox spacing="10"
                       alignment="CENTER_LEFT">
@@ -117,59 +109,31 @@
 
                     </ImageView>
 
-                    <Label text="Student Information"
+                    <Label text="Teacher Information"
                            styleClass="section-title"/>
 
                 </HBox>
 
 
-                <!-- FIRST NAME + LAST NAME -->
+                <!-- FULL NAME -->
 
-                <HBox spacing="12">
+                <VBox spacing="4">
 
+                    <Label text="Full Name"
+                           styleClass="field-label"/>
 
-                    <!-- FIRST NAME -->
+                    <TextField fx:id="fullNameField"
+                               promptText="Enter teacher full name"
+                               prefHeight="42"
+                               maxWidth="Infinity"
+                               styleClass="form-field"/>
 
-                    <VBox spacing="4"
-                          HBox.hgrow="ALWAYS">
-
-                        <Label text="First Name"
-                               styleClass="field-label"/>
-
-                        <TextField fx:id="firstNameField"
-                                   promptText="Enter first name"
-                                   prefHeight="42"
-                                   maxWidth="Infinity"
-                                   styleClass="form-field"/>
-
-                    </VBox>
-
-
-                    <!-- LAST NAME -->
-
-                    <VBox spacing="4"
-                          HBox.hgrow="ALWAYS">
-
-                        <Label text="Last Name"
-                               styleClass="field-label"/>
-
-                        <TextField fx:id="lastNameField"
-                                   promptText="Enter last name"
-                                   prefHeight="42"
-                                   maxWidth="Infinity"
-                                   styleClass="form-field"/>
-
-                    </VBox>
-
-                </HBox>
+                </VBox>
 
 
                 <!-- GENDER + PHONE -->
 
                 <HBox spacing="12">
-
-
-                    <!-- GENDER -->
 
                     <VBox spacing="4"
                           HBox.hgrow="ALWAYS">
@@ -186,8 +150,6 @@
 
                     </VBox>
 
-
-                    <!-- PHONE -->
 
                     <VBox spacing="4"
                           HBox.hgrow="ALWAYS">
@@ -222,39 +184,45 @@
                 </VBox>
 
 
-                <!-- ADDRESS -->
+                <!-- SPECIALIZATION + SALARY -->
 
-                <VBox spacing="4">
+                <HBox spacing="12">
 
-                    <Label text="Address"
-                           styleClass="field-label"/>
+                    <!-- SPECIALIZATION -->
 
-                    <TextArea fx:id="addressArea"
-                              promptText="Enter address"
-                              prefRowCount="2"
-                              prefHeight="50"
-                              maxWidth="Infinity"
-                              wrapText="true"
-                              styleClass="form-field"/>
+                    <VBox spacing="4"
+                          prefWidth="300"
+                          HBox.hgrow="ALWAYS">
 
-                </VBox>
+                        <Label text="Specialization"
+                               styleClass="field-label"/>
+
+                        <TextField fx:id="specializationField"
+                                   promptText="Enter specialization"
+                                   prefHeight="46"
+                                   maxWidth="Infinity"
+                                   styleClass="form-field"/>
+
+                    </VBox>
 
 
-                <!-- COURSE -->
+                    <!-- SALARY -->
 
-                <VBox spacing="4">
+                    <VBox spacing="4"
+                          prefWidth="140">
 
-                    <Label text="Course"
-                           styleClass="field-label"/>
+                        <Label text="Salary"
+                               styleClass="field-label"/>
 
-                    <ComboBox fx:id="courseComboBox"
-                              promptText="Select course"
-                              prefHeight="42"
-                              maxWidth="Infinity"
-                              HBox.hgrow="ALWAYS"
-                              styleClass="form-combo"/>
+                        <TextField fx:id="salaryField"
+                                   promptText="Enter salary"
+                                   prefHeight="46"
+                                   maxWidth="Infinity"
+                                   styleClass="form-field"/>
 
-                </VBox>
+                    </VBox>
+
+                </HBox>
 
             </VBox>
 
@@ -267,9 +235,6 @@
                   alignment="TOP_CENTER"
                   prefWidth="300"
                   styleClass="picture-section">
-
-
-                <!-- SECTION TITLE -->
 
                 <HBox spacing="10"
                       alignment="CENTER_LEFT">
@@ -372,7 +337,6 @@
 
                 </Button>
 
-
                 <!-- SELECTED FILE -->
 
                 <Label fx:id="pictureFileNameLabel"
@@ -406,20 +370,14 @@
                         left="35"/>
             </padding>
 
-
-            <!-- CANCEL -->
-
             <Button fx:id="cancelButton"
                     text="Cancel"
                     prefWidth="110"
                     prefHeight="42"
                     styleClass="cancel-button"/>
 
-
-            <!-- SAVE -->
-
-            <Button fx:id="saveButton"
-                    text="Save Student"
+            <Button fx:id="saveTeacherButton"
+                    text="Save Teacher"
                     prefWidth="150"
                     prefHeight="42"
                     styleClass="save-button"/>
