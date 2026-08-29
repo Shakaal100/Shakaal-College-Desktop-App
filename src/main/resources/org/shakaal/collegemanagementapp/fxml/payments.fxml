@@ -664,13 +664,24 @@
 
                                                 <children>
 
+                                                    <!-- ELECTRICITY -->
+
                                                     <HBox alignment="CENTER_LEFT"
+                                                          spacing="5"
                                                           styleClass="expense-row">
 
                                                         <children>
 
-                                                            <Label text="🔌"
-                                                                   styleClass="expense-row-icon"/>
+                                                            <ImageView fitHeight="18"
+                                                                       fitWidth="18"
+                                                                       preserveRatio="true"
+                                                                       styleClass="expense-row-icon">
+
+                                                                <image>
+                                                                    <Image url="@../icons/electricity.png"/>
+                                                                </image>
+
+                                                            </ImageView>
 
                                                             <Label text="Electricity"
                                                                    styleClass="expense-name"/>
@@ -685,13 +696,24 @@
                                                     </HBox>
 
 
+                                                    <!-- RENT -->
+
                                                     <HBox alignment="CENTER_LEFT"
+                                                          spacing="5"
                                                           styleClass="expense-row">
 
                                                         <children>
 
-                                                            <Label text="🏠"
-                                                                   styleClass="expense-row-icon"/>
+                                                            <ImageView fitHeight="18"
+                                                                       fitWidth="18"
+                                                                       preserveRatio="true"
+                                                                       styleClass="expense-row-icon">
+
+                                                                <image>
+                                                                    <Image url="@../icons/rent.png"/>
+                                                                </image>
+
+                                                            </ImageView>
 
                                                             <Label text="Rent"
                                                                    styleClass="expense-name"/>
@@ -706,13 +728,24 @@
                                                     </HBox>
 
 
+                                                    <!-- INTERNET -->
+
                                                     <HBox alignment="CENTER_LEFT"
+                                                          spacing="5"
                                                           styleClass="expense-row">
 
                                                         <children>
 
-                                                            <Label text="🌍"
-                                                                   styleClass="expense-row-icon"/>
+                                                            <ImageView fitHeight="18"
+                                                                       fitWidth="18"
+                                                                       preserveRatio="true"
+                                                                       styleClass="expense-row-icon">
+
+                                                                <image>
+                                                                    <Image url="@../icons/internet.png"/>
+                                                                </image>
+
+                                                            </ImageView>
 
                                                             <Label text="Internet"
                                                                    styleClass="expense-name"/>
@@ -727,13 +760,24 @@
                                                     </HBox>
 
 
+                                                    <!-- WATER -->
+
                                                     <HBox alignment="CENTER_LEFT"
+                                                          spacing="5"
                                                           styleClass="expense-row">
 
                                                         <children>
 
-                                                            <Label text="🚿"
-                                                                   styleClass="expense-row-icon"/>
+                                                            <ImageView fitHeight="18"
+                                                                       fitWidth="18"
+                                                                       preserveRatio="true"
+                                                                       styleClass="expense-row-icon">
+
+                                                                <image>
+                                                                    <Image url="@../icons/water.png"/>
+                                                                </image>
+
+                                                            </ImageView>
 
                                                             <Label text="Water"
                                                                    styleClass="expense-name"/>
@@ -748,13 +792,24 @@
                                                     </HBox>
 
 
+                                                    <!-- SUPPLIES -->
+
                                                     <HBox alignment="CENTER_LEFT"
+                                                          spacing="5"
                                                           styleClass="expense-row">
 
                                                         <children>
 
-                                                            <Label text="💻"
-                                                                   styleClass="expense-row-icon"/>
+                                                            <ImageView fitHeight="18"
+                                                                       fitWidth="18"
+                                                                       preserveRatio="true"
+                                                                       styleClass="expense-row-icon">
+
+                                                                <image>
+                                                                    <Image url="@../icons/supplies.png"/>
+                                                                </image>
+
+                                                            </ImageView>
 
                                                             <Label text="Supplies"
                                                                    styleClass="expense-name"/>
