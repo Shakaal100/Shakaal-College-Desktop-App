@@ -1,0 +1,369 @@
+/* ============================================================
+   STUDENT FEE PAYMENTS
+   ============================================================ */
+
+.student-fees-content {
+    -fx-background-color: #f5f7fa;
+    -fx-font-family: "Segoe UI";
+}
+
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+
+.section-header {
+    -fx-padding: 2px 0 2px 0;
+}
+
+.section-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #172033;
+}
+
+.section-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #687386;
+}
+
+
+/* ============================================================
+   SUMMARY CARDS
+   ============================================================ */
+
+.fee-summary-row {
+    -fx-fill-height: true;
+}
+
+.collected-card,
+.payments-count-card,
+.paid-students-card,
+.unpaid-students-card{
+    -fx-min-height: 105px;
+    -fx-pref-height: 105px;
+    -fx-padding: 18px;
+    -fx-background-color: white;
+
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+
+    -fx-border-width: 3px;
+}
+
+
+/* Individual cards */
+
+.collected-card {
+    -fx-border-color: #cfe6d8;
+}
+
+.payments-count-card {
+    -fx-border-color: #d4e2f4;
+}
+
+.paid-students-card {
+    -fx-border-color: #ddd5f2;
+}
+
+.unpaid-students-card {
+    -fx-border-color: #f0d7d7;
+}
+
+
+/* ============================================================
+   CARD TEXT
+   ============================================================ */
+
+.fee-card-title {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #687386;
+}
+
+.fee-card-amount {
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+
+/* Card-specific amount colors */
+
+.collected-card .fee-card-amount {
+    -fx-text-fill: #198754;
+}
+
+.payments-count-card .fee-card-amount {
+    -fx-text-fill: #1769d2;
+}
+
+.paid-students-card .fee-card-amount {
+    -fx-text-fill: #7654c7;
+}
+
+.unpaid-students-card .fee-card-amount {
+    -fx-text-fill: #d34a4a;
+}
+
+.fee-card-subtitle {
+    -fx-font-size: 11px;
+    -fx-text-fill: #7b8492;
+}
+
+
+/* ============================================================
+   TOOLBAR
+   ============================================================ */
+
+.fee-toolbar {
+    -fx-padding: 2px 0 2px 0;
+}
+
+
+/* ============================================================
+   SEARCH FIELD
+   ============================================================ */
+
+.fee-search-field {
+    -fx-pref-height: 42px;
+
+    -fx-background-color: white;
+
+    -fx-border-color: #dce2ea;
+    -fx-border-width: 1px;
+
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+
+    -fx-padding: 0 13px;
+
+    -fx-font-size: 12px;
+    -fx-text-fill: #303846;
+}
+
+.fee-search-field:focused {
+    -fx-border-color: #1769d2;
+    -fx-border-width: 1px;
+}
+
+
+/* ============================================================
+   COMBO BOXES
+   ============================================================ */
+
+.fee-combo-box {
+    -fx-pref-height: 42px;
+
+    -fx-background-color: white;
+
+    -fx-border-color: #dce2ea;
+    -fx-border-width: 1px;
+
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+
+    -fx-font-size: 12px;
+}
+
+.fee-combo-box:hover {
+    -fx-border-color: #b9c4d2;
+}
+
+.fee-combo-box:focused {
+    -fx-border-color: #1769d2;
+}
+
+
+/* ComboBox text */
+
+.fee-combo-box .list-cell {
+    -fx-text-fill: #303846;
+    -fx-font-size: 12px;
+}
+
+
+/* ============================================================
+   RECORD PAYMENT BUTTON
+   ============================================================ */
+
+.record-payment-button {
+    -fx-pref-height: 42px;
+
+    -fx-background-color: #2777d4;
+
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+
+    -fx-padding: 0 18px;
+
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: white;
+
+    -fx-cursor: hand;
+}
+
+.record-payment-button:hover {
+    -fx-background-color: #1f64b6;
+}
+
+.record-payment-button:pressed {
+    -fx-background-color: #18569d;
+}
+
+
+/* ============================================================
+   PAYMENT HISTORY PANEL
+   ============================================================ */
+
+.payments-list-panel {
+    -fx-background-color: white;
+
+    -fx-border-color: #dce2ea;
+    -fx-border-width: 1px;
+
+    -fx-border-radius: 9px;
+    -fx-background-radius: 9px;
+
+    -fx-padding: 16px;
+}
+
+
+/* ============================================================
+   PANEL HEADER
+   ============================================================ */
+
+.panel-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #202938;
+}
+
+.panel-subtitle {
+    -fx-font-size: 11px;
+    -fx-text-fill: #7b8492;
+}
+
+.period-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1769d2;
+
+    -fx-background-color: #edf4fc;
+
+    -fx-background-radius: 6px;
+
+    -fx-padding: 6px 10px;
+}
+
+
+/* ============================================================
+   STUDENT FEE TABLE
+   ============================================================ */
+
+.student-fee-table {
+    -fx-background-color: white;
+
+    -fx-border-color: #dce2ea;
+    -fx-border-width: 1px;
+
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+
+/* ============================================================
+   TABLE HEADER
+   ============================================================ */
+
+.student-fee-table .column-header-background {
+    -fx-background-color: #f5f7fa;
+
+    -fx-background-radius: 6px 6px 0 0;
+}
+
+.student-fee-table .column-header {
+    -fx-background-color: transparent;
+
+    -fx-border-color: #e1e5eb;
+    -fx-border-width: 0 1px 1px 0;
+
+    -fx-padding: 9px 7px;
+}
+
+.student-fee-table .column-header .label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #394353;
+}
+
+
+/* ============================================================
+   TABLE ROWS
+   ============================================================ */
+
+.student-fee-table .table-row-cell {
+    -fx-background-color: white;
+
+    -fx-border-color: transparent transparent #edf0f4 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.student-fee-table .table-row-cell:hover {
+    -fx-background-color: #f5f8fc;
+}
+
+.student-fee-table .table-row-cell:selected {
+    -fx-background-color: #e8f1fc;
+}
+
+
+/* ============================================================
+   TABLE CELLS
+   ============================================================ */
+
+.student-fee-table .table-cell {
+    -fx-font-size: 11px;
+    -fx-text-fill: #303846;
+
+    -fx-padding: 8px 7px;
+}
+
+
+/* ============================================================
+   TABLE SCROLLBAR
+   ============================================================ */
+
+.student-fee-table .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.student-fee-table .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.student-fee-table .scroll-bar:vertical .thumb {
+    -fx-background-color: #c8ced8;
+    -fx-background-radius: 5px;
+}
+
+
+/* ============================================================
+   BOTTOM INFORMATION
+   ============================================================ */
+
+.fee-bottom-bar {
+    -fx-padding: 4px 2px 0 2px;
+}
+
+.bottom-info-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #687386;
+}
+
+.bottom-total-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1769d2;
+}

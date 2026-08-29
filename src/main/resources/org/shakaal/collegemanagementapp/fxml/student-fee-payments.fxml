@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.FlowPane?>
+<VBox xmlns="http://javafx.com/javafx/26"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.shakaal.collegemanagementapp.controllers.StudentFeePaymentController"
+      spacing="18"
+      stylesheets="@../css/student-fee-payments.css"
+      styleClass="student-fees-content">
+
+    <padding>
+        <Insets top="20"
+                right="20"
+                bottom="25"
+                left="20"/>
+    </padding>
+
+    <children>
+
+        <!-- ================================================= -->
+        <!-- PAGE SECTION TITLE -->
+        <!-- ================================================= -->
+
+        <VBox spacing="4"
+              styleClass="section-header">
+
+            <children>
+
+                <Label text="STUDENT FEE PAYMENTS"
+                       styleClass="section-title"/>
+
+                <Label text="Record and manage student fee payments"
+                       styleClass="section-subtitle"/>
+
+            </children>
+
+        </VBox>
+
+
+        <!-- ================================================= -->
+        <!-- SUMMARY CARDS -->
+        <!-- ================================================= -->
+
+        <FlowPane fx:id="summaryCardsPane"
+                  hgap="18"
+                  vgap="18"
+                  prefWrapLength="1200"
+                  styleClass="fee-summary-row">
+
+            <children>
+
+                <!-- ================================================= -->
+                <!-- TOTAL COLLECTED -->
+                <!-- ================================================= -->
+
+                <VBox spacing="6"
+                      minWidth="220"
+                      prefWidth="220"
+                      styleClass="collected-card">
+
+                    <children>
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <VBox spacing="2">
+
+                                    <children>
+
+                                        <Label text="TOTAL COLLECTED"
+                                               styleClass="fee-card-title"/>
+
+                                        <Label fx:id="totalCollectedLabel"
+                                               text="USD 0.00"
+                                               styleClass="fee-card-amount"/>
+
+                                        <Label text="Selected period"
+                                               styleClass="fee-card-subtitle"/>
+
+                                    </children>
+
+                                </VBox>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <ImageView fitHeight="26"
+                                           fitWidth="26"
+                                           preserveRatio="true">
+
+                                    <image>
+                                        <Image url="@../icons/collected.png"/>
+                                    </image>
+
+                                </ImageView>
+
+                            </children>
+
+                        </HBox>
+
+                    </children>
+
+                </VBox>
+
+
+                <!-- ================================================= -->
+                <!-- PAYMENTS COUNT -->
+                <!-- ================================================= -->
+
+                <VBox spacing="6"
+                      minWidth="220"
+                      prefWidth="220"
+                      styleClass="payments-count-card">
+
+                    <children>
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <VBox spacing="2">
+
+                                    <children>
+
+                                        <Label text="PAYMENTS"
+                                               styleClass="fee-card-title"/>
+
+                                        <Label fx:id="paymentsCountLabel"
+                                               text="0"
+                                               styleClass="fee-card-amount"/>
+
+                                        <Label text="Recorded payments"
+                                               styleClass="fee-card-subtitle"/>
+
+                                    </children>
+
+                                </VBox>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <ImageView fitHeight="26"
+                                           fitWidth="26"
+                                           preserveRatio="true">
+
+                                    <image>
+                                        <Image url="@../icons/payments.png"/>
+                                    </image>
+
+                                </ImageView>
+
+                            </children>
+
+                        </HBox>
+
+                    </children>
+
+                </VBox>
+
+
+                <!-- ================================================= -->
+                <!-- PAID STUDENTS -->
+                <!-- ================================================= -->
+
+                <VBox spacing="6"
+                      minWidth="220"
+                      prefWidth="220"
+                      styleClass="paid-students-card">
+
+                    <children>
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <VBox spacing="2">
+
+                                    <children>
+
+                                        <Label text="PAID STUDENTS"
+                                               styleClass="fee-card-title"/>
+
+                                        <Label fx:id="paidStudentsLabel"
+                                               text="0"
+                                               styleClass="fee-card-amount"/>
+
+                                        <Label text="Students who paid"
+                                               styleClass="fee-card-subtitle"/>
+
+                                    </children>
+
+                                </VBox>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <ImageView fitHeight="26"
+                                           fitWidth="26"
+                                           preserveRatio="true">
+
+                                    <image>
+                                        <Image url="@../icons/paid-students.png"/>
+                                    </image>
+
+                                </ImageView>
+
+                            </children>
+
+                        </HBox>
+
+                    </children>
+
+                </VBox>
+
+
+                <!-- ================================================= -->
+                <!-- UNPAID STUDENTS -->
+                <!-- ================================================= -->
+
+                <VBox spacing="6"
+                      minWidth="220"
+                      prefWidth="220"
+                      styleClass="unpaid-students-card">
+
+                    <children>
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <VBox spacing="2">
+
+                                    <children>
+
+                                        <Label text="NOT PAID"
+                                               styleClass="fee-card-title"/>
+
+                                        <Label fx:id="unpaidStudentsLabel"
+                                               text="0"
+                                               styleClass="fee-card-amount"/>
+
+                                        <Label text="Students without payment"
+                                               styleClass="fee-card-subtitle"/>
+
+                                    </children>
+
+                                </VBox>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <ImageView fitHeight="26"
+                                           fitWidth="26"
+                                           preserveRatio="true">
+
+                                    <image>
+                                        <Image url="@../icons/unpaid-students.png"/>
+                                    </image>
+
+                                </ImageView>
+
+                            </children>
+
+                        </HBox>
+
+                    </children>
+
+                </VBox>
+
+            </children>
+
+        </FlowPane>
+
+
+        <!-- ================================================= -->
+        <!-- SEARCH + FILTERS + RECORD PAYMENT -->
+        <!-- ================================================= -->
+
+        <HBox spacing="12"
+              alignment="CENTER_LEFT"
+              styleClass="fee-toolbar">
+
+            <children>
+
+                <!-- Search -->
+
+                <TextField fx:id="searchField"
+                           promptText="Search student or reference..."
+                           prefWidth="280"
+                           styleClass="fee-search-field"/>
+
+
+                <!-- Payment Month -->
+
+                <ComboBox fx:id="paymentMonthComboBox"
+                          promptText="Payment Month"
+                          prefWidth="160"
+                          styleClass="fee-combo-box"/>
+
+
+                <!-- Payment Method -->
+
+                <ComboBox fx:id="paymentMethodComboBox"
+                          promptText="Payment Method"
+                          prefWidth="160"
+                          styleClass="fee-combo-box"/>
+
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+
+                <!-- Record Payment -->
+
+                <Button fx:id="recordPaymentButton"
+                        text="+  Record Payment"
+                        styleClass="record-payment-button"/>
+
+            </children>
+
+        </HBox>
+
+
+        <!-- ================================================= -->
+        <!-- PAYMENT LIST -->
+        <!-- ================================================= -->
+
+        <VBox spacing="10"
+              VBox.vgrow="ALWAYS"
+              styleClass="payments-list-panel">
+
+            <children>
+
+                <HBox alignment="CENTER_LEFT">
+
+                    <children>
+
+                        <VBox spacing="2">
+
+                            <children>
+
+                                <Label text="STUDENT FEE PAYMENT HISTORY"
+                                       styleClass="panel-title"/>
+
+                                <Label text="View recorded student fee payments"
+                                       styleClass="panel-subtitle"/>
+
+                            </children>
+
+                        </VBox>
+
+                        <Region HBox.hgrow="ALWAYS"/>
+
+                        <Label fx:id="paymentPeriodLabel"
+                               text="Current Period"
+                               styleClass="period-label"/>
+
+                    </children>
+
+                </HBox>
+
+
+                <!-- ================================================= -->
+                <!-- TABLE -->
+                <!-- ================================================= -->
+
+                <TableView fx:id="studentFeePaymentTable"
+                           VBox.vgrow="ALWAYS"
+                           styleClass="student-fee-table">
+
+                    <columns>
+
+                        <TableColumn fx:id="paymentIdColumn"
+                                     text="ID"/>
+
+                        <TableColumn fx:id="studentColumn"
+                                     text="Student"/>
+
+                        <TableColumn fx:id="paymentMonthColumn"
+                                     text="Payment Month"/>
+
+                        <TableColumn fx:id="amountColumn"
+                                     text="Amount"/>
+
+                        <TableColumn fx:id="paymentDateColumn"
+                                     text="Payment Date"/>
+
+                        <TableColumn fx:id="paymentMethodColumn"
+                                     text="Payment Method"/>
+
+                        <TableColumn fx:id="referenceNumberColumn"
+                                     text="Reference"/>
+
+                        <TableColumn fx:id="notesColumn"
+                                     text="Notes"/>
+
+                        <TableColumn fx:id="actionsColumn"
+                                     text="Actions"
+                                     resizable="false"/>
+
+                    </columns>
+
+                </TableView>
+
+            </children>
+
+        </VBox>
+
+
+        <!-- ================================================= -->
+        <!-- BOTTOM INFORMATION -->
+        <!-- ================================================= -->
+
+        <HBox alignment="CENTER_LEFT"
+              styleClass="fee-bottom-bar">
+
+            <children>
+
+                <Label fx:id="paymentCountInfoLabel"
+                       text="0 payments"
+                       styleClass="bottom-info-label"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Label fx:id="totalDisplayedAmountLabel"
+                       text="Total: USD 0.00"
+                       styleClass="bottom-total-label"/>
+
+            </children>
+
+        </HBox>
+
+    </children>
+
+</VBox>

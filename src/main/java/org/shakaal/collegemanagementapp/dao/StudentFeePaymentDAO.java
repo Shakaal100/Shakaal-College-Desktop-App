@@ -19,7 +19,7 @@ public class StudentFeePaymentDAO {
         String sql = """
                 INSERT INTO student_fee_payments (
                     student_id,
-                    payment_period,
+                    payment_month,
                     amount,
                     payment_date,
                     payment_method_id,
@@ -147,7 +147,7 @@ public class StudentFeePaymentDAO {
                 SELECT 1
                 FROM student_fee_payments
                 WHERE student_id = ?
-                  AND payment_period = ?
+                  AND payment_month = ?
                 LIMIT 1
                 """;
 
@@ -187,7 +187,7 @@ public class StudentFeePaymentDAO {
         String sql = """
                 SELECT *
                 FROM student_fee_payments
-                WHERE payment_period = ?
+                WHERE payment_month = ?
                 ORDER BY payment_date DESC, payment_id DESC
                 """;
 
@@ -225,7 +225,7 @@ public class StudentFeePaymentDAO {
         String sql = """
                 SELECT COALESCE(SUM(amount), 0)
                 FROM student_fee_payments
-                WHERE payment_period = ?
+                WHERE payment_month = ?
                 """;
 
         try (
@@ -267,7 +267,7 @@ public class StudentFeePaymentDAO {
                 JOIN students
                     ON student_fee_payments.student_id = students.student_id
                 WHERE
-                    student_fee_payments.payment_period LIKE ?
+                    student_fee_payments.payment_month LIKE ?
                     OR student_fee_payments.reference_number LIKE ?
                     OR students.first_name LIKE ?
                     OR students.last_name LIKE ?
@@ -322,7 +322,7 @@ public class StudentFeePaymentDAO {
 
         payment.setPaymentMonth(
                 YearMonth.parse(
-                        resultSet.getString("payment_period")
+                        resultSet.getString("payment_month")
                 )
         );
 

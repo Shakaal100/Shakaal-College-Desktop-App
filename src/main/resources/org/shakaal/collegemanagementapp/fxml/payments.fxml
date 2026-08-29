@@ -15,6 +15,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane xmlns="http://javafx.com/javafx/26"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.shakaal.collegemanagementapp.controllers.PaymentsController"
@@ -69,7 +71,8 @@
                             styleClass="payment-tab-active"/>
 
                     <Button text="Student Fees"
-                            styleClass="payment-tab"/>
+                            styleClass="payment-tab"
+                            onAction="#showStudentFees"/>
 
                     <Button text="Teacher Salaries"
                             styleClass="payment-tab"/>
@@ -93,6 +96,7 @@
             <!-- ================================================= -->
 
             <ScrollPane fitToWidth="true"
+                        fx:id="paymentsScrollPane"
                         hbarPolicy="NEVER"
                         vbarPolicy="AS_NEEDED"
                         VBox.vgrow="ALWAYS"
@@ -120,7 +124,7 @@
                             <FlowPane fx:id="summaryCardsPane"
                                       hgap="18"
                                       vgap="18"
-                                      prefWrapLength="1100"
+                                      prefWrapLength="1200"
                                       styleClass="summary-cards">
 
                                 <children>
@@ -130,7 +134,7 @@
 
                                     <VBox spacing="4"
                                           minWidth="220"
-                                          prefWidth="250"
+                                          prefWidth="220"
                                           styleClass="income-card">
 
                                         <children>
@@ -157,12 +161,15 @@
 
                                                     <StackPane styleClass="income-icon">
 
-                                                        <children>
+                                                        <ImageView fitHeight="24"
+                                                                   fitWidth="24"
+                                                                   preserveRatio="true">
 
-                                                            <Label text="💵"
-                                                                   styleClass="income-icon-label"/>
+                                                            <image>
+                                                                <Image url="@../icons/income.png"/>
+                                                            </image>
 
-                                                        </children>
+                                                        </ImageView>
 
                                                     </StackPane>
 
@@ -211,12 +218,15 @@
 
                                                     <StackPane styleClass="salary-icon">
 
-                                                        <children>
+                                                        <ImageView fitHeight="24"
+                                                                   fitWidth="24"
+                                                                   preserveRatio="true">
 
-                                                            <Label text="📤"
-                                                                   styleClass="salary-icon-label"/>
+                                                            <image>
+                                                                <Image url="@../icons/salary.png"/>
+                                                            </image>
 
-                                                        </children>
+                                                        </ImageView>
 
                                                     </StackPane>
 
@@ -265,12 +275,15 @@
 
                                                     <StackPane styleClass="expense-icon">
 
-                                                        <children>
+                                                        <ImageView fitHeight="24"
+                                                                   fitWidth="24"
+                                                                   preserveRatio="true">
 
-                                                            <Label text="💶"
-                                                                   styleClass="expense-icon-label"/>
+                                                            <image>
+                                                                <Image url="@../icons/expense.png"/>
+                                                            </image>
 
-                                                        </children>
+                                                        </ImageView>
 
                                                     </StackPane>
 
@@ -319,12 +332,15 @@
 
                                                     <StackPane styleClass="balance-icon">
 
-                                                        <children>
+                                                        <ImageView fitHeight="24"
+                                                                   fitWidth="24"
+                                                                   preserveRatio="true">
 
-                                                            <Label text="💰"
-                                                                   styleClass="balance-icon-label"/>
+                                                            <image>
+                                                                <Image url="@../icons/balance.png"/>
+                                                            </image>
 
-                                                        </children>
+                                                        </ImageView>
 
                                                     </StackPane>
 
