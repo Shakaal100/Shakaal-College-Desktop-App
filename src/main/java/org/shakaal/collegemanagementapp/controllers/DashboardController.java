@@ -38,6 +38,9 @@ public class DashboardController {
     private Button coursesButton;
 
     @FXML
+    private Button paymentsButton;
+
+    @FXML
     private Button usersButton;
 
     @FXML
@@ -83,6 +86,7 @@ public class DashboardController {
         coursesButton.setOnAction(e -> loadPage("/org/shakaal/collegemanagementapp/fxml/courses.fxml"));
 
         teachersButton.setOnAction(e -> loadPage("/org/shakaal/collegemanagementapp/fxml/teachers.fxml"));
+        paymentsButton.setOnAction(e -> loadPage("/org/shakaal/collegemanagementapp/fxml/payments.fxml"));
 
         logoutButton.setOnAction(e -> logout());
 

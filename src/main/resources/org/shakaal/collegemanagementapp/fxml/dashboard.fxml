@@ -53,7 +53,9 @@
 
                 <Button fx:id="coursesButton" styleClass="menu-button" text="📚   Courses" />
 
-                <Button styleClass="menu-button" text="🏫   Classes" />
+                <Button fx:id="paymentsButton"
+                        styleClass="menu-button"
+                        text="💰   Payments" />
 
                 <Button
                         fx:id="usersButton"

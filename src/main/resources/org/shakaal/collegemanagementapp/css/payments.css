@@ -1,0 +1,737 @@
+```css
+/* ============================================================
+   PAYMENTS MODULE
+   ============================================================ */
+
+.payments-page {
+    -fx-background-color: #f5f7fa;
+    -fx-font-family: "Segoe UI";
+}
+
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+
+.payments-content {
+    -fx-padding: 20px;
+}
+
+
+/* ============================================================
+   PAGE HEADER
+   ============================================================ */
+
+.page-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #172033;
+}
+
+.page-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #687386;
+}
+
+
+/* ============================================================
+   PAYMENT TABS
+   ============================================================ */
+
+.payment-tabs {
+    -fx-background-color: white;
+    -fx-border-color: #dce2ea;
+    -fx-border-width: 1px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+}
+
+.payment-tab {
+    -fx-background-color: transparent;
+    -fx-text-fill: #303846;
+    -fx-font-size: 13px;
+    -fx-padding: 12px 20px;
+    -fx-cursor: hand;
+}
+
+.payment-tab:hover {
+    -fx-background-color: #f1f5fa;
+}
+
+.payment-tab-active {
+    -fx-background-color: white;
+    -fx-text-fill: #1769d2;
+    -fx-font-weight: bold;
+    -fx-border-color: #1769d2;
+    -fx-border-width: 0 0 3px 0;
+}
+
+
+/* ============================================================
+   SUMMARY CARDS
+   ============================================================ */
+
+.summary-card {
+    -fx-background-color: white;
+    -fx-border-width: 1px;
+    -fx-border-radius: 9px;
+    -fx-background-radius: 9px;
+    -fx-padding: 16px;
+}
+
+
+/* Individual cards */
+
+.income-card {
+    -fx-border-color: #d8ebdf;
+}
+
+.salary-card {
+    -fx-border-color: #f0d9d9;
+}
+
+.expense-card {
+    -fx-border-color: #f0e2c6;
+}
+
+.balance-card {
+    -fx-border-color: #d8e3f3;
+}
+
+
+/* ============================================================
+   SUMMARY CARD TITLES
+   ============================================================ */
+
+.card-title {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.income-title {
+    -fx-text-fill: #168345;
+}
+
+.salary-title {
+    -fx-text-fill: #c93434;
+}
+
+.expense-title {
+    -fx-text-fill: #d58a00;
+}
+
+.balance-title {
+    -fx-text-fill: #1764c0;
+}
+
+.card-period {
+    -fx-font-size: 10px;
+    -fx-text-fill: #7b8492;
+}
+
+
+/* ============================================================
+   SUMMARY CARDS
+   ============================================================ */
+
+.income-card,
+.salary-card,
+.expense-card,
+.balance-card {
+
+    -fx-background-color: white;
+
+    -fx-min-width: 250px;
+    -fx-pref-width: 270px;
+    -fx-min-height: 125px;
+    -fx-pref-height: 125px;
+
+    -fx-padding: 18px;
+
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+
+    -fx-border-width: 1.5px;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(0,0,0,0.08),
+        10,
+        0.15,
+        0,
+        3
+    );
+}
+
+
+/* ============================================================
+   CARD BORDER COLORS
+   ============================================================ */
+
+.income-card {
+    -fx-border-color: #b8e5c8;
+}
+
+.salary-card {
+    -fx-border-color: #f0bcbc;
+}
+
+.expense-card {
+    -fx-border-color: #f3d49b;
+}
+
+.balance-card {
+    -fx-border-color: #b8d2f0;
+}
+
+
+/* ============================================================
+   CARD TITLES
+   ============================================================ */
+
+.income-title,
+.salary-title,
+.expense-title,
+.balance-title {
+
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+
+.income-title {
+    -fx-text-fill: #168345;
+}
+
+.salary-title {
+    -fx-text-fill: #c93434;
+}
+
+.expense-title {
+    -fx-text-fill: #d58a00;
+}
+
+.balance-title {
+    -fx-text-fill: #1764c0;
+}
+
+
+/* ============================================================
+   CARD PERIOD
+   ============================================================ */
+
+.card-period {
+    -fx-font-size: 10px;
+    -fx-text-fill: #8992a1;
+}
+
+
+/* ============================================================
+   CARD AMOUNTS
+   ============================================================ */
+
+.income-amount,
+.salary-amount,
+.expense-amount,
+.balance-amount {
+
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+}
+
+
+.income-amount {
+    -fx-text-fill: #168345;
+}
+
+.salary-amount {
+    -fx-text-fill: #c93434;
+}
+
+.expense-amount {
+    -fx-text-fill: #d58a00;
+}
+
+.balance-amount {
+    -fx-text-fill: #1764c0;
+}
+
+
+/* ============================================================
+   CARD DESCRIPTION
+   ============================================================ */
+
+.card-description {
+    -fx-font-size: 12px;
+    -fx-text-fill: #687386;
+}
+
+
+/* ============================================================
+   ICON CIRCLES
+   ============================================================ */
+
+.income-icon,
+.salary-icon,
+.expense-icon,
+.balance-icon {
+
+    -fx-pref-width: 46px;
+    -fx-pref-height: 46px;
+
+    -fx-min-width: 46px;
+    -fx-min-height: 46px;
+
+    -fx-max-width: 46px;
+    -fx-max-height: 46px;
+
+    -fx-background-radius: 50%;
+}
+
+
+/* ============================================================
+   ICON COLORS
+   ============================================================ */
+
+.income-icon {
+    -fx-background-color: #d9f4e3;
+}
+
+.salary-icon {
+    -fx-background-color: #f8dede;
+}
+
+.expense-icon {
+    -fx-background-color: #fff0cf;
+}
+
+.balance-icon {
+    -fx-background-color: #dceafa;
+}
+
+
+/* ============================================================
+   ICON TEXT
+   ============================================================ */
+
+.income-icon-label,
+.salary-icon-label,
+.expense-icon-label,
+.balance-icon-label {
+
+    -fx-font-size: 21px;
+    -fx-font-weight: bold;
+}
+
+
+.income-icon-label {
+    -fx-text-fill: #168345;
+}
+
+.salary-icon-label {
+    -fx-text-fill: #c93434;
+}
+
+.expense-icon-label {
+    -fx-text-fill: #d58a00;
+}
+
+.balance-icon-label {
+    -fx-text-fill: #1764c0;
+}
+
+
+/* Income */
+
+.income-icon {
+    -fx-background-color: #dff4e7;
+}
+
+.income-icon Label {
+    -fx-text-fill: #168345;
+}
+
+
+/* Salary */
+
+.salary-icon {
+    -fx-background-color: #f9dfdf;
+}
+
+.salary-icon Label {
+    -fx-text-fill: #c93434;
+}
+
+
+/* Expense */
+
+.expense-icon {
+    -fx-background-color: #fff1cf;
+}
+
+.expense-icon Label {
+    -fx-text-fill: #d58a00;
+}
+
+
+/* Balance */
+
+.balance-icon {
+    -fx-background-color: #dfebfa;
+}
+
+.balance-icon Label {
+    -fx-text-fill: #1764c0;
+}
+
+
+/* ============================================================
+   GENERAL DASHBOARD PANELS
+   ============================================================ */
+
+.dashboard-panel {
+    -fx-background-color: white;
+    -fx-border-color: #dce2ea;
+    -fx-border-width: 1px;
+    -fx-border-radius: 9px;
+    -fx-background-radius: 9px;
+    -fx-padding: 15px;
+}
+
+.panel-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #202938;
+}
+
+.panel-period {
+    -fx-font-size: 11px;
+    -fx-text-fill: #7b8492;
+}
+
+
+/* ============================================================
+   STATUS AREA
+   ============================================================ */
+
+.status-section {
+    -fx-fill-height: true;
+}
+
+
+/* ============================================================
+   PIE CHART
+   ============================================================ */
+
+.status-pie-chart {
+    -fx-background-color: transparent;
+}
+
+.status-pie-chart .chart-pie {
+    -fx-border-color: transparent;
+}
+
+
+/* Paid */
+
+.status-pie-chart .default-color0 {
+    -fx-pie-color: #4caf78;
+}
+
+
+/* Not paid */
+
+.status-pie-chart .default-color1 {
+    -fx-pie-color: #d94b4b;
+}
+
+
+/* ============================================================
+   PIE CENTER NUMBER
+   ============================================================ */
+
+.chart-center-value {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+
+/* ============================================================
+   STATUS LEGENDS
+   ============================================================ */
+
+.legend-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #3d4654;
+}
+
+.legend-amount {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #263142;
+}
+
+.legend-paid {
+    -fx-font-size: 12px;
+    -fx-text-fill: #4caf78;
+}
+
+.legend-unpaid {
+    -fx-font-size: 12px;
+    -fx-text-fill: #d94b4b;
+}
+
+
+/* ============================================================
+   PANEL FOOTER
+   ============================================================ */
+
+.panel-footer {
+    -fx-padding: 10px 0 0 0;
+    -fx-border-color: #e5e9ef;
+    -fx-border-width: 1px 0 0 0;
+}
+
+.footer-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #3d4654;
+}
+
+.footer-value {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1769d2;
+}
+
+
+/* ============================================================
+   EXPENSE BREAKDOWN
+   ============================================================ */
+
+.expense-list {
+    -fx-background-color: transparent;
+}
+
+.expense-row {
+    -fx-padding: 9px 2px;
+    -fx-border-color: #e7ebf0;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.expense-row-icon {
+    -fx-min-width: 40px;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #327BCC;
+}
+
+.expense-name {
+    -fx-font-size: 16px;
+    -fx-text-fill: #327BCC;
+}
+
+.expense-value {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #303846;
+}
+
+.expense-total {
+    -fx-padding: 10px 2px 0 2px;
+}
+
+.expense-total-label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #303846;
+}
+
+.expense-total-value {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #d33131;
+}
+
+
+/* ============================================================
+   RECENT TRANSACTIONS
+   ============================================================ */
+
+.transactions-table {
+    -fx-background-color: white;
+    -fx-border-color: #dce2ea;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+
+/* Table header */
+
+.transactions-table .column-header-background {
+    -fx-background-color: #f5f7fa;
+}
+
+.transactions-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: #e1e5eb;
+    -fx-border-width: 0 1px 1px 0;
+    -fx-padding: 8px 6px;
+}
+
+.transactions-table .column-header .label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #394353;
+}
+
+
+/* Table rows */
+
+.transactions-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #edf0f4 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.transactions-table .table-row-cell:hover {
+    -fx-background-color: #f5f8fc;
+}
+
+.transactions-table .table-row-cell:selected {
+    -fx-background-color: #e8f1fc;
+}
+
+
+/* Table cells */
+
+.transactions-table .table-cell {
+    -fx-font-size: 10px;
+    -fx-text-fill: #303846;
+    -fx-padding: 7px 6px;
+}
+
+
+/* ============================================================
+   QUICK ACTIONS PANEL
+   ============================================================ */
+
+.quick-actions-panel {
+    -fx-pref-width: 250px;
+}
+
+.quick-action {
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 10px 12px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+}
+
+
+/* Student fee */
+
+.student-action {
+    -fx-background-color: #45b86b;
+}
+
+.student-action:hover {
+    -fx-background-color: #399f5b;
+}
+
+
+/* Teacher salary */
+
+.salary-action {
+    -fx-background-color: #2777d4;
+}
+
+.salary-action:hover {
+    -fx-background-color: #1f64b6;
+}
+
+
+/* Expense */
+
+.expense-action {
+    -fx-background-color: #e9a21a;
+}
+
+.expense-action:hover {
+    -fx-background-color: #d58e0d;
+}
+
+
+/* Transactions */
+
+.transaction-action {
+    -fx-background-color: #7956c9;
+}
+
+.transaction-action:hover {
+    -fx-background-color: #6744b4;
+}
+
+
+/* ============================================================
+   BUTTON ICONS
+   ============================================================ */
+
+.quick-action Label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+
+/* ============================================================
+   SCROLL BAR
+   ============================================================ */
+
+.transactions-table .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.transactions-table .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.transactions-table .scroll-bar:vertical .thumb {
+    -fx-background-color: #c8ced8;
+    -fx-background-radius: 5px;
+}
+
+
+/* ============================================================
+   GENERAL SCROLLBAR
+   ============================================================ */
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #c8ced8;
+    -fx-background-radius: 5px;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #c8ced8;
+    -fx-background-radius: 5px;
+}
+```
