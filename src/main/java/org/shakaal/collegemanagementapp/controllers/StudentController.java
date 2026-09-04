@@ -170,21 +170,21 @@ public class StudentController implements Initializable{
 
         idColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.06));
 
-        firstNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
+        firstNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.11));
 
-        lastNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
+        lastNameColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.11));
 
         genderColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.08));
 
         //registeredDateColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
 
-        phoneColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.12));
+        phoneColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.11));
 
         courseColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.18));
 
         statusColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.09));
 
-        actionsColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.22));
+        actionsColumn.prefWidthProperty().bind(studentTable.widthProperty().multiply(0.23));
 
         idColumn.setStyle("-fx-alignment: CENTER;");
 
@@ -332,6 +332,9 @@ public class StudentController implements Initializable{
 
     }
 
+
+    // ACTIONS COLUMN CONFIGURATION
+
     private void configureActionColumn() {
 
         actionsColumn.setCellFactory(param ->
@@ -341,9 +344,18 @@ public class StudentController implements Initializable{
 
                     private final Button infoButton = new Button();
 
+                    private final Button payFeeButton = new Button();
+
                     private final Button deleteButton = new Button();
 
+
+
+
                     private final HBox buttons = new HBox(10);
+
+
+
+
 
                     {
 
@@ -352,8 +364,11 @@ public class StudentController implements Initializable{
                         // =====================================================
 
                         buttons.getChildren().addAll(
-                                editButton,
-                                infoButton
+                                infoButton,
+                                payFeeButton,
+                                editButton
+
+
                         );
 
                         // Delete is only available to administrators
@@ -378,16 +393,14 @@ public class StudentController implements Initializable{
 
                         deleteButton.getStyleClass().add("delete-button");
 
+                        payFeeButton.getStyleClass().add("pay-fee-button");
+
 
                         // =====================================================
                         // EDIT ICON
                         // =====================================================
 
-                        Image editImage = new Image(
-                                getClass().getResourceAsStream(
-                                        "/org/shakaal/collegemanagementapp/icons/edit.png"
-                                )
-                        );
+                        Image editImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/edit.png"));
 
                         ImageView editView = new ImageView(editImage);
 
@@ -396,17 +409,14 @@ public class StudentController implements Initializable{
                         editView.setFitHeight(16);
 
                         editButton.setGraphic(editView);
+                        editButton.setTooltip(new Tooltip("Edit Student"));
 
 
                         // =====================================================
                         // INFO ICON
                         // =====================================================
 
-                        Image infoImage = new Image(
-                                getClass().getResourceAsStream(
-                                        "/org/shakaal/collegemanagementapp/icons/info.png"
-                                )
-                        );
+                        Image infoImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/info.png"));
 
                         ImageView infoView = new ImageView(infoImage);
 
@@ -415,17 +425,29 @@ public class StudentController implements Initializable{
                         infoView.setFitHeight(18);
 
                         infoButton.setGraphic(infoView);
+                        infoButton.setTooltip(new Tooltip("View Student Information"));
+
+                        // =====================================================
+                        // PAY FEE ICON
+                        // =====================================================
+
+                        Image payFeeImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/pay-fee.png"));
+
+                        ImageView payFeeView = new ImageView(payFeeImage);
+
+                        payFeeView.setFitWidth(18);
+
+                        payFeeView.setFitHeight(18);
+
+                        payFeeButton.setGraphic(payFeeView);
+                        payFeeButton.setTooltip(new Tooltip("Pay student fee"));
 
 
                         // =====================================================
                         // DELETE ICON
                         // =====================================================
 
-                        Image deleteImage = new Image(
-                                getClass().getResourceAsStream(
-                                        "/org/shakaal/collegemanagementapp/icons/delete.png"
-                                )
-                        );
+                        Image deleteImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/delete.png"));
 
                         ImageView deleteView = new ImageView(deleteImage);
 
@@ -434,6 +456,7 @@ public class StudentController implements Initializable{
                         deleteView.setFitHeight(20);
 
                         deleteButton.setGraphic(deleteView);
+                        deleteButton.setTooltip(new Tooltip("Delete Student"));
 
 
                         // Center all action buttons
@@ -468,6 +491,21 @@ public class StudentController implements Initializable{
                                             .get(getIndex());
 
                             openStudentInfo(student);
+
+                        });
+
+                        // =====================================================
+                        // PAY FEE WINDOW OPEN
+                        // =====================================================
+
+                        payFeeButton.setOnAction(event -> {
+
+                            Student student =
+                                    getTableView()
+                                            .getItems()
+                                            .get(getIndex());
+
+                            openRecordFeeWindow(student);
 
                         });
 
@@ -515,6 +553,12 @@ public class StudentController implements Initializable{
 
     }
 
+
+
+
+
+
+
     private void openAddStudentWindow() {
 
         try {
@@ -547,6 +591,51 @@ public class StudentController implements Initializable{
             e.printStackTrace();
 
         }
+    }
+
+
+
+    private void openRecordFeeWindow(Student student) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/org/shakaal/collegemanagementapp/fxml/record-fee.fxml"
+                    )
+            );
+
+            Parent root = loader.load();
+
+            // Get the RecordFeeController
+            RecordFeeController controller = loader.getController();
+
+            // Pass the selected student to the payment form
+            controller.setStudent(student);
+
+            Stage stage = new Stage();
+
+            stage.setTitle("Record Student Fee");
+
+            Scene scene = new Scene(root, 900, 650);
+
+            stage.setScene(scene);
+
+            stage.setResizable(false);
+
+            stage.showAndWait();
+
+            // Refresh the student table after the payment window closes
+            refreshStudents();
+
+            loadStatistics();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
     }
 
     private void openEditStudentWindow(

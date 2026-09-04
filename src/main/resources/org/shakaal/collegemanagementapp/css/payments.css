@@ -621,10 +621,12 @@
     -fx-pref-width: 250px;
 }
 
-.quick-action {
+.payment-method-action,
+ .expense-action,
+ .transaction-action{
     -fx-background-radius: 6px;
     -fx-border-radius: 6px;
-    -fx-font-size: 11px;
+    -fx-font-size: 13px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-padding: 10px 12px;
@@ -635,11 +637,11 @@
 
 /* Student fee */
 
-.student-action {
+.payment-method-action {
     -fx-background-color: #45b86b;
 }
 
-.student-action:hover {
+.payment-method-action:hover {
     -fx-background-color: #399f5b;
 }
 

@@ -177,7 +177,7 @@ public class TeacherController {
 
         teacherIdColumn.prefWidthProperty().bind(teacherTable.widthProperty().multiply(0.06));
 
-        fullNameColumn.prefWidthProperty().bind(teacherTable.widthProperty().multiply(0.15));
+        fullNameColumn.prefWidthProperty().bind(teacherTable.widthProperty().multiply(0.14));
 
         genderColumn.prefWidthProperty().bind(teacherTable.widthProperty().multiply(0.09));
 
@@ -185,11 +185,11 @@ public class TeacherController {
 
         specializationColumn.prefWidthProperty().bind(teacherTable.widthProperty().multiply(0.16));
 
-        salaryColumn.prefWidthProperty().bind(teacherTable.widthProperty().multiply(0.11));
+        salaryColumn.prefWidthProperty().bind(teacherTable.widthProperty().multiply(0.09));
 
-        statusColumn.prefWidthProperty().bind(teacherTable.widthProperty().multiply(0.11));
+        statusColumn.prefWidthProperty().bind(teacherTable.widthProperty().multiply(0.09));
 
-        actionsColumn.prefWidthProperty().bind(teacherTable.widthProperty().multiply(0.18));
+        actionsColumn.prefWidthProperty().bind(teacherTable.widthProperty().multiply(0.23));
 
 
         // ***************** ALIGNMENT *****************
@@ -421,14 +421,20 @@ public class TeacherController {
 
     }
 
+
+
+
+
     private void configureActionColumn() {
 
         actionsColumn.setCellFactory(param ->
                 new TableCell<>() {
 
-                    private final Button editButton = new Button();
-
                     private final Button infoButton = new Button();
+
+                    private final Button paySalaryButton = new Button();
+
+                    private final Button editButton = new Button();
 
                     private final Button deleteButton = new Button();
 
@@ -436,7 +442,7 @@ public class TeacherController {
 
                     {
 
-                        buttons.getChildren().addAll(editButton, infoButton);
+                        buttons.getChildren().addAll(infoButton, paySalaryButton, editButton);
 
                         if (Session.getCurrentUser().getRole().equals("ADMIN")) {
 
@@ -453,6 +459,8 @@ public class TeacherController {
                         infoButton.getStyleClass().add("info-button");
 
                         deleteButton.getStyleClass().add("delete-button");
+
+                        paySalaryButton.getStyleClass().add("pay-salary-button");
 
 
                         // ---------- Edit Icon ----------
@@ -481,6 +489,19 @@ public class TeacherController {
                         infoButton.setGraphic(infoView);
 
 
+                        // ---------- Pay Salary Icon ----------
+
+                        Image paySalaryImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/pay-fee.png"));
+
+                        ImageView paySalaryView = new ImageView(paySalaryImage);
+
+                        paySalaryView.setFitWidth(20);
+
+                        paySalaryView.setFitHeight(20);
+
+                        paySalaryButton.setGraphic(paySalaryView);
+
+
                         // ---------- Delete Icon ----------
 
                         Image deleteImage = new Image(getClass().getResourceAsStream("/org/shakaal/collegemanagementapp/icons/delete.png"));
@@ -495,6 +516,18 @@ public class TeacherController {
 
 
                         buttons.setAlignment(Pos.CENTER);
+
+
+                        paySalaryButton.setOnAction(event -> {
+
+                            Teacher teacher =
+                                    getTableView()
+                                            .getItems()
+                                            .get(getIndex());
+
+                            openRecordSalaryWindow(teacher);
+
+                        });
 
 
                         // ---------- Edit ----------
@@ -513,14 +546,6 @@ public class TeacherController {
                         infoButton.setOnAction(event -> {
 
                             Teacher teacher = getTableView().getItems().get(getIndex());
-
-                            System.out.println("=================================");
-                            System.out.println("INFO BUTTON CLICKED");
-                            System.out.println("Teacher ID: " + teacher.getTeacherID());
-                            System.out.println("Teacher Name: " + teacher.getFullName());
-                            System.out.println("Picture Path: [" + teacher.getPicturePath() + "]");
-                            System.out.println("Teacher Object: " + teacher);
-                            System.out.println("=================================");
 
                             openTeacherInfo(teacher);
 
@@ -582,6 +607,51 @@ public class TeacherController {
             stage.showAndWait();
             refreshTeachers();
             loadTeachers();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+
+
+    private void openRecordSalaryWindow(Teacher teacher) {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/org/shakaal/collegemanagementapp/fxml/record-salary.fxml"
+                    )
+            );
+
+            Parent root = loader.load();
+
+            // Get the RecordSalaryController
+            RecordSalaryController controller = loader.getController();
+
+            // Pass the selected teacher to the salary payment form
+            controller.setTeacher(teacher);
+
+            Stage stage = new Stage();
+
+            stage.setTitle("Record Teacher Salary");
+
+            Scene scene = new Scene(root, 900, 650);
+
+            stage.setScene(scene);
+
+            stage.setResizable(false);
+
+            stage.showAndWait();
+
+            // Refresh the teacher table after the salary window closes
+            refreshTeachers();
+
+            loadStatistics();
 
         } catch (IOException e) {
 

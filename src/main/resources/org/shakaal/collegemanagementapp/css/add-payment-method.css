@@ -1,0 +1,203 @@
+/* =========================================================
+   ADD PAYMENT METHOD
+   ========================================================= */
+
+.add-payment-method-root {
+    -fx-background-color: #f7f9fc;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.form-header {
+    -fx-background-color: #1F3F95;
+
+    -fx-border-color:
+        transparent
+        transparent
+        #e5e7eb
+        transparent;
+
+    -fx-border-width: 0 0 1 0;
+}
+
+.form-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.form-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.form-content {
+    -fx-background-color: transparent;
+}
+
+
+/* =========================================================
+   SECTION TITLES
+   ========================================================= */
+
+.section-title {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f2937;
+}
+
+
+/* =========================================================
+   FIELD LABELS
+   ========================================================= */
+
+.field-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #374151;
+}
+
+
+/* =========================================================
+   NORMAL TEXT FIELDS
+   ========================================================= */
+
+.form-field {
+    -fx-background-color: white;
+
+    -fx-background-radius: 7px;
+
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 7px;
+    -fx-border-width: 1px;
+
+    -fx-padding: 0 12px;
+
+    -fx-font-size: 15px;
+    -fx-text-fill: #1f2937;
+}
+
+.form-field:focused {
+    -fx-border-color: #4f46e5;
+    -fx-border-width: 1.5px;
+}
+
+
+/* =========================================================
+   PAYMENT METHOD PANEL
+   ========================================================= */
+
+.payment-method-panel {
+    -fx-background-color: white;
+
+    -fx-background-radius: 12px;
+
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 12px;
+    -fx-border-width: 1px;
+
+    -fx-padding: 20px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.form-footer {
+    -fx-background-color: #1F3F95;
+
+    -fx-border-color:
+        #e5e7eb
+        transparent
+        transparent
+        transparent;
+
+    -fx-border-width: 1 0 0 0;
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+   ========================================================= */
+
+.cancel-button {
+    -fx-background-color: #f3f4f6;
+
+    -fx-text-fill: #374151;
+
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 7px;
+
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 7px;
+    -fx-border-width: 1px;
+
+    -fx-cursor: hand;
+}
+
+.cancel-button:hover {
+    -fx-background-color: #e5e7eb;
+}
+
+.cancel-button:pressed {
+    -fx-background-color: #d1d5db;
+}
+
+
+/* =========================================================
+   ADD PAYMENT METHOD BUTTON
+   ========================================================= */
+
+.save-button {
+    -fx-background-color: #16a34a;
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 7px;
+
+    -fx-cursor: hand;
+}
+
+.save-button:hover {
+    -fx-background-color: #15803d;
+}
+
+.save-button:pressed {
+    -fx-background-color: #166534;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.form-content .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.form-content .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.form-content .scroll-bar:vertical .thumb {
+    -fx-background-color: #cbd5e1;
+    -fx-background-radius: 10px;
+}
+
+.form-content .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #94a3b8;
+}

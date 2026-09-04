@@ -1,0 +1,408 @@
+/* =========================================================
+   RECORD STUDENT FEE
+   ========================================================= */
+
+.record-fee-root {
+    -fx-background-color: #f7f9fc;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.form-header {
+    -fx-background-color: #1F3F95;
+
+    -fx-border-color:
+        transparent
+        transparent
+        #e5e7eb
+        transparent;
+
+    -fx-border-width: 0 0 1 0;
+}
+
+.form-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.form-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.form-content {
+    -fx-background-color: transparent;
+}
+
+
+/* =========================================================
+   SECTION TITLES
+   ========================================================= */
+
+.section-title {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f2937;
+}
+
+
+/* =========================================================
+   FIELD LABELS
+   ========================================================= */
+
+.field-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #374151;
+}
+
+
+/* =========================================================
+   NORMAL TEXT FIELDS
+   ========================================================= */
+
+.form-field {
+    -fx-background-color: white;
+
+    -fx-background-radius: 7px;
+
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 7px;
+    -fx-border-width: 1px;
+
+    -fx-padding: 0 12px;
+
+    -fx-font-size: 15px;
+    -fx-text-fill: #1f2937;
+}
+
+.form-field:focused {
+    -fx-border-color: #4f46e5;
+    -fx-border-width: 1.5px;
+}
+
+
+/* =========================================================
+   COMBO BOX
+   ========================================================= */
+
+.form-combo {
+    -fx-background-color: white;
+
+    -fx-background-radius: 7px;
+
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 7px;
+    -fx-border-width: 1px;
+
+    -fx-font-size: 15px;
+
+    -fx-padding: 0 8px;
+}
+
+.form-combo:focused {
+
+    -fx-border-color: #4f46e5;
+    -fx-border-width: 1.5px;
+}
+
+
+/* =========================================================
+   COMBO BOX POPUP
+   ========================================================= */
+
+.form-combo .list-view {
+    -fx-background-color: white;
+}
+
+.form-combo .list-cell {
+    -fx-background-color: white;
+    -fx-text-fill: #1f2937;
+
+    -fx-padding: 9px 12px;
+
+    -fx-font-size: 14px;
+}
+
+.form-combo .list-cell:hover {
+    -fx-background-color: #eef2ff;
+}
+
+.form-combo .list-cell:selected {
+    -fx-background-color: white;
+    -fx-text-fill: #1f2937;
+}
+
+.form-combo .arrow{
+
+    -fx-background-color:#64748B;
+
+}
+
+
+/* =========================================================
+   TEXT AREA
+   ========================================================= */
+
+.form-text-area {
+    -fx-background-color: white;
+
+    -fx-background-radius: 7px;
+
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 7px;
+    -fx-border-width: 1px;
+
+    -fx-font-size: 14px;
+
+    -fx-text-fill: #1f2937;
+}
+
+.form-text-area:focused {
+    -fx-border-color: #4f46e5;
+    -fx-border-width: 1.5px;
+}
+
+.form-text-area .content {
+    -fx-background-color: white;
+    -fx-background-radius: 7px;
+}
+
+
+/* =========================================================
+   STUDENT INFORMATION PANEL
+   ========================================================= */
+
+.student-info-panel {
+    -fx-background-color: white;
+
+    -fx-background-radius: 12px;
+
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 12px;
+    -fx-border-width: 1px;
+
+    -fx-padding: 20px;
+}
+
+
+/* =========================================================
+   PAYMENT DETAILS PANEL
+   ========================================================= */
+
+.payment-details-panel {
+    -fx-background-color: white;
+
+    -fx-background-radius: 12px;
+
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 12px;
+    -fx-border-width: 1px;
+
+    -fx-padding: 20px;
+}
+
+
+/* =========================================================
+   READ-ONLY FIELDS
+   ========================================================= */
+
+.read-only-field {
+    -fx-background-color: #f3f4f6;
+
+    -fx-background-radius: 7px;
+
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 7px;
+    -fx-border-width: 1px;
+
+    -fx-padding: 0 12px;
+
+    -fx-font-size: 15px;
+
+    -fx-text-fill: #4b5563;
+}
+
+
+/* =========================================================
+   REFERENCE NUMBER
+   ========================================================= */
+
+.reference-field {
+    -fx-background-color: #f3f4f6;
+
+    -fx-background-radius: 7px;
+
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 7px;
+    -fx-border-width: 1px;
+
+    -fx-padding: 0 12px;
+
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #374151;
+}
+
+
+/* =========================================================
+   PAYMENT SUMMARY
+   ========================================================= */
+
+.payment-summary {
+    -fx-background-color: #f7f9fc;
+
+    -fx-background-radius: 10px;
+
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+
+    -fx-padding: 15px;
+}
+
+
+/* =========================================================
+   SUMMARY LABEL
+   ========================================================= */
+
+.summary-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6b7280;
+}
+
+
+/* =========================================================
+   SUMMARY VALUE
+   ========================================================= */
+
+.summary-value {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f2937;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.form-footer {
+    -fx-background-color: #1F3F95;
+
+    -fx-border-color:
+        #e5e7eb
+        transparent
+        transparent
+        transparent;
+
+    -fx-border-width: 1 0 0 0;
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+   ========================================================= */
+
+.cancel-button {
+    -fx-background-color: #f3f4f6;
+
+    -fx-text-fill: #374151;
+
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 7px;
+
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 7px;
+    -fx-border-width: 1px;
+
+    -fx-cursor: hand;
+}
+
+.cancel-button:hover {
+    -fx-background-color: #e5e7eb;
+}
+
+.cancel-button:pressed {
+    -fx-background-color: #d1d5db;
+}
+
+
+/* =========================================================
+   RECORD PAYMENT BUTTON
+   ========================================================= */
+
+.save-button {
+    -fx-background-color: #16a34a;
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 7px;
+
+    -fx-cursor: hand;
+}
+
+.save-button:hover {
+    -fx-background-color: #15803d;
+}
+
+.save-button:pressed {
+    -fx-background-color: #166534;
+}
+
+
+/* =========================================================
+   DISABLED STATE
+   ========================================================= */
+
+.save-button:disabled {
+    -fx-opacity: 0.55;
+    -fx-cursor: default;
+}
+
+
+/* =========================================================
+   TEXT FIELD DISABLED STATE
+   ========================================================= */
+
+.read-only-field:disabled,
+.reference-field:disabled {
+    -fx-opacity: 1.0;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.form-content .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.form-content .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.form-content .scroll-bar:vertical .thumb {
+    -fx-background-color: #cbd5e1;
+    -fx-background-radius: 10px;
+}
+
+.form-content .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #94a3b8;
+}

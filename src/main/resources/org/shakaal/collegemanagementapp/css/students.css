@@ -325,7 +325,7 @@
 
 .info-button {
 
-    -fx-background-color: #79E493;
+    -fx-background-color: #986294;
 
     -fx-text-fill: white;
 
@@ -339,7 +339,7 @@
 
 .info-button:hover {
 
-    -fx-background-color: #37D75E;
+    -fx-background-color: #7B3676;
 
     -fx-scale-x: 1.08;
 
@@ -354,6 +354,89 @@
     -fx-scale-y: 0.95;
 
 }
+
+
+/* =========================================================
+   PAY FEE BUTTON
+   ========================================================= */
+
+.pay-fee-button {
+
+    -fx-background-color: #BFBFBF;
+
+    -fx-text-fill: white;
+
+    -fx-min-width: 50;
+
+    -fx-background-radius: 20;
+
+    -fx-cursor: hand;
+
+}
+
+
+/* =========================================================
+   PAY FEE BUTTON HOVER
+   ========================================================= */
+
+.pay-fee-button:hover {
+
+    -fx-background-color: #A0A0A0;
+
+    -fx-scale-x: 1.08;
+
+    -fx-scale-y: 1.08;
+
+}
+
+
+/* =========================================================
+   PAY FEE BUTTON PRESSED
+   ========================================================= */
+
+.pay-fee-button:pressed {
+
+    -fx-scale-x: 0.95;
+
+    -fx-scale-y: 0.95;
+
+}
+
+
+.pay-salary-button {
+
+    -fx-background-color: #BFBFBF;
+
+    -fx-text-fill: white;
+
+    -fx-min-width: 50;
+
+    -fx-background-radius: 20;
+
+    -fx-cursor: hand;
+
+}
+
+.pay-salary-button:hover {
+
+    -fx-background-color: #A0A0A0;
+
+    -fx-scale-x: 1.08;
+
+    -fx-scale-y: 1.08;
+
+}
+
+
+.pay-salary-button:pressed {
+
+    -fx-scale-x: 0.95;
+
+    -fx-scale-y: 0.95;
+
+
+}
+
 /* ==========================================================
    SOME CSS FIX OF THE TABLE VIEW, ESPECIALLY THE FONT OF CELLS TEXT
    ========================================================== */

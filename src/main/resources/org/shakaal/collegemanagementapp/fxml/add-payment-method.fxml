@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/26"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.shakaal.collegemanagementapp.controllers.AddPaymentMethodController"
+            stylesheets="@../css/add-payment-method.css"
+            styleClass="add-payment-method-root">
+
+    <children>
+
+        <VBox spacing="0"
+              AnchorPane.topAnchor="0.0"
+              AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0">
+
+
+            <!-- ================================================= -->
+            <!-- HEADER -->
+            <!-- ================================================= -->
+
+            <HBox spacing="10"
+                  alignment="CENTER_LEFT"
+                  styleClass="form-header">
+
+                <padding>
+                    <Insets top="18"
+                            right="20"
+                            bottom="18"
+                            left="20"/>
+                </padding>
+
+                <children>
+
+                    <!-- TITLE + SUBTITLE -->
+
+                    <VBox spacing="4"
+                          HBox.hgrow="ALWAYS">
+
+                        <Label text="ADD PAYMENT METHOD"
+                               styleClass="form-title"/>
+
+                        <Label text="Create a new payment method for the college"
+                               styleClass="form-subtitle"/>
+
+                    </VBox>
+
+
+                    <!-- COLLEGE LOGO -->
+
+                    <ImageView fx:id="collegeLogo"
+                               fitWidth="80"
+                               fitHeight="80"
+                               preserveRatio="true">
+
+                        <image>
+                            <Image url="@../images/Logo.png"/>
+                        </image>
+
+                    </ImageView>
+
+                </children>
+
+            </HBox>
+
+
+            <!-- ================================================= -->
+            <!-- CONTENT -->
+            <!-- ================================================= -->
+
+            <ScrollPane fitToWidth="true"
+                        hbarPolicy="NEVER"
+                        vbarPolicy="NEVER"
+                        VBox.vgrow="ALWAYS"
+                        styleClass="form-content">
+
+                <content>
+
+                    <VBox spacing="18">
+
+                        <padding>
+                            <Insets top="25"
+                                    right="30"
+                                    bottom="25"
+                                    left="30"/>
+                        </padding>
+
+                        <children>
+
+
+                            <!-- ================================= -->
+                            <!-- PAYMENT METHOD INFORMATION -->
+                            <!-- ================================= -->
+
+                            <VBox spacing="14"
+                                  styleClass="payment-method-panel">
+
+                                <children>
+
+
+                                    <!-- SECTION TITLE -->
+
+                                    <HBox spacing="10"
+                                          alignment="CENTER_LEFT">
+
+                                        <Label text="Payment Method Information"
+                                               styleClass="section-title"/>
+
+                                    </HBox>
+
+
+                                    <!-- METHOD NAME -->
+
+                                    <VBox spacing="4">
+
+                                        <Label text="Method Name"
+                                               styleClass="field-label"/>
+
+                                        <TextField fx:id="methodNameField"
+                                                   promptText="Enter payment method"
+                                                   prefHeight="42"
+                                                   maxWidth="Infinity"
+                                                   styleClass="form-field"/>
+
+                                    </VBox>
+
+                                </children>
+
+                            </VBox>
+
+                        </children>
+
+                    </VBox>
+
+                </content>
+
+            </ScrollPane>
+
+
+            <!-- ================================================= -->
+            <!-- FOOTER -->
+            <!-- ================================================= -->
+
+            <HBox spacing="10"
+                  alignment="CENTER_RIGHT"
+                  styleClass="form-footer">
+
+                <padding>
+                    <Insets top="12"
+                            right="20"
+                            bottom="12"
+                            left="20"/>
+                </padding>
+
+                <children>
+
+                    <!-- CANCEL -->
+
+                    <Button fx:id="cancelButton"
+                            text="Cancel"
+                            prefWidth="90"
+                            prefHeight="38"
+                            styleClass="cancel-button"/>
+
+
+                    <!-- ADD PAYMENT METHOD -->
+
+                    <Button fx:id="saveButton"
+                            text="Add Payment Method"
+                            prefWidth="160"
+                            prefHeight="38"
+                            styleClass="save-button"/>
+
+                </children>
+
+            </HBox>
+
+        </VBox>
+
+    </children>
+
+</AnchorPane>

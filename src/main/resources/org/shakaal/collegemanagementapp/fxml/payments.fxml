@@ -67,24 +67,52 @@
 
                 <children>
 
-                    <Button text="Overview"
-                            styleClass="payment-tab-active"/>
+                    <!-- OVERVIEW -->
 
-                    <Button text="Student Fees"
+                    <Button fx:id="overviewButton"
+                            text="Overview"
+                            styleClass="payment-tab"
+                            onAction="#showOverview"/>
+
+
+                    <!-- STUDENT FEES -->
+
+                    <Button fx:id="studentFeesButton"
+                            text="Student Fees"
                             styleClass="payment-tab"
                             onAction="#showStudentFees"/>
 
-                    <Button text="Teacher Salaries"
-                            styleClass="payment-tab"/>
 
-                    <Button text="Expenses"
-                            styleClass="payment-tab"/>
+                    <!-- TEACHER SALARIES -->
 
-                    <Button text="Transactions"
-                            styleClass="payment-tab"/>
+                    <Button fx:id="teacherSalariesButton"
+                            text="Teacher Salaries"
+                            styleClass="payment-tab"
+                            onAction="#showTeacherSalaries"/>
 
-                    <Button text="Reports"
-                            styleClass="payment-tab"/>
+
+                    <!-- EXPENSES -->
+
+                    <Button fx:id="expensesButton"
+                            text="Expenses"
+                            styleClass="payment-tab"
+                            onAction="#showExpenses"/>
+
+
+                    <!-- TRANSACTIONS -->
+
+                    <Button fx:id="transactionsButton"
+                            text="Transactions"
+                            styleClass="payment-tab"
+                            onAction="#showTransactions"/>
+
+
+                    <!-- REPORTS -->
+
+                    <Button fx:id="reportsButton"
+                            text="Reports"
+                            styleClass="payment-tab"
+                            onAction="#showReports"/>
 
                 </children>
 
@@ -95,15 +123,14 @@
             <!-- SCROLLABLE CONTENT -->
             <!-- ================================================= -->
 
-            <ScrollPane fitToWidth="true"
-                        fx:id="paymentsScrollPane"
+            <ScrollPane fx:id="paymentsScrollPane"
+                        fitToWidth="true"
                         hbarPolicy="NEVER"
                         vbarPolicy="AS_NEEDED"
                         VBox.vgrow="ALWAYS"
                         styleClass="payments-scroll">
 
                 <content>
-
                     <VBox spacing="18"
                           styleClass="payments-content">
 
@@ -926,20 +953,21 @@
                                                    styleClass="panel-title"/>
 
 
-                                            <Button fx:id="recordStudentFeeButton"
-                                                    text="+  Record Student Fee Payment"
-                                                    styleClass="student-action"/>
+                                            <!-- ADD PAYMENT METHOD -->
+
+                                            <Button fx:id="addPaymentMethodButton"
+                                                    text="+  Add Payment Method"
+                                                    styleClass="payment-method-action"/>
 
 
-                                            <Button fx:id="recordTeacherSalaryButton"
-                                                    text="+  Record Teacher Salary Payment"
-                                                    styleClass="salary-action"/>
-
+                                            <!-- ADD EXPENSE -->
 
                                             <Button fx:id="addExpenseButton"
                                                     text="+  Add Expense"
                                                     styleClass="expense-action"/>
 
+
+                                            <!-- VIEW ALL TRANSACTIONS -->
 
                                             <Button fx:id="viewTransactionsButton"
                                                     text="☷  View All Transactions"

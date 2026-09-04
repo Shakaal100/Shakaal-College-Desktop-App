@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.shakaal.collegemanagementapp.controllers.RecordSalaryController"
+            stylesheets="@../css/record-salary.css"
+            styleClass="record-fee-root">
+
+
+    <!-- ========================================================= -->
+    <!-- TOP : HEADER                                               -->
+    <!-- ========================================================= -->
+
+    <top>
+
+        <HBox alignment="CENTER_LEFT"
+              spacing="15"
+              styleClass="form-header">
+
+            <padding>
+                <Insets top="20"
+                        right="30"
+                        bottom="20"
+                        left="30"/>
+            </padding>
+
+
+            <!-- HEADER TEXT -->
+
+            <VBox spacing="4">
+
+                <Label text="Record Teacher Salary"
+                       styleClass="form-title"/>
+
+                <Label text="Record a salary payment for this teacher."
+                       styleClass="form-subtitle"/>
+
+            </VBox>
+
+
+            <!-- PUSHES LOGO TO THE RIGHT -->
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+
+            <!-- COLLEGE LOGO -->
+
+            <ImageView fx:id="collegeLogo"
+                       fitWidth="85"
+                       fitHeight="85"
+                       preserveRatio="true">
+
+                <image>
+                    <Image url="@../images/Logo.png"/>
+                </image>
+
+            </ImageView>
+
+        </HBox>
+
+    </top>
+
+
+    <!-- ========================================================= -->
+    <!-- CENTER : TEACHER + PAYMENT INFORMATION                    -->
+    <!-- ========================================================= -->
+
+    <center>
+
+        <HBox spacing="30"
+              alignment="TOP_LEFT"
+              styleClass="form-content">
+
+            <padding>
+                <Insets top="20"
+                        right="35"
+                        bottom="20"
+                        left="35"/>
+            </padding>
+
+
+            <!-- ================================================= -->
+            <!-- LEFT : TEACHER INFORMATION                         -->
+            <!-- ================================================= -->
+
+            <VBox spacing="14"
+                  prefWidth="330"
+                  maxWidth="330"
+                  styleClass="student-info-panel">
+
+
+                <!-- SECTION TITLE -->
+
+                <HBox spacing="10"
+                      alignment="CENTER_LEFT">
+
+                    <ImageView fitWidth="30"
+                               fitHeight="30"
+                               preserveRatio="true">
+
+                        <image>
+                            <Image url="@../icons/information.png"/>
+                        </image>
+
+                    </ImageView>
+
+                    <Label text="Teacher Information"
+                           styleClass="section-title"/>
+
+                </HBox>
+
+
+                <!-- TEACHER NAME -->
+
+                <VBox spacing="4">
+
+                    <Label text="Teacher Name"
+                           styleClass="field-label"/>
+
+                    <TextField fx:id="teacherNameField"
+                               editable="false"
+                               prefHeight="42"
+                               maxWidth="Infinity"
+                               styleClass="read-only-field"/>
+
+                </VBox>
+
+
+                <!-- TEACHER ID -->
+
+                <VBox spacing="4">
+
+                    <Label text="Teacher ID"
+                           styleClass="field-label"/>
+
+                    <TextField fx:id="teacherIdField"
+                               editable="false"
+                               prefHeight="42"
+                               maxWidth="Infinity"
+                               styleClass="read-only-field"/>
+
+                </VBox>
+
+
+                <!-- SPECIALIZATION -->
+
+                <VBox spacing="4">
+
+                    <Label text="Specialization"
+                           styleClass="field-label"/>
+
+                    <TextField fx:id="specializationField"
+                               editable="false"
+                               prefHeight="42"
+                               maxWidth="Infinity"
+                               styleClass="read-only-field"/>
+
+                </VBox>
+
+
+                <!-- MONTHLY SALARY -->
+
+                <VBox spacing="4">
+
+                    <Label text="Monthly Salary"
+                           styleClass="field-label"/>
+
+                    <TextField fx:id="salaryField"
+                               editable="false"
+                               prefHeight="42"
+                               maxWidth="Infinity"
+                               styleClass="read-only-field"/>
+
+                </VBox>
+
+            </VBox>
+
+
+            <!-- ================================================= -->
+            <!-- RIGHT : PAYMENT INFORMATION                        -->
+            <!-- ================================================= -->
+
+            <VBox spacing="14"
+                  prefWidth="450"
+                  maxWidth="450"
+                  HBox.hgrow="ALWAYS"
+                  styleClass="payment-details-panel">
+
+
+                <!-- SECTION TITLE -->
+
+                <HBox spacing="10"
+                      alignment="CENTER_LEFT">
+
+                    <ImageView fitWidth="30"
+                               fitHeight="30"
+                               preserveRatio="true">
+
+                        <image>
+                            <Image url="@../icons/payments.png"/>
+                        </image>
+
+                    </ImageView>
+
+                    <Label text="Payment Information"
+                           styleClass="section-title"/>
+
+                </HBox>
+
+
+                <!-- ============================================= -->
+                <!-- PAYMENT MONTH + PAYMENT DATE                  -->
+                <!-- ============================================= -->
+
+                <HBox spacing="12">
+
+
+                    <!-- PAYMENT MONTH -->
+
+                    <VBox spacing="4"
+
+                          prefWidth="245">
+
+                        <Label text="Payment Month"
+                               styleClass="field-label"/>
+
+                        <ComboBox fx:id="paymentMonthComboBox"
+                                  promptText="Select payment month"
+                                  prefHeight="42"
+                                  maxWidth="Infinity"
+                                  styleClass="form-combo"/>
+
+                    </VBox>
+
+
+                    <!-- PAYMENT DATE -->
+
+                    <VBox spacing="4"
+                          prefWidth="175">
+
+                        <Label text="Payment Date"
+                               styleClass="field-label"/>
+
+                        <TextField fx:id="paymentDateField"
+                                   editable="false"
+                                   prefHeight="42"
+                                   maxWidth="Infinity"
+                                   styleClass="read-only-field"/>
+
+                    </VBox>
+
+                </HBox>
+
+
+                <!-- ============================================= -->
+                <!-- PAYMENT METHOD + AMOUNT                       -->
+                <!-- ============================================= -->
+
+                <HBox spacing="12">
+
+
+                    <!-- PAYMENT METHOD -->
+
+                    <VBox spacing="4"
+                          prefWidth="285">
+
+                        <Label text="Payment Method"
+                               styleClass="field-label"/>
+
+                        <ComboBox fx:id="paymentMethodComboBox"
+                                  promptText="Select payment method"
+                                  prefHeight="42"
+                                  maxWidth="Infinity"
+                                  styleClass="form-combo"/>
+
+                    </VBox>
+
+
+                    <!-- AMOUNT -->
+
+                    <VBox spacing="4"
+                          prefWidth="135">
+
+                        <Label text="Amount"
+                               styleClass="field-label"/>
+
+                        <TextField fx:id="amountField"
+                                   promptText="Enter payment amount"
+                                   prefHeight="42"
+                                   maxWidth="Infinity"
+                                   styleClass="form-field"/>
+
+                    </VBox>
+
+                </HBox>
+
+
+                <!-- ============================================= -->
+                <!-- REFERENCE NUMBER                               -->
+                <!-- ============================================= -->
+
+                <VBox spacing="4">
+
+                    <Label text="Reference Number"
+                           styleClass="field-label"/>
+
+                    <TextField fx:id="referenceNumberField"
+                               editable="false"
+                               prefHeight="42"
+                               maxWidth="Infinity"
+                               styleClass="reference-field"/>
+
+                </VBox>
+
+
+                <!-- ============================================= -->
+                <!-- NOTES                                          -->
+                <!-- ============================================= -->
+
+                <VBox spacing="4">
+
+                    <Label text="Notes"
+                           styleClass="field-label"/>
+
+                    <TextArea fx:id="notesArea"
+                              promptText="Optional salary payment notes"
+                              prefRowCount="3"
+                              prefHeight="70"
+                              maxWidth="Infinity"
+                              wrapText="true"
+                              styleClass="form-text-area"/>
+
+                </VBox>
+
+            </VBox>
+
+        </HBox>
+
+    </center>
+
+
+    <!-- ========================================================= -->
+    <!-- BOTTOM : ACTION BUTTONS                                   -->
+    <!-- ========================================================= -->
+
+    <bottom>
+
+        <HBox spacing="10"
+              alignment="CENTER_RIGHT"
+              styleClass="form-footer">
+
+            <padding>
+                <Insets top="15"
+                        right="35"
+                        bottom="25"
+                        left="35"/>
+            </padding>
+
+
+            <!-- CANCEL -->
+
+            <Button fx:id="cancelButton"
+                    text="Cancel"
+                    prefWidth="110"
+                    prefHeight="42"
+                    styleClass="cancel-button"/>
+
+
+            <!-- RECORD SALARY -->
+
+            <Button fx:id="saveButton"
+                    text="Record Salary"
+                    prefWidth="150"
+                    prefHeight="42"
+                    styleClass="save-button"/>
+
+        </HBox>
+
+    </bottom>
+
+</BorderPane>

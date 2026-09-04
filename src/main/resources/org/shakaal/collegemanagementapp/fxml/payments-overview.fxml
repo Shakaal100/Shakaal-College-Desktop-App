@@ -1,0 +1,865 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/26"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.shakaal.collegemanagementapp.controllers.PaymentsController"
+      spacing="18"
+      styleClass="payments-content">
+
+    <padding>
+        <Insets top="20"
+                right="20"
+                bottom="25"
+                left="20"/>
+    </padding>
+
+    <children>
+
+        <!-- ================================================= -->
+        <!-- SUMMARY CARDS -->
+        <!-- ================================================= -->
+
+        <FlowPane fx:id="summaryCardsPane"
+                  hgap="18"
+                  vgap="18"
+                  prefWrapLength="1200"
+                  styleClass="summary-cards">
+
+            <children>
+
+                <!-- TOTAL INCOME -->
+
+                <VBox spacing="4"
+                      minWidth="220"
+                      prefWidth="220"
+                      styleClass="income-card">
+
+                    <children>
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <VBox spacing="2">
+
+                                    <children>
+
+                                        <Label text="TOTAL INCOME"
+                                               styleClass="income-title"/>
+
+                                        <Label text="THIS MONTH"
+                                               styleClass="card-period"/>
+
+                                    </children>
+
+                                </VBox>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <StackPane styleClass="income-icon">
+
+                                    <ImageView fitHeight="24"
+                                               fitWidth="24"
+                                               preserveRatio="true">
+
+                                        <image>
+                                            <Image url="@../icons/income.png"/>
+                                        </image>
+
+                                    </ImageView>
+
+                                </StackPane>
+
+                            </children>
+
+                        </HBox>
+
+                        <Label fx:id="totalIncomeLabel"
+                               text="USD 0.00"
+                               styleClass="income-amount"/>
+
+                    </children>
+
+                </VBox>
+
+
+                <!-- TOTAL SALARIES -->
+
+                <VBox spacing="7"
+                      minWidth="220"
+                      prefWidth="250"
+                      styleClass="salary-card">
+
+                    <children>
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <VBox spacing="2">
+
+                                    <children>
+
+                                        <Label text="TOTAL SALARIES"
+                                               styleClass="salary-title"/>
+
+                                        <Label text="THIS MONTH"
+                                               styleClass="card-period"/>
+
+                                    </children>
+
+                                </VBox>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <StackPane styleClass="salary-icon">
+
+                                    <ImageView fitHeight="24"
+                                               fitWidth="24"
+                                               preserveRatio="true">
+
+                                        <image>
+                                            <Image url="@../icons/salary.png"/>
+                                        </image>
+
+                                    </ImageView>
+
+                                </StackPane>
+
+                            </children>
+
+                        </HBox>
+
+                        <Label fx:id="totalSalaryLabel"
+                               text="USD 0.00"
+                               styleClass="salary-amount"/>
+
+                    </children>
+
+                </VBox>
+
+
+                <!-- TOTAL EXPENSES -->
+
+                <VBox spacing="7"
+                      minWidth="220"
+                      prefWidth="250"
+                      styleClass="expense-card">
+
+                    <children>
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <VBox spacing="2">
+
+                                    <children>
+
+                                        <Label text="TOTAL EXPENSES"
+                                               styleClass="expense-title"/>
+
+                                        <Label text="THIS MONTH"
+                                               styleClass="card-period"/>
+
+                                    </children>
+
+                                </VBox>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <StackPane styleClass="expense-icon">
+
+                                    <ImageView fitHeight="24"
+                                               fitWidth="24"
+                                               preserveRatio="true">
+
+                                        <image>
+                                            <Image url="@../icons/expense.png"/>
+                                        </image>
+
+                                    </ImageView>
+
+                                </StackPane>
+
+                            </children>
+
+                        </HBox>
+
+                        <Label fx:id="totalExpensesLabel"
+                               text="USD 0.00"
+                               styleClass="expense-amount"/>
+
+                    </children>
+
+                </VBox>
+
+
+                <!-- NET BALANCE -->
+
+                <VBox spacing="7"
+                      minWidth="220"
+                      prefWidth="250"
+                      styleClass="balance-card">
+
+                    <children>
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <VBox spacing="2">
+
+                                    <children>
+
+                                        <Label text="NET BALANCE"
+                                               styleClass="balance-title"/>
+
+                                        <Label text="THIS MONTH"
+                                               styleClass="card-period"/>
+
+                                    </children>
+
+                                </VBox>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <StackPane styleClass="balance-icon">
+
+                                    <ImageView fitHeight="24"
+                                               fitWidth="24"
+                                               preserveRatio="true">
+
+                                        <image>
+                                            <Image url="@../icons/balance.png"/>
+                                        </image>
+
+                                    </ImageView>
+
+                                </StackPane>
+
+                            </children>
+
+                        </HBox>
+
+                        <Label fx:id="netBalanceLabel"
+                               text="USD 0.00"
+                               styleClass="balance-amount"/>
+
+                    </children>
+
+                </VBox>
+
+            </children>
+
+        </FlowPane>
+
+
+        <!-- ================================================= -->
+        <!-- STATUS + EXPENSES -->
+        <!-- ================================================= -->
+
+        <HBox spacing="18"
+              VBox.vgrow="NEVER">
+
+            <children>
+
+                <!-- STUDENT FEE STATUS -->
+
+                <VBox spacing="12"
+                      HBox.hgrow="ALWAYS"
+                      styleClass="student-status-panel">
+
+                    <children>
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <Label text="STUDENT FEE STATUS"
+                                       styleClass="panel-title"/>
+
+                                <Label text="  (THIS MONTH)"
+                                       styleClass="panel-period"/>
+
+                            </children>
+
+                        </HBox>
+
+
+                        <HBox spacing="15"
+                              alignment="CENTER">
+
+                            <children>
+
+                                <StackPane styleClass="student-chart-container">
+
+                                    <children>
+
+                                        <PieChart fx:id="studentFeeChart"
+                                                  legendVisible="false"
+                                                  labelsVisible="false"
+                                                  startAngle="90"
+                                                  styleClass="status-pie-chart"/>
+
+                                        <Label fx:id="studentChartCenterLabel"
+                                               text="0"
+                                               styleClass="chart-center-value"/>
+
+                                    </children>
+
+                                </StackPane>
+
+
+                                <VBox spacing="18"
+                                      alignment="CENTER_LEFT">
+
+                                    <children>
+
+                                        <HBox spacing="8"
+                                              alignment="CENTER_LEFT">
+
+                                            <children>
+
+                                                <Label text="●"
+                                                       styleClass="legend-paid"/>
+
+                                                <Label fx:id="studentPaidLabel"
+                                                       text="Paid (0)"
+                                                       styleClass="legend-label"/>
+
+                                                <Region HBox.hgrow="ALWAYS"/>
+
+                                                <Label fx:id="studentPaidAmountLabel"
+                                                       text="USD 0.00"
+                                                       styleClass="legend-amount"/>
+
+                                            </children>
+
+                                        </HBox>
+
+
+                                        <HBox spacing="8"
+                                              alignment="CENTER_LEFT">
+
+                                            <children>
+
+                                                <Label text="●"
+                                                       styleClass="legend-unpaid"/>
+
+                                                <Label fx:id="studentUnpaidLabel"
+                                                       text="Not Paid (0)"
+                                                       styleClass="legend-label"/>
+
+                                                <Region HBox.hgrow="ALWAYS"/>
+
+                                                <Label fx:id="studentUnpaidAmountLabel"
+                                                       text="USD 0.00"
+                                                       styleClass="legend-amount"/>
+
+                                            </children>
+
+                                        </HBox>
+
+                                    </children>
+
+                                </VBox>
+
+                            </children>
+
+                        </HBox>
+
+
+                        <Separator/>
+
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <Label text="Total Students"
+                                       styleClass="footer-label"/>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <Label fx:id="totalStudentsLabel"
+                                       text="0"
+                                       styleClass="footer-value"/>
+
+                            </children>
+
+                        </HBox>
+
+                    </children>
+
+                </VBox>
+
+
+                <!-- TEACHER SALARY STATUS -->
+
+                <VBox spacing="12"
+                      HBox.hgrow="ALWAYS"
+                      styleClass="teacher-status-panel">
+
+                    <children>
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <Label text="TEACHER SALARY STATUS"
+                                       styleClass="panel-title"/>
+
+                                <Label text="  (THIS MONTH)"
+                                       styleClass="panel-period"/>
+
+                            </children>
+
+                        </HBox>
+
+
+                        <HBox spacing="15"
+                              alignment="CENTER">
+
+                            <children>
+
+                                <StackPane styleClass="teacher-chart-container">
+
+                                    <children>
+
+                                        <PieChart fx:id="teacherSalaryChart"
+                                                  legendVisible="false"
+                                                  labelsVisible="false"
+                                                  startAngle="90"
+                                                  styleClass="status-pie-chart"/>
+
+                                        <Label fx:id="teacherChartCenterLabel"
+                                               text="0"
+                                               styleClass="chart-center-value"/>
+
+                                    </children>
+
+                                </StackPane>
+
+
+                                <VBox spacing="18"
+                                      alignment="CENTER_LEFT">
+
+                                    <children>
+
+                                        <HBox spacing="8"
+                                              alignment="CENTER_LEFT">
+
+                                            <children>
+
+                                                <Label text="●"
+                                                       styleClass="legend-paid"/>
+
+                                                <Label fx:id="teacherPaidLabel"
+                                                       text="Paid (0)"
+                                                       styleClass="legend-label"/>
+
+                                                <Region HBox.hgrow="ALWAYS"/>
+
+                                                <Label fx:id="teacherPaidAmountLabel"
+                                                       text="USD 0.00"
+                                                       styleClass="legend-amount"/>
+
+                                            </children>
+
+                                        </HBox>
+
+
+                                        <HBox spacing="8"
+                                              alignment="CENTER_LEFT">
+
+                                            <children>
+
+                                                <Label text="●"
+                                                       styleClass="legend-unpaid"/>
+
+                                                <Label fx:id="teacherUnpaidLabel"
+                                                       text="Not Paid (0)"
+                                                       styleClass="legend-label"/>
+
+                                                <Region HBox.hgrow="ALWAYS"/>
+
+                                                <Label fx:id="teacherUnpaidAmountLabel"
+                                                       text="USD 0.00"
+                                                       styleClass="legend-amount"/>
+
+                                            </children>
+
+                                        </HBox>
+
+                                    </children>
+
+                                </VBox>
+
+                            </children>
+
+                        </HBox>
+
+
+                        <Separator/>
+
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <Label text="Total Teachers"
+                                       styleClass="footer-label"/>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <Label fx:id="totalTeachersLabel"
+                                       text="0"
+                                       styleClass="footer-value"/>
+
+                            </children>
+
+                        </HBox>
+
+                    </children>
+
+                </VBox>
+
+
+                <!-- EXPENSE BREAKDOWN -->
+
+                <VBox spacing="10"
+                      minWidth="250"
+                      prefWidth="280"
+                      styleClass="expenses-panel">
+
+                    <children>
+
+                        <HBox alignment="CENTER_LEFT">
+
+                            <children>
+
+                                <Label text="EXPENSES BREAKDOWN"
+                                       styleClass="panel-title"/>
+
+                                <Label text="  (THIS MONTH)"
+                                       styleClass="panel-period"/>
+
+                            </children>
+
+                        </HBox>
+
+
+                        <VBox spacing="0"
+                              fx:id="expenseList"
+                              styleClass="expense-list">
+
+                            <children>
+
+                                <!-- ELECTRICITY -->
+
+                                <HBox alignment="CENTER_LEFT"
+                                      spacing="5"
+                                      styleClass="expense-row">
+
+                                    <children>
+
+                                        <ImageView fitHeight="18"
+                                                   fitWidth="18"
+                                                   preserveRatio="true"
+                                                   styleClass="expense-row-icon">
+
+                                            <image>
+                                                <Image url="@../icons/electricity.png"/>
+                                            </image>
+
+                                        </ImageView>
+
+                                        <Label text="Electricity"
+                                               styleClass="expense-name"/>
+
+                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                        <Label text="USD 0.00"
+                                               styleClass="expense-value"/>
+
+                                    </children>
+
+                                </HBox>
+
+
+                                <!-- RENT -->
+
+                                <HBox alignment="CENTER_LEFT"
+                                      spacing="5"
+                                      styleClass="expense-row">
+
+                                    <children>
+
+                                        <ImageView fitHeight="18"
+                                                   fitWidth="18"
+                                                   preserveRatio="true"
+                                                   styleClass="expense-row-icon">
+
+                                            <image>
+                                                <Image url="@../icons/rent.png"/>
+                                            </image>
+
+                                        </ImageView>
+
+                                        <Label text="Rent"
+                                               styleClass="expense-name"/>
+
+                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                        <Label text="USD 0.00"
+                                               styleClass="expense-value"/>
+
+                                    </children>
+
+                                </HBox>
+
+
+                                <!-- INTERNET -->
+
+                                <HBox alignment="CENTER_LEFT"
+                                      spacing="5"
+                                      styleClass="expense-row">
+
+                                    <children>
+
+                                        <ImageView fitHeight="18"
+                                                   fitWidth="18"
+                                                   preserveRatio="true"
+                                                   styleClass="expense-row-icon">
+
+                                            <image>
+                                                <Image url="@../icons/internet.png"/>
+                                            </image>
+
+                                        </ImageView>
+
+                                        <Label text="Internet"
+                                               styleClass="expense-name"/>
+
+                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                        <Label text="USD 0.00"
+                                               styleClass="expense-value"/>
+
+                                    </children>
+
+                                </HBox>
+
+
+                                <!-- WATER -->
+
+                                <HBox alignment="CENTER_LEFT"
+                                      spacing="5"
+                                      styleClass="expense-row">
+
+                                    <children>
+
+                                        <ImageView fitHeight="18"
+                                                   fitWidth="18"
+                                                   preserveRatio="true"
+                                                   styleClass="expense-row-icon">
+
+                                            <image>
+                                                <Image url="@../icons/water.png"/>
+                                            </image>
+
+                                        </ImageView>
+
+                                        <Label text="Water"
+                                               styleClass="expense-name"/>
+
+                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                        <Label text="USD 0.00"
+                                               styleClass="expense-value"/>
+
+                                    </children>
+
+                                </HBox>
+
+
+                                <!-- SUPPLIES -->
+
+                                <HBox alignment="CENTER_LEFT"
+                                      spacing="5"
+                                      styleClass="expense-row">
+
+                                    <children>
+
+                                        <ImageView fitHeight="18"
+                                                   fitWidth="18"
+                                                   preserveRatio="true"
+                                                   styleClass="expense-row-icon">
+
+                                            <image>
+                                                <Image url="@../icons/supplies.png"/>
+                                            </image>
+
+                                        </ImageView>
+
+                                        <Label text="Supplies"
+                                               styleClass="expense-name"/>
+
+                                        <Region HBox.hgrow="ALWAYS"/>
+
+                                        <Label text="USD 0.00"
+                                               styleClass="expense-value"/>
+
+                                    </children>
+
+                                </HBox>
+
+                            </children>
+
+                        </VBox>
+
+
+                        <HBox alignment="CENTER_LEFT"
+                              styleClass="expense-total">
+
+                            <children>
+
+                                <Label text="Total Expenses:"
+                                       styleClass="expense-total-label"/>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <Label fx:id="expenseBreakdownTotalLabel"
+                                       text="USD 0.00"
+                                       styleClass="expense-total-value"/>
+
+                            </children>
+
+                        </HBox>
+
+                    </children>
+
+                </VBox>
+
+            </children>
+
+        </HBox>
+
+
+        <!-- ================================================= -->
+        <!-- RECENT TRANSACTIONS + QUICK ACTIONS -->
+        <!-- ================================================= -->
+
+        <HBox spacing="18">
+
+            <children>
+
+                <!-- RECENT TRANSACTIONS -->
+
+                <VBox spacing="10"
+                      HBox.hgrow="ALWAYS"
+                      styleClass="transactions-panel">
+
+                    <children>
+
+                        <Label text="RECENT TRANSACTIONS"
+                               styleClass="panel-title"/>
+
+
+                        <TableView fx:id="recentTransactionsTable"
+                                   prefHeight="220"
+                                   VBox.vgrow="ALWAYS"
+                                   styleClass="transactions-table">
+
+                            <columns>
+
+                                <TableColumn fx:id="transactionDateColumn"
+                                             text="Date"/>
+
+                                <TableColumn fx:id="transactionTypeColumn"
+                                             text="Type"/>
+
+                                <TableColumn fx:id="transactionPersonColumn"
+                                             text="Category / Person"/>
+
+                                <TableColumn fx:id="transactionDescriptionColumn"
+                                             text="Description"/>
+
+                                <TableColumn fx:id="transactionAmountColumn"
+                                             text="Amount"/>
+
+                                <TableColumn fx:id="transactionPaymentMethodColumn"
+                                             text="Payment Method"/>
+
+                                <TableColumn fx:id="transactionReferenceColumn"
+                                             text="Reference"/>
+
+                            </columns>
+
+                        </TableView>
+
+                    </children>
+
+                </VBox>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <VBox spacing="12"
+                      minWidth="255"
+                      prefWidth="270"
+                      styleClass="quick-actions-panel">
+
+                    <children>
+
+                        <Label text="QUICK ACTIONS"
+                               styleClass="panel-title"/>
+
+
+                        <!-- ADD PAYMENT METHOD -->
+
+                        <Button fx:id="addPaymentMethodButton"
+                                text="+  Add Payment Method"
+                                styleClass="payment-method-action"/>
+
+
+                        <!-- ADD EXPENSE -->
+
+                        <Button fx:id="addExpenseButton"
+                                text="+  Add Expense"
+                                styleClass="expense-action"/>
+
+
+                        <!-- VIEW ALL TRANSACTIONS -->
+
+                        <Button fx:id="viewTransactionsButton"
+                                text="☷  View All Transactions"
+                                styleClass="transaction-action"/>
+
+                    </children>
+
+                </VBox>
+
+            </children>
+
+        </HBox>
+
+    </children>
+
+</VBox>
