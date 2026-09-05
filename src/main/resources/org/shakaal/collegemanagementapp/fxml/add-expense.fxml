@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.shakaal.collegemanagementapp.controllers.AddExpenseController"
+            stylesheets="@../css/add-expense.css"
+            styleClass="add-expense-root">
+
+    <!-- ========================================================= -->
+    <!-- TOP : HEADER                                               -->
+    <!-- ========================================================= -->
+
+    <top>
+
+        <HBox alignment="CENTER_LEFT"
+              spacing="12"
+              styleClass="form-header">
+
+            <padding>
+                <Insets top="12"
+                        right="20"
+                        bottom="12"
+                        left="20"/>
+            </padding>
+
+            <!-- HEADER TEXT -->
+
+            <VBox spacing="3">
+
+                <Label text="Add College Expense"
+                       styleClass="form-title"/>
+
+                <Label text="Record an expense for the college."
+                       styleClass="form-subtitle"/>
+
+            </VBox>
+
+            <!-- PUSH LOGO TO RIGHT -->
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <!-- COLLEGE LOGO -->
+
+            <ImageView fx:id="collegeLogo"
+                       fitWidth="80"
+                       fitHeight="80"
+                       preserveRatio="true">
+
+                <image>
+                    <Image url="@../images/Logo.png"/>
+                </image>
+
+            </ImageView>
+
+        </HBox>
+
+    </top>
+
+
+    <!-- ========================================================= -->
+    <!-- CENTER : MAIN FORM                                        -->
+    <!-- ========================================================= -->
+
+    <center>
+
+        <HBox spacing="15"
+              alignment="TOP_LEFT"
+              styleClass="form-content">
+
+            <padding>
+                <Insets top="15"
+                        right="20"
+                        bottom="15"
+                        left="20"/>
+            </padding>
+
+
+            <!-- ================================================= -->
+            <!-- LEFT : EXPENSE INFORMATION                         -->
+            <!-- ================================================= -->
+
+            <VBox spacing="12"
+                  prefWidth="245"
+                  minWidth="245"
+                  maxWidth="245"
+                  styleClass="expense-info-panel">
+
+                <!-- SECTION TITLE -->
+
+                <HBox spacing="8"
+                      alignment="CENTER_LEFT">
+
+                    <ImageView fitWidth="26"
+                               fitHeight="26"
+                               preserveRatio="true">
+
+                        <image>
+                            <Image url="@../icons/expense.png"/>
+                        </image>
+
+                    </ImageView>
+
+                    <Label text="Expense Information"
+                           styleClass="section-title"/>
+
+                </HBox>
+
+
+                <!-- EXPENSE CATEGORY -->
+
+                <VBox spacing="4">
+
+                    <Label text="Expense Category"
+                           styleClass="field-label"/>
+
+                    <ComboBox fx:id="expenseCategoryComboBox"
+                              promptText="Select expense category"
+                              prefHeight="40"
+                              prefWidth="205"
+                              maxWidth="Infinity"
+                              styleClass="form-combo"/>
+
+                </VBox>
+
+
+                <!-- EXPENSE DATE -->
+
+                <VBox spacing="4">
+
+                    <Label text="Expense Date"
+                           styleClass="field-label"/>
+
+                    <TextField fx:id="expenseDateField"
+                               editable="false"
+                               prefHeight="40"
+                               maxWidth="Infinity"
+                               styleClass="read-only-field"/>
+
+                </VBox>
+
+
+                <!-- REFERENCE NUMBER -->
+
+                <VBox spacing="4">
+
+                    <Label text="Reference Number"
+                           styleClass="field-label"/>
+
+                    <TextField fx:id="referenceNumberField"
+                               editable="false"
+                               prefHeight="40"
+                               maxWidth="Infinity"
+                               styleClass="reference-field"/>
+
+                </VBox>
+
+            </VBox>
+
+
+            <!-- ================================================= -->
+            <!-- RIGHT : EXPENSE DETAILS                            -->
+            <!-- ================================================= -->
+
+            <VBox spacing="12"
+                  prefWidth="330"
+                  minWidth="300"
+                  HBox.hgrow="ALWAYS"
+                  styleClass="expense-details-panel">
+
+                <!-- SECTION TITLE -->
+
+                <HBox spacing="8"
+                      alignment="CENTER_LEFT">
+
+                    <ImageView fitWidth="26"
+                               fitHeight="26"
+                               preserveRatio="true">
+
+                        <image>
+                            <Image url="@../icons/payments.png"/>
+                        </image>
+
+                    </ImageView>
+
+                    <Label text="Expense Details"
+                           styleClass="section-title"/>
+
+                </HBox>
+
+
+                <!-- ================================================= -->
+                <!-- PAYMENT METHOD                                    -->
+                <!-- ================================================= -->
+
+                <VBox spacing="4">
+
+                    <Label text="Payment Method"
+                           styleClass="field-label"/>
+
+                    <ComboBox fx:id="paymentMethodComboBox"
+                              promptText="Select payment method"
+                              prefHeight="40"
+                              maxWidth="Infinity"
+                              styleClass="form-combo"/>
+
+                </VBox>
+
+
+                <!-- ================================================= -->
+                <!-- AMOUNT                                            -->
+                <!-- ================================================= -->
+
+                <VBox spacing="4">
+
+                    <Label text="Amount"
+                           styleClass="field-label"/>
+
+                    <TextField fx:id="amountField"
+                               promptText="Enter amount"
+                               prefHeight="40"
+                               maxWidth="Infinity"
+                               styleClass="form-field"/>
+
+                </VBox>
+
+
+                <!-- ================================================= -->
+                <!-- DESCRIPTION                                       -->
+                <!-- ================================================= -->
+
+                <VBox spacing="4">
+
+                    <Label text="Description"
+                           styleClass="field-label"/>
+
+                    <TextArea fx:id="descriptionArea"
+                              promptText="Optional expense description"
+                              prefRowCount="2"
+                              prefHeight="55"
+                              maxHeight="55"
+                              maxWidth="Infinity"
+                              wrapText="true"
+                              styleClass="form-text-area"/>
+
+                </VBox>
+
+            </VBox>
+
+        </HBox>
+
+    </center>
+
+
+    <!-- ========================================================= -->
+    <!-- BOTTOM : ACTION BUTTONS                                   -->
+    <!-- ========================================================= -->
+
+    <bottom>
+
+        <HBox spacing="8"
+              alignment="CENTER_RIGHT"
+              styleClass="form-footer">
+
+            <padding>
+                <Insets top="10"
+                        right="20"
+                        bottom="15"
+                        left="20"/>
+            </padding>
+
+
+            <!-- CANCEL -->
+
+            <Button fx:id="cancelButton"
+                    text="Cancel"
+                    prefWidth="95"
+                    prefHeight="38"
+                    styleClass="cancel-button"/>
+
+
+            <!-- ADD EXPENSE -->
+
+            <Button fx:id="saveButton"
+                    text="Add Expense"
+                    prefWidth="135"
+                    prefHeight="38"
+                    styleClass="save-button"/>
+
+        </HBox>
+
+    </bottom>
+
+</BorderPane>

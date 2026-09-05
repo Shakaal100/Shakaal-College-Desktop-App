@@ -39,11 +39,19 @@ public class PaymentsController {
     private Button addPaymentMethodButton;
 
     @FXML
+    private Button addExpenseButton;
+
+    @FXML
+    private Button addExpenseCategoryButton;
+
+    @FXML
     private void initialize() {
 
-        addPaymentMethodButton.setOnAction(
-                event -> openAddPaymentMethodWindow()
-        );
+        addPaymentMethodButton.setOnAction(event -> openAddPaymentMethodWindow());
+
+        addExpenseButton.setOnAction(event -> OpenAddExpense());
+
+        addExpenseCategoryButton.setOnAction(event -> openAddExpenseCategoryWindow());
 
     }
 
@@ -165,6 +173,68 @@ public class PaymentsController {
             Stage stage = new Stage();
 
             stage.setTitle("Add Payment Method");
+
+            Scene scene = new Scene(root, 500, 350);
+
+            stage.setScene(scene);
+
+            stage.setResizable(false);
+
+            stage.showAndWait();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+
+    @FXML
+    private void OpenAddExpense() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/org/shakaal/collegemanagementapp/fxml/add-expense.fxml"
+                    )
+            );
+
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Add College Expense");
+
+            Scene scene = new Scene(root, 620, 520);
+            stage.setScene(scene);
+
+            stage.setResizable(false);
+            stage.showAndWait();
+
+            // Refresh the Payments page after the expense window closes
+           // loadStatistics();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void openAddExpenseCategoryWindow() {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/org/shakaal/collegemanagementapp/fxml/add-expense-category.fxml"
+                    )
+            );
+
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+
+            stage.setTitle("Add Expense Category");
 
             Scene scene = new Scene(root, 500, 350);
 

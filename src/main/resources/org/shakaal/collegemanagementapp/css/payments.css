@@ -623,7 +623,8 @@
 
 .payment-method-action,
  .expense-action,
- .transaction-action{
+ .transaction-action,
+ .category-action{
     -fx-background-radius: 6px;
     -fx-border-radius: 6px;
     -fx-font-size: 13px;
@@ -676,6 +677,15 @@
 
 .transaction-action:hover {
     -fx-background-color: #6744b4;
+}
+
+
+.category-action {
+    -fx-background-color: #267EEA;
+}
+
+.category-action:hover {
+    -fx-background-color: #2671D7;
 }
 
 

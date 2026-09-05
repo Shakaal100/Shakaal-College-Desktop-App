@@ -1,8 +1,8 @@
 /* =========================================================
-   ADD PAYMENT METHOD
+   ADD EXPENSE CATEGORY
    ========================================================= */
 
-.add-payment-method-root {
+.add-expense-category-root {
     -fx-background-color: #f7f9fc;
 }
 
@@ -92,10 +92,10 @@
 
 
 /* =========================================================
-   PAYMENT METHOD PANEL
+   EXPENSE CATEGORY PANEL
    ========================================================= */
 
-.payment-method-panel {
+.expense-category-panel {
     -fx-background-color: white;
 
     -fx-background-radius: 12px;
@@ -157,7 +157,7 @@
 
 
 /* =========================================================
-   ADD PAYMENT METHOD BUTTON
+   ADD EXPENSE CATEGORY BUTTON
    ========================================================= */
 
 .save-button {

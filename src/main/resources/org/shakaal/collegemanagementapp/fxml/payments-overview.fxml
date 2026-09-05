@@ -845,6 +845,12 @@
                                 text="+  Add Expense"
                                 styleClass="expense-action"/>
 
+                        <!-- ADD EXPENSE CATEGORY -->
+
+                        <Button fx:id="addExpenseCategoryButton"
+                                text="+  Add Expense Category"
+                                styleClass="category-action"/>
+
 
                         <!-- VIEW ALL TRANSACTIONS -->
 
